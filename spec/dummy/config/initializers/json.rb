@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Was getting lots of errors like this:
 #
 # ~/.rvm/gems/ruby-2.7.2@works_cited/gems/json-1.8.6/lib/json/common.rb:155:

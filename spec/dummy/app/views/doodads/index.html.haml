@@ -1,0 +1,23 @@
+%h1 Listing doodads
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @doodads.each do |doodad|
+      %tr
+        %td= doodad.name
+        %td= doodad.description
+        %td= link_to 'Show', doodad
+        %td= link_to 'Edit', edit_doodad_path(doodad)
+        %td= link_to 'Destroy', doodad, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Doodad', new_doodad_path

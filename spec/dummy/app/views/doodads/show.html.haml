@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @doodad.name
+%p
+  %b Description:
+  = @doodad.description
+
+= link_to 'Edit', edit_doodad_path(@doodad)
+\|
+= link_to 'Back', doodads_path

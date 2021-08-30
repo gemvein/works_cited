@@ -1,5 +1,2 @@
-# frozen_string_literal: true
-
-class Doodad < ActiveRecord::Base
-  paid_for
+class Doodad < ApplicationRecord
 end

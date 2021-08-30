@@ -1,0 +1,5 @@
+module WorksCited
+  class Citation < ApplicationRecord
+    belongs_to :record, polymorphic: true
+  end
+end
