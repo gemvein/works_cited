@@ -14,12 +14,13 @@ require 'juwelier'
 Juwelier::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
   gem.name = "works_cited"
-  gem.homepage = "http://github.com/gemvein/works_cited"
+  gem.homepage = "https://gemvein.com/museum/cases/works_cited"
+  gem.metadata = { source_code_uri: "http://github.com/gemvein/works_cited" }
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "karen.e.lundgren@gmail.com"
-  gem.authors = ["Karen Lundgren"]
+  gem.summary = %Q{Helper to generate list of Works Cited}
+  gem.description = %Q{Works cited allows you to add a list of the works cited in ActiveRecord objects, to be formatted by a helper that can be added to relevant pages to format the citations like a bibliography.}
+  gem.email = "loren.lundgren@gmail.com"
+  gem.authors = ["Loren Lundgren"]
 
   # dependencies defined in Gemfile
 end

@@ -1,9 +1,42 @@
-works_cited===================
+# Works Cited
 
-Description goes here.
+Works Cited allows you to add a list of the works cited in ActiveRecord objects, to be formatted by a helper that can be added to relevant pages to format the citations like a bibliography.
 
-Contributing to works_cited
-------------------------------------------
+MLA formatting will be added first, but other formats are planned for the future.
+
+Works Cited is in the very earliest stages of development. It doesn't actually work yet.
+
+## Installation
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'works_cited'
+```
+
+And then execute:
+```bash
+$ bundle install
+```
+
+Then generate the migrations
+```bash
+$ rails g works_cited:install
+```
+
+## Usage
+Make a model ready to accept citations
+
+```ruby
+has_works_cited
+```
+
+Add the helpers to the relevant views
+
+```haml
+= works_cited @record
+```
+
+##Contributing
 
 -   Check out the latest master to make sure the feature hasn't been
     implemented or the bug hasn't been fixed yet.
@@ -19,8 +52,6 @@ Contributing to works_cited
     is fine, but please isolate to its own commit so I can cherry-pick
     around it.
 
-Copyright
----------
+## Copyright
 
-Copyright (c) 2021 Karen Lundgren. See
-LICENSE.txt for further details.
+Copyright (c) 2021 Loren Lundgren. See LICENSE.txt for further details.
