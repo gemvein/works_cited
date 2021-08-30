@@ -16,3 +16,12 @@ module WorksCited
 
   require 'haml-rails'
 end
+
+# A shim to shut up the warnings
+module JSON
+  module_function
+
+  def parse(source, opts = {})
+    Parser.new(source, **opts).parse
+  end
+end

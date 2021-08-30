@@ -6,10 +6,10 @@ if RUBY_VERSION < '2.3.0' && RUBY_ENGINE == 'ruby'
          else
            "ruby #{RUBY_VERSION} (#{RUBY_RELEASE_DATE})"
          end
-  abort <<-end_message
+  abort <<-END_MESSAGE
     This version of WorksCited requires Ruby 2.3.0 or newer.
     You're running
       #{desc}
     Please upgrade to Ruby 2.3.0 or newer to continue.
-  end_message
+  END_MESSAGE
 end

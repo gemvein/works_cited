@@ -53,6 +53,7 @@
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot (v5.2.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot_rails (v5.2.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faker (v2.19.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday (v1.7.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday-em_http (v1.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday-em_synchrony (v1.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
@@ -109,6 +110,8 @@
     <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.10.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.20.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.11.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop-rails (v2.11.3, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec (v2.4.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.11.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby2_keywords (v0.0.5, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby_parser (v3.17.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />

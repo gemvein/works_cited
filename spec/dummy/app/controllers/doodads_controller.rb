@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class DoodadsController < ApplicationController
-  before_action :set_doodad, only: [:show, :edit, :update, :destroy]
+  before_action :set_doodad, only: %i[show edit update destroy]
 
   # GET /doodads
   def index
@@ -7,8 +9,7 @@ class DoodadsController < ApplicationController
   end
 
   # GET /doodads/1
-  def show
-  end
+  def show; end
 
   # GET /doodads/new
   def new
@@ -16,8 +17,7 @@ class DoodadsController < ApplicationController
   end
 
   # GET /doodads/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /doodads
   def create
@@ -46,13 +46,14 @@ class DoodadsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_doodad
-      @doodad = Doodad.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def doodad_params
-      params.require(:doodad).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_doodad
+    @doodad = Doodad.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def doodad_params
+    params.require(:doodad).permit(:name, :description)
+  end
 end

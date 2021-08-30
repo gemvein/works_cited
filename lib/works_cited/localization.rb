@@ -14,7 +14,7 @@ module StringExtension
   end
   alias l localize
 end
-String.send :include, StringExtension
+String.include StringExtension
 
 # Symbol Extensions
 module SymbolExtensionCustom
@@ -29,4 +29,4 @@ module SymbolExtensionCustom
   end
 end
 
-Symbol.send :include, SymbolExtensionCustom
+Symbol.include SymbolExtensionCustom

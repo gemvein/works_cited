@@ -1,0 +1,8 @@
+AllCops:
+  Exclude:
+    - works_cited.gemspec
+  NewCops: enable
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']
+Metrics/MethodLength:
+  IgnoredMethods: ['change']
