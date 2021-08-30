@@ -8,17 +8,186 @@
       <sourceFolder url="file://$MODULE_DIR$/features" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="RVM: ruby-2.7.2 [works_cited]" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.17.2, RVM: ruby-2.6.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="docile (v1.3.2, RVM: ruby-2.6.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="simplecov (v0.18.5, RVM: ruby-2.6.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="simplecov-html (v0.12.2, RVM: ruby-2.6.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actioncable (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionmailbox (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionmailer (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionpack (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actiontext (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionview (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activejob (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activemodel (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activerecord (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activestorage (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activesupport (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ast (v2.4.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.4, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v2.2.26, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="capybara (v3.35.3, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.1.9, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="database_cleaner (v1.99.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="descendants_tracker (v0.0.4, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.4.4, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="docile (v1.4.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="erubi (v1.10.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="factory_bot (v5.2.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="factory_bot_rails (v5.2.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday (v1.7.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-em_http (v1.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-em_synchrony (v1.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-excon (v1.1.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-httpclient (v1.0.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-net_http (v1.0.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-net_http_persistent (v1.2.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-patron (v1.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-rack (v1.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="git (v1.9.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="github_api (v0.19.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="globalid (v0.5.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="haml (v5.2.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="haml-rails (v2.0.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="hashie (v3.6.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="highline (v2.0.3, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="html2haml (v2.2.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="i18n (v1.8.10, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="json (v1.8.6, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="juwelier (v2.1.3, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jwt (v2.2.3, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="loofah (v2.12.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mail (v2.7.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="marcel (v1.0.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="method_source (v1.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="minitest (v5.14.4, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.15.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="multi_xml (v0.6.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="multipart-post (v2.1.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.8, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.12.4, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="oauth2 (v1.4.7, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="parallel (v1.20.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="parser (v3.0.2.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="public_suffix (v4.0.6, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="racc (v1.5.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack (v2.2.3, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-test (v1.1.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.0.3, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.4.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="railties (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rainbow (v3.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rchardet (v1.8.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rdoc (v3.12.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.1.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rexml (v3.2.5, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.10.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.10.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.10.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-rails (v5.0.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.10.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.20.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.11.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.11.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby2_keywords (v0.0.5, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby_parser (v3.17.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="semver (v1.0.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sexp_processor (v4.15.3, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="shoulda (v4.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="shoulda-context (v2.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="shoulda-matchers (v4.5.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simplecov (v0.21.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simplecov-html (v0.12.3, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simplecov_json_formatter (v0.1.3, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.0.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.2.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.4.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="temple (v0.8.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="thor (v1.1.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="thread_safe (v0.3.6, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tilt (v2.0.10, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.4, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v2.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.7.5, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.4.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
   </component>
   <component name="RakeTasksCache">
     <option name="myRootTask">
-      <RakeTaskImpl id="rake" />
+      <RakeTaskImpl id="rake">
+        <subtasks>
+          <RakeTaskImpl description="Build gem into pkg/" fullCommand="build" id="build" />
+          <RakeTaskImpl description="Remove any temporary products" fullCommand="clean" id="clean" />
+          <RakeTaskImpl description="Remove any generated files" fullCommand="clobber" id="clobber" />
+          <RakeTaskImpl description="Remove RDoc HTML files" fullCommand="clobber_rdoc" id="clobber_rdoc" />
+          <RakeTaskImpl description="Start IRB with all runtime dependencies loaded" fullCommand="console[script]" id="console[script]" />
+          <RakeTaskImpl id="gemcutter">
+            <subtasks>
+              <RakeTaskImpl description="Release gem to Gemcutter" fullCommand="gemcutter:release" id="release" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Generate and validate gemspec" fullCommand="gemspec" id="gemspec" />
+          <RakeTaskImpl id="gemspec">
+            <subtasks>
+              <RakeTaskImpl description="Display the gemspec for debugging purposes, as juwelier knows it (not from the filesystem)" fullCommand="gemspec:debug" id="debug" />
+              <RakeTaskImpl description="Regenerate the gemspec on the filesystem" fullCommand="gemspec:generate" id="generate" />
+              <RakeTaskImpl description="Regenerate and validate gemspec, and then commits and pushes to git" fullCommand="gemspec:release" id="release" />
+              <RakeTaskImpl description="Validates the gemspec on the filesystem" fullCommand="gemspec:validate" id="validate" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="git">
+            <subtasks>
+              <RakeTaskImpl description="Tag and push release to git" fullCommand="git:release" id="release" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Build and install gem using `gem install`" fullCommand="install" id="install" />
+          <RakeTaskImpl description="Build RDoc HTML files" fullCommand="rdoc" id="rdoc" />
+          <RakeTaskImpl description="Release gem" fullCommand="release" id="release" />
+          <RakeTaskImpl description="Rebuild RDoc HTML files" fullCommand="rerdoc" id="rerdoc" />
+          <RakeTaskImpl description="Code coverage detail" fullCommand="simplecov" id="simplecov" />
+          <RakeTaskImpl description="Run tests" fullCommand="test" id="test" />
+          <RakeTaskImpl description="Displays the current version" fullCommand="version" id="version" />
+          <RakeTaskImpl id="version">
+            <subtasks>
+              <RakeTaskImpl id="bump">
+                <subtasks>
+                  <RakeTaskImpl description="Bump the major version by 1" fullCommand="version:bump:major" id="major" />
+                  <RakeTaskImpl description="Bump the a minor version by 1" fullCommand="version:bump:minor" id="minor" />
+                  <RakeTaskImpl description="Bump the patch version by 1" fullCommand="version:bump:patch" id="patch" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="Writes out an explicit version" fullCommand="version:write" id="write" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="" fullCommand="console" id="console" />
+          <RakeTaskImpl description="" fullCommand="default" id="default" />
+          <RakeTaskImpl description="" fullCommand="gemspec_required" id="gemspec_required" />
+          <RakeTaskImpl description="" fullCommand="rdoc/index.html" id="rdoc/index.html" />
+          <RakeTaskImpl description="" fullCommand="version_required" id="version_required" />
+        </subtasks>
+      </RakeTaskImpl>
     </option>
   </component>
 </module>
