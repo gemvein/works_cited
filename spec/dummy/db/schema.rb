@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_31_013513) do
+ActiveRecord::Schema.define(version: 2021_08_31_023525) do
 
   create_table "doodads", force: :cascade do |t|
     t.string "name"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_08_31_013513) do
   end
 
   create_table "works_cited_citations", force: :cascade do |t|
-    t.string "type"
+    t.string "citation_type"
     t.string "media"
     t.string "title"
     t.string "publisher"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_08_31_013513) do
 
   create_table "works_cited_contributors", force: :cascade do |t|
     t.integer "works_cited_citation_id", null: false
-    t.string "role"
+    t.string "contributor_role"
     t.string "first"
     t.string "middle"
     t.string "last"

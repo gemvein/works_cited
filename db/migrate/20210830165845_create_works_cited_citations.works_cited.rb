@@ -4,7 +4,7 @@
 class CreateWorksCitedCitations < ActiveRecord::Migration[6.1]
   def change
     create_table :works_cited_citations do |t|
-      t.string :type
+      t.string :citation_type
       t.string :media
       t.string :title
       t.string :publisher

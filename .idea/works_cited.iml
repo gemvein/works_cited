@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="RUBY_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="RailsFacetType" name="Ruby on Rails">
+      <configuration>
+        <RAILS_FACET_CONFIG_ID NAME="RAILS_FACET_SUPPORT_REMOVED" VALUE="false" />
+        <RAILS_FACET_CONFIG_ID NAME="RAILS_TESTS_SOURCES_PATCHED" VALUE="true" />
+        <RAILS_FACET_CONFIG_ID NAME="RAILS_FACET_APPLICATION_ROOT" VALUE="$MODULE_DIR$" />
+      </configuration>
+    </facet>
+  </component>
   <component name="ModuleRunConfigurationManager">
     <shared />
   </component>
@@ -8,22 +17,14 @@
       <sourceFolder url="file://$MODULE_DIR$/features" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/spec/dummy/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/.bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/public/packs" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/log" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/public/system" />
+      <excludeFolder url="file://$MODULE_DIR$/components" />
     </content>
     <orderEntry type="jdk" jdkName="RVM: ruby-2.7.2 [works_cited]" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -103,8 +104,10 @@
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v3.12.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.1.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rexml (v3.2.5, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec (v3.10.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.10.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.10.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-html-matchers (v0.9.4, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.10.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-rails (v5.0.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.10.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
@@ -136,61 +139,5 @@
     <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.4.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
-  </component>
-  <component name="RakeTasksCache">
-    <option name="myRootTask">
-      <RakeTaskImpl id="rake">
-        <subtasks>
-          <RakeTaskImpl description="Build gem into pkg/" fullCommand="build" id="build" />
-          <RakeTaskImpl description="Remove any temporary products" fullCommand="clean" id="clean" />
-          <RakeTaskImpl description="Remove any generated files" fullCommand="clobber" id="clobber" />
-          <RakeTaskImpl description="Remove RDoc HTML files" fullCommand="clobber_rdoc" id="clobber_rdoc" />
-          <RakeTaskImpl description="Start IRB with all runtime dependencies loaded" fullCommand="console[script]" id="console[script]" />
-          <RakeTaskImpl id="gemcutter">
-            <subtasks>
-              <RakeTaskImpl description="Release gem to Gemcutter" fullCommand="gemcutter:release" id="release" />
-            </subtasks>
-          </RakeTaskImpl>
-          <RakeTaskImpl description="Generate and validate gemspec" fullCommand="gemspec" id="gemspec" />
-          <RakeTaskImpl id="gemspec">
-            <subtasks>
-              <RakeTaskImpl description="Display the gemspec for debugging purposes, as juwelier knows it (not from the filesystem)" fullCommand="gemspec:debug" id="debug" />
-              <RakeTaskImpl description="Regenerate the gemspec on the filesystem" fullCommand="gemspec:generate" id="generate" />
-              <RakeTaskImpl description="Regenerate and validate gemspec, and then commits and pushes to git" fullCommand="gemspec:release" id="release" />
-              <RakeTaskImpl description="Validates the gemspec on the filesystem" fullCommand="gemspec:validate" id="validate" />
-            </subtasks>
-          </RakeTaskImpl>
-          <RakeTaskImpl id="git">
-            <subtasks>
-              <RakeTaskImpl description="Tag and push release to git" fullCommand="git:release" id="release" />
-            </subtasks>
-          </RakeTaskImpl>
-          <RakeTaskImpl description="Build and install gem using `gem install`" fullCommand="install" id="install" />
-          <RakeTaskImpl description="Build RDoc HTML files" fullCommand="rdoc" id="rdoc" />
-          <RakeTaskImpl description="Release gem" fullCommand="release" id="release" />
-          <RakeTaskImpl description="Rebuild RDoc HTML files" fullCommand="rerdoc" id="rerdoc" />
-          <RakeTaskImpl description="Code coverage detail" fullCommand="simplecov" id="simplecov" />
-          <RakeTaskImpl description="Run tests" fullCommand="test" id="test" />
-          <RakeTaskImpl description="Displays the current version" fullCommand="version" id="version" />
-          <RakeTaskImpl id="version">
-            <subtasks>
-              <RakeTaskImpl id="bump">
-                <subtasks>
-                  <RakeTaskImpl description="Bump the major version by 1" fullCommand="version:bump:major" id="major" />
-                  <RakeTaskImpl description="Bump the a minor version by 1" fullCommand="version:bump:minor" id="minor" />
-                  <RakeTaskImpl description="Bump the patch version by 1" fullCommand="version:bump:patch" id="patch" />
-                </subtasks>
-              </RakeTaskImpl>
-              <RakeTaskImpl description="Writes out an explicit version" fullCommand="version:write" id="write" />
-            </subtasks>
-          </RakeTaskImpl>
-          <RakeTaskImpl description="" fullCommand="console" id="console" />
-          <RakeTaskImpl description="" fullCommand="default" id="default" />
-          <RakeTaskImpl description="" fullCommand="gemspec_required" id="gemspec_required" />
-          <RakeTaskImpl description="" fullCommand="rdoc/index.html" id="rdoc/index.html" />
-          <RakeTaskImpl description="" fullCommand="version_required" id="version_required" />
-        </subtasks>
-      </RakeTaskImpl>
-    </option>
   </component>
 </module>

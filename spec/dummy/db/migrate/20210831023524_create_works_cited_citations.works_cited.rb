@@ -1,10 +1,11 @@
 # frozen_string_literal: true
-
 # This migration comes from works_cited (originally 20210830165845)
+
+# This migration creates the citations table for works_cited
 class CreateWorksCitedCitations < ActiveRecord::Migration[6.1]
   def change
     create_table :works_cited_citations do |t|
-      t.string :type
+      t.string :citation_type
       t.string :media
       t.string :title
       t.string :publisher
