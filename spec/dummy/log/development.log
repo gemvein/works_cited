@@ -501,3 +501,246 @@ FOREIGN KEY ("works_cited_citation_id")
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mActiveRecord::InternalMetadata Create (1.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "a34744671665f2e78b4a500acb6d0cd4d3384b28"], ["created_at", "2021-08-31 02:35:31.927291"], ["updated_at", "2021-08-31 02:35:31.927291"]]
   [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoodad Create (0.5ms)[0m  [1m[32mINSERT INTO "doodads" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "[\"temporibus\", \"qui\"]"], ["description", "[\"Debitis temporibus at. Quas assumenda fugiat. Qui rerum ab.\", \"Ad maiores maxime. Dolorem veniam error. Dolor architecto deserunt.\", \"Recusandae ex dolore. Veritatis vitae aperiam. Enim nihil saepe.\"]"], ["created_at", "2021-08-31 14:13:35.446490"], ["updated_at", "2021-08-31 14:13:35.446490"]]
+  [1m[36mTRANSACTION (12.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.3ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.5ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "Eyeless in Gaza"], ["publisher", "Hodder & Stoughton"], ["city", "South Rollandview"], ["year", 2011], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:49.811024"], ["updated_at", "2021-08-31 14:13:49.811024"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 1], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x00005577604b31b0>"], ["last", "Specimen Days"], ["suffix", "Brill"], ["created_at", "2021-08-31 14:13:49.813875"], ["updated_at", "2021-08-31 14:13:49.813875"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 1], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557760425d38>"], ["last", "To Your Scattered Bodies Go"], ["suffix", "Libertas Academica"], ["created_at", "2021-08-31 14:13:49.815283"], ["updated_at", "2021-08-31 14:13:49.815283"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 1], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557760474820>"], ["last", "Fear and Trembling"], ["suffix", "Hodder & Stoughton"], ["created_at", "2021-08-31 14:13:49.816587"], ["updated_at", "2021-08-31 14:13:49.816587"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.6ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "Some Buried Caesar"], ["publisher", "Karadi Tales"], ["city", "East Tonishamouth"], ["year", 1948], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:49.837992"], ["updated_at", "2021-08-31 14:13:49.837992"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 2], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x00005577601ecf30>"], ["last", "The Golden Bowl"], ["suffix", "New Holland Publishers"], ["created_at", "2021-08-31 14:13:49.840686"], ["updated_at", "2021-08-31 14:13:49.840686"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 2], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x00005577601cd860>"], ["last", "The Green Bay Tree"], ["suffix", "Imperial War Museum"], ["created_at", "2021-08-31 14:13:49.842331"], ["updated_at", "2021-08-31 14:13:49.842331"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 2], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x00005577601bb908>"], ["last", "Françoise Sagan"], ["suffix", "Hodder & Stoughton"], ["created_at", "2021-08-31 14:13:49.843782"], ["updated_at", "2021-08-31 14:13:49.843782"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.5ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "Consider the Lilies"], ["publisher", "Eel Pie Publishing"], ["city", "Lake Calebmouth"], ["year", 2010], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:49.860841"], ["updated_at", "2021-08-31 14:13:49.860841"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 3], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x00005577600d8d88>"], ["last", "Have His Carcase"], ["suffix", "Felony & Mayhem Press"], ["created_at", "2021-08-31 14:13:49.863980"], ["updated_at", "2021-08-31 14:13:49.863980"]]
+  [1m[36mWorksCited::Contributor Create (0.1ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 3], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x00005577600b9d70>"], ["last", "That Hideous Strength"], ["suffix", "Airiti Press"], ["created_at", "2021-08-31 14:13:49.865897"], ["updated_at", "2021-08-31 14:13:49.865897"]]
+  [1m[36mWorksCited::Contributor Create (0.1ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 3], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055776006bf08>"], ["last", "Stranger in a Strange Land"], ["suffix", "Golden Cockerel Press"], ["created_at", "2021-08-31 14:13:49.867120"], ["updated_at", "2021-08-31 14:13:49.867120"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.4ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "Let Us Now Praise Famous Men"], ["publisher", "Harvest House"], ["city", "Vivianburgh"], ["year", 1930], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:49.883526"], ["updated_at", "2021-08-31 14:13:49.883526"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 4], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775ff43568>"], ["last", "Stranger in a Strange Land"], ["suffix", "Berg Publishers"], ["created_at", "2021-08-31 14:13:49.886433"], ["updated_at", "2021-08-31 14:13:49.886433"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 4], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775ff0ce28>"], ["last", "Cover Her Face"], ["suffix", "Chatto and Windus"], ["created_at", "2021-08-31 14:13:49.888367"], ["updated_at", "2021-08-31 14:13:49.888367"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 4], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775fecdae8>"], ["last", "To Say Nothing of the Dog"], ["suffix", "Focal Press"], ["created_at", "2021-08-31 14:13:49.890305"], ["updated_at", "2021-08-31 14:13:49.890305"]]
+  [1m[36mTRANSACTION (11.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.4ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "The Doors of Perception"], ["publisher", "Hackett Publishing Company"], ["city", "West Keren"], ["year", 1966], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:49.915148"], ["updated_at", "2021-08-31 14:13:49.915148"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 5], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775fd7f100>"], ["last", "The Man Within"], ["suffix", "Etruscan Press"], ["created_at", "2021-08-31 14:13:49.919003"], ["updated_at", "2021-08-31 14:13:49.919003"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 5], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775fd32558>"], ["last", "Terrible Swift Sword"], ["suffix", "Tate Publishing & Enterprises"], ["created_at", "2021-08-31 14:13:49.920667"], ["updated_at", "2021-08-31 14:13:49.920667"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 5], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775fcf6ff8>"], ["last", "Terrible Swift Sword"], ["suffix", "Earthscan"], ["created_at", "2021-08-31 14:13:49.922368"], ["updated_at", "2021-08-31 14:13:49.922368"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.5ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "This Side of Paradise"], ["publisher", "Daedalus Publishing"], ["city", "Berniermouth"], ["year", 2009], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:49.944330"], ["updated_at", "2021-08-31 14:13:49.944330"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 6], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775e181c78>"], ["last", "Of Mice and Men"], ["suffix", "Basic Books"], ["created_at", "2021-08-31 14:13:49.946966"], ["updated_at", "2021-08-31 14:13:49.946966"]]
+  [1m[36mWorksCited::Contributor Create (0.1ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 6], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775e0ff0e8>"], ["last", "The Far-Distant Oxus"], ["suffix", "Adis International"], ["created_at", "2021-08-31 14:13:49.948437"], ["updated_at", "2021-08-31 14:13:49.948437"]]
+  [1m[36mWorksCited::Contributor Create (0.1ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 6], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775b7e0040>"], ["last", "East of Eden"], ["suffix", "Hay House"], ["created_at", "2021-08-31 14:13:49.949763"], ["updated_at", "2021-08-31 14:13:49.949763"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.5ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "For a Breath I Tarry"], ["publisher", "Del Rey Books"], ["city", "North Latia"], ["year", 1945], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:49.967425"], ["updated_at", "2021-08-31 14:13:49.967425"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 7], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775de602b0>"], ["last", "Pale Kings and Princes"], ["suffix", "ECW Press"], ["created_at", "2021-08-31 14:13:49.970316"], ["updated_at", "2021-08-31 14:13:49.970316"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 7], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775de1a7d8>"], ["last", "The Way of All Flesh"], ["suffix", "Random House"], ["created_at", "2021-08-31 14:13:49.971981"], ["updated_at", "2021-08-31 14:13:49.971981"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 7], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775dcb1dd8>"], ["last", "The Last Enemy"], ["suffix", "Cengage Learning"], ["created_at", "2021-08-31 14:13:49.974075"], ["updated_at", "2021-08-31 14:13:49.974075"]]
+  [1m[36mTRANSACTION (9.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.4ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "Fear and Trembling"], ["publisher", "Farrar, Straus & Giroux"], ["city", "Javiermouth"], ["year", 1995], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:50.002889"], ["updated_at", "2021-08-31 14:13:50.002889"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 8], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775b705580>"], ["last", "No Highway"], ["suffix", "Reed Elsevier"], ["created_at", "2021-08-31 14:13:50.005062"], ["updated_at", "2021-08-31 14:13:50.005062"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 8], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055775b459a70>"], ["last", "Things Fall Apart"], ["suffix", "Bloomsbury Publishing Plc"], ["created_at", "2021-08-31 14:13:50.006953"], ["updated_at", "2021-08-31 14:13:50.006953"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 8], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761d4c4b0>"], ["last", "Vile Bodies"], ["suffix", "Cisco Press"], ["created_at", "2021-08-31 14:13:50.008495"], ["updated_at", "2021-08-31 14:13:50.008495"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.6ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "The Proper Study"], ["publisher", "Libertas Academica"], ["city", "Katherntown"], ["year", 1931], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:50.027704"], ["updated_at", "2021-08-31 14:13:50.027704"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 9], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761c90210>"], ["last", "Down to a Sunless Sea"], ["suffix", "Voyager Books"], ["created_at", "2021-08-31 14:13:50.030648"], ["updated_at", "2021-08-31 14:13:50.030648"]]
+  [1m[36mWorksCited::Contributor Create (0.1ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 9], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761c78ea8>"], ["last", "The Doors of Perception"], ["suffix", "Godwit Press"], ["created_at", "2021-08-31 14:13:50.031903"], ["updated_at", "2021-08-31 14:13:50.031903"]]
+  [1m[36mWorksCited::Contributor Create (0.1ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 9], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761c55b10>"], ["last", "Waiting for the Barbarians"], ["suffix", "Borgo Press"], ["created_at", "2021-08-31 14:13:50.032794"], ["updated_at", "2021-08-31 14:13:50.032794"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.4ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "Blood's a Rover"], ["publisher", "Pecan Grove Press"], ["city", "Lake Deeanna"], ["year", 1966], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:50.049657"], ["updated_at", "2021-08-31 14:13:50.049657"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 10], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761b95a18>"], ["last", "The World, the Flesh and the Devil"], ["suffix", "Athabasca University Press"], ["created_at", "2021-08-31 14:13:50.051567"], ["updated_at", "2021-08-31 14:13:50.051567"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 10], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761b7e688>"], ["last", "Time of our Darkness"], ["suffix", "Open Court Publishing Company"], ["created_at", "2021-08-31 14:13:50.052831"], ["updated_at", "2021-08-31 14:13:50.052831"]]
+  [1m[36mWorksCited::Contributor Create (0.1ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 10], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761b5b340>"], ["last", "The Needle's Eye"], ["suffix", "Penguin Books"], ["created_at", "2021-08-31 14:13:50.054000"], ["updated_at", "2021-08-31 14:13:50.054000"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.4ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "Alone on a Wide, Wide Sea"], ["publisher", "Blackwell Publishing"], ["city", "South Von"], ["year", 1922], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:50.072328"], ["updated_at", "2021-08-31 14:13:50.072328"]]
+  [1m[36mWorksCited::Contributor Create (0.4ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 11], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761a50310>"], ["last", "The Golden Apples of the Sun"], ["suffix", "Orchard Books"], ["created_at", "2021-08-31 14:13:50.074967"], ["updated_at", "2021-08-31 14:13:50.074967"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 11], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761984850>"], ["last", "This Side of Paradise"], ["suffix", "Holland Park Press"], ["created_at", "2021-08-31 14:13:50.077395"], ["updated_at", "2021-08-31 14:13:50.077395"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 11], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x00005577618fbbb8>"], ["last", "Time of our Darkness"], ["suffix", "Black Dog Publishing"], ["created_at", "2021-08-31 14:13:50.079527"], ["updated_at", "2021-08-31 14:13:50.079527"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.5ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "Brandy of the Damned"], ["publisher", "Central European University Press"], ["city", "Creminmouth"], ["year", 1982], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:50.093829"], ["updated_at", "2021-08-31 14:13:50.093829"]]
+  [1m[36mWorksCited::Contributor Create (0.4ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 12], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x00005577617a6b50>"], ["last", "That Hideous Strength"], ["suffix", "Paulist Press"], ["created_at", "2021-08-31 14:13:50.096510"], ["updated_at", "2021-08-31 14:13:50.096510"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 12], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055776177c1c0>"], ["last", "Of Mice and Men"], ["suffix", "Applewood Books"], ["created_at", "2021-08-31 14:13:50.098683"], ["updated_at", "2021-08-31 14:13:50.098683"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 12], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055776172d020>"], ["last", "Things Fall Apart"], ["suffix", "Zondervan"], ["created_at", "2021-08-31 14:13:50.100698"], ["updated_at", "2021-08-31 14:13:50.100698"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.5ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "A Time of Gifts"], ["publisher", "UCL Press"], ["city", "Haleyland"], ["year", 2016], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:50.118238"], ["updated_at", "2021-08-31 14:13:50.118238"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 13], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761566db8>"], ["last", "Specimen Days"], ["suffix", "Manor House Publishing"], ["created_at", "2021-08-31 14:13:50.121239"], ["updated_at", "2021-08-31 14:13:50.121239"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 13], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761517830>"], ["last", "Terrible Swift Sword"], ["suffix", "Godwit Press"], ["created_at", "2021-08-31 14:13:50.123179"], ["updated_at", "2021-08-31 14:13:50.123179"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 13], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557760cfe860>"], ["last", "A Monstrous Regiment of Women"], ["suffix", "Martinus Nijhoff Publishers"], ["created_at", "2021-08-31 14:13:50.125025"], ["updated_at", "2021-08-31 14:13:50.125025"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.3ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.4ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "The Doors of Perception"], ["publisher", "Pavilion Books"], ["city", "Lymanstad"], ["year", 2001], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:50.141770"], ["updated_at", "2021-08-31 14:13:50.141770"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 14], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x00005577613a1690>"], ["last", "Shall not Perish"], ["suffix", "Harvard University Press"], ["created_at", "2021-08-31 14:13:50.143763"], ["updated_at", "2021-08-31 14:13:50.143763"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 14], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x000055776136b630>"], ["last", "Little Hands Clapping"], ["suffix", "Indiana University Press"], ["created_at", "2021-08-31 14:13:50.145381"], ["updated_at", "2021-08-31 14:13:50.145381"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 14], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761340958>"], ["last", "The Moving Finger"], ["suffix", "O'Reilly Media"], ["created_at", "2021-08-31 14:13:50.147261"], ["updated_at", "2021-08-31 14:13:50.147261"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDoodad Load (0.1ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" ORDER BY "doodads"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorksCited::Citation Create (0.4ms)[0m  [1m[32mINSERT INTO "works_cited_citations" ("citation_type", "media", "title", "publisher", "city", "year", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["citation_type", "book"], ["media", "print"], ["title", "In Dubious Battle"], ["publisher", "Unfinished Monument Press"], ["city", "Joeyland"], ["year", 1957], ["record_type", "Doodad"], ["record_id", 1], ["created_at", "2021-08-31 14:13:50.166942"], ["updated_at", "2021-08-31 14:13:50.166942"]]
+  [1m[36mWorksCited::Contributor Create (0.3ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 15], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557761025e80>"], ["last", "Of Human Bondage"], ["suffix", "Bison Books"], ["created_at", "2021-08-31 14:13:50.169031"], ["updated_at", "2021-08-31 14:13:50.169031"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 15], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557760fec798>"], ["last", "Stranger in a Strange Land"], ["suffix", "Taylor & Francis"], ["created_at", "2021-08-31 14:13:50.170628"], ["updated_at", "2021-08-31 14:13:50.170628"]]
+  [1m[36mWorksCited::Contributor Create (0.2ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("works_cited_citation_id", "contributor_role", "first", "middle", "last", "suffix", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["works_cited_citation_id", 15], ["contributor_role", "author"], ["first", "print"], ["middle", "#<Doodad:0x0000557760fc5b70>"], ["last", "In Dubious Battle"], ["suffix", "Reed Publishing"], ["created_at", "2021-08-31 14:13:50.172224"], ["updated_at", "2021-08-31 14:13:50.172224"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/doodads/new" for 127.0.0.1 at 2021-08-31 08:13:54 -0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DoodadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering doodads/new.html.haml within layouts/application
+  Rendered doodads/_form.html.haml (Duration: 6.4ms | Allocations: 3410)
+  Rendered doodads/new.html.haml within layouts/application (Duration: 8.5ms | Allocations: 4638)
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 6126)
+Completed 200 OK in 21ms (Views: 13.1ms | ActiveRecord: 0.0ms | Allocations: 9922)
+
+
+Started GET "/" for 127.0.0.1 at 2021-08-31 08:13:57 -0600
+Processing by DoodadsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering doodads/index.html.haml within layouts/application
+  [1m[36mDoodad Load (0.3ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads"[0m
+  ↳ app/views/doodads/index.html.haml:13
+  Rendered doodads/index.html.haml within layouts/application (Duration: 6.4ms | Allocations: 3170)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 4771)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.3ms | Allocations: 5192)
+
+
+Started GET "/doodads/1" for 127.0.0.1 at 2021-08-31 08:13:59 -0600
+Processing by DoodadsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoodad Load (0.3ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" WHERE "doodads"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doodads_controller.rb:52:in `set_doodad'
+  Rendering layout layouts/application.html.erb
+  Rendering doodads/show.html.haml within layouts/application
+  Rendered doodads/show.html.haml within layouts/application (Duration: 4.4ms | Allocations: 1995)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 3337)
+Completed 200 OK in 15ms (Views: 9.0ms | ActiveRecord: 0.3ms | Allocations: 4675)
+
+
+Started GET "/doodads/1" for 127.0.0.1 at 2021-08-31 08:14:49 -0600
+Processing by DoodadsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" WHERE "doodads"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doodads_controller.rb:52:in `set_doodad'
+  Rendering layout layouts/application.html.erb
+  Rendering doodads/show.html.haml within layouts/application
+  Rendered doodads/show.html.haml within layouts/application (Duration: 4.4ms | Allocations: 2204)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2269)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.2ms | Allocations: 3735)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+     8:   = @doodad.description
+     9: 
+    10: %h3 Works Cited
+    11: = works_cited @doodad
+    12: 
+    13: = link_to 'Edit', edit_doodad_path(@doodad)
+    14: \|
+  
+app/views/doodads/show.html.haml:11
+Started GET "/doodads/1" for 127.0.0.1 at 2021-08-31 08:15:30 -0600
+Processing by DoodadsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/doodads_controller.rb:52:in `set_doodad'
+  [1m[36mDoodad Load (0.2ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" WHERE "doodads"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doodads_controller.rb:52:in `set_doodad'
+  Rendering layout layouts/application.html.erb
+  Rendering doodads/show.html.haml within layouts/application
+  Rendered doodads/show.html.haml within layouts/application (Duration: 32.0ms | Allocations: 5280)
+  Rendered layout layouts/application.html.erb (Duration: 32.4ms | Allocations: 5345)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 1.7ms | Allocations: 10510)
+
+
+  
+ActionView::Template::Error (undefined method `works_cited_list' for #<ActionView::Base:0x000000000103d8>
+Did you mean?  works_cited_url
+               works_cited_path):
+     8:   = @doodad.description
+     9: 
+    10: %h3 Works Cited
+    11: = works_cited_list @doodad
+    12: 
+    13: = link_to 'Edit', edit_doodad_path(@doodad)
+    14: \|
+  
+app/views/doodads/show.html.haml:11
+Started GET "/doodads/1" for 127.0.0.1 at 2021-08-31 08:19:41 -0600
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DoodadsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoodad Load (0.4ms)[0m  [1m[34mSELECT "doodads".* FROM "doodads" WHERE "doodads"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doodads_controller.rb:52:in `set_doodad'
+  Rendering layout layouts/application.html.erb
+  Rendering doodads/show.html.haml within layouts/application
+  [1m[36mWorksCited::Citation Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "works_cited_citations" WHERE "works_cited_citations"."record_id" = ? AND "works_cited_citations"."record_type" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Doodad"], ["LIMIT", 1]]
+  ↳ app/views/doodads/show.html.haml:11
+  [1m[36mWorksCited::Citation Load (0.3ms)[0m  [1m[34mSELECT "works_cited_citations".* FROM "works_cited_citations" WHERE "works_cited_citations"."record_id" = ? AND "works_cited_citations"."record_type" = ?[0m  [["record_id", 1], ["record_type", "Doodad"]]
+  ↳ app/views/doodads/show.html.haml:11
+  Rendered /home/loren/Code/works_cited/app/views/works_cited/_list.html.haml (Duration: 114.7ms | Allocations: 28741)
+  Rendered doodads/show.html.haml within layouts/application (Duration: 127.5ms | Allocations: 32920)
+  Rendered layout layouts/application.html.erb (Duration: 139.0ms | Allocations: 36515)
+Completed 200 OK in 173ms (Views: 142.5ms | ActiveRecord: 3.3ms | Allocations: 44356)
+
+
