@@ -28,5 +28,7 @@
   = "#{citation.media.titleize}."
 - if citation.series.present?
   = "#{citation.series}."
+- if citation.published_at.present?
+  = "#{citation.published_at.strftime("%e %b. %Y")}."
 - if citation.pages.present?
-  = "pp. #{citation.pages}."
+  = "pp. #{citation.pages}"

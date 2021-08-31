@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_31_023525) do
+ActiveRecord::Schema.define(version: 2021_08_31_164319) do
 
   create_table "doodads", force: :cascade do |t|
     t.string "name"
@@ -23,12 +23,17 @@ ActiveRecord::Schema.define(version: 2021_08_31_023525) do
     t.string "citation_type"
     t.string "media"
     t.string "title"
+    t.string "container_title"
     t.string "publisher"
     t.string "city"
     t.integer "edition"
     t.integer "volume"
     t.string "series"
     t.integer "year"
+    t.string "pages"
+    t.string "url"
+    t.datetime "published_at"
+    t.datetime "accessed_at"
     t.string "record_type", null: false
     t.integer "record_id", null: false
     t.datetime "created_at", precision: 6, null: false

@@ -1,0 +1,24 @@
+:ruby
+  container_parts = []
+  container_parts << content_tag(:em, citation.container_title)
+  container_parts << "Ed. #{citation.works_cited_contributors.editors.list_names}" if citation.works_cited_contributors.editors.any?
+  container_parts << "Comp. #{citation.works_cited_contributors.compilers.list_names}" if citation.works_cited_contributors.compilers.any?
+  container_parts << "Trans. #{citation.works_cited_contributors.translators.list_names}" if citation.works_cited_contributors.translators.any?
+  container_parts << citation.edition if citation.edition.present?
+  container_parts << citation.volume if citation.volume.present?
+  container_parts << citation.publisher if citation.publisher.present?
+  container_parts << citation.published_at.strftime("%e %b. %Y") if citation.published_at.present?
+- if citation.works_cited_contributors.authors.any?
+  = "#{citation.works_cited_contributors.authors.list_names}."
+- if citation.container_title
+  %span "
+  %span>= citation.title
+  %span ."
+  %em= citation.container_title
+- else
+  %em= citation.title
+= "#{container_parts.join(', ')}.".html_safe
+= "#{link_to citation.url.gsub(%r{https?://}, ''), citation.url}.".html_safe
+- if citation.pages.present?
+  = "pp. #{citation.pages}."
+= "Accessed #{citation.accessed_at.strftime("%e %b. %Y")}."

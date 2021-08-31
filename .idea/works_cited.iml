@@ -28,6 +28,34 @@
     </content>
     <orderEntry type="jdk" jdkName="RVM: ruby-2.7.2 [works_cited]" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="scholar (v0.1.1.1) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../scholar/lib" />
+          <root url="file://$MODULE_DIR$/../scholar/.git" />
+          <root url="file://$MODULE_DIR$/../scholar/spec" />
+          <root url="file://$MODULE_DIR$/../scholar/.idea" />
+          <root url="file://$MODULE_DIR$/../scholar/coverage" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../scholar/lib" />
+          <root url="file://$MODULE_DIR$/../scholar/.git" />
+          <root url="file://$MODULE_DIR$/../scholar/spec" />
+          <root url="file://$MODULE_DIR$/../scholar/.idea" />
+          <root url="file://$MODULE_DIR$/../scholar/coverage" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/../scholar/.git" />
+          <root url="file://$MODULE_DIR$/../scholar/spec" />
+          <root url="file://$MODULE_DIR$/../scholar/.idea" />
+          <root url="file://$MODULE_DIR$/../scholar/coverage" />
+        </excluded>
+      </library>
+    </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="actioncable (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailbox (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailer (v6.1.4.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
@@ -64,6 +92,7 @@
     <orderEntry type="library" scope="PROVIDED" name="faraday-net_http_persistent (v1.2.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday-patron (v1.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday-rack (v1.0.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday_middleware (v1.1.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="git (v1.9.1, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="github_api (v0.19.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.5.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
