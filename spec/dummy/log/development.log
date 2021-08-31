@@ -88,3 +88,76 @@ Migrating to CreateWorksCitedCitations (20210830221855)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "afef59ecf407245f3fcf85e4cad11c9a2c7c56b2"], ["created_at", "2021-08-30 22:24:00.107038"], ["updated_at", "2021-08-30 22:24:00.107038"]]
   [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateWorksCitedContributors (20210831013513)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "works_cited_contributors" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "works_cited_citation_id" integer NOT NULL, "role" varchar, "first" varchar, "middle" varchar, "last" varchar, "suffix" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c1c75d62eb"
+FOREIGN KEY ("works_cited_citation_id")
+  REFERENCES "works_cited_citations" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_works_cited_contributors_on_works_cited_citation_id" ON "works_cited_contributors" ("works_cited_citation_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210831013513"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "doodads"[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "doodads" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "works_cited_citations"[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "works_cited_citations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar, "media" varchar, "title" varchar, "publisher" varchar, "city" varchar, "edition" integer, "volume" integer, "series" varchar, "year" integer, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE INDEX "index_works_cited_citations_on_record" ON "works_cited_citations" ("record_type", "record_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "works_cited_contributors"[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "works_cited_contributors" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "works_cited_citation_id" integer NOT NULL, "role" varchar, "first" varchar, "middle" varchar, "last" varchar, "suffix" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE INDEX "index_works_cited_contributors_on_works_cited_citation_id" ON "works_cited_contributors" ("works_cited_citation_id")[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aworks_cited_contributors" ("id" integer NOT NULL PRIMARY KEY, "works_cited_citation_id" integer NOT NULL, "role" varchar DEFAULT NULL, "first" varchar DEFAULT NULL, "middle" varchar DEFAULT NULL, "last" varchar DEFAULT NULL, "suffix" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_aworks_cited_contributors_on_works_cited_citation_id" ON "aworks_cited_contributors" ("works_cited_citation_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aworks_cited_contributors" ("id","works_cited_citation_id","role","first","middle","last","suffix","created_at","updated_at")
+                     SELECT "id","works_cited_citation_id","role","first","middle","last","suffix","created_at","updated_at" FROM "works_cited_contributors"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "works_cited_contributors"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "works_cited_contributors" ("id" integer NOT NULL PRIMARY KEY, "works_cited_citation_id" integer NOT NULL, "role" varchar DEFAULT NULL, "first" varchar DEFAULT NULL, "middle" varchar DEFAULT NULL, "last" varchar DEFAULT NULL, "suffix" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c1c75d62eb"
+FOREIGN KEY ("works_cited_citation_id")
+  REFERENCES "works_cited_citations" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_works_cited_contributors_on_works_cited_citation_id" ON "works_cited_contributors" ("works_cited_citation_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("id","works_cited_citation_id","role","first","middle","last","suffix","created_at","updated_at")
+                     SELECT "id","works_cited_citation_id","role","first","middle","last","suffix","created_at","updated_at" FROM "aworks_cited_contributors"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aworks_cited_contributors"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (4.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210831013513)[0m
+  [1m[35m (4.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210830171235),
+(20210830221855);
+
+[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-08-31 01:35:28.898455"], ["updated_at", "2021-08-31 01:35:28.898455"]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2021-08-31 01:35:28.913653"], ["key", "environment"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "a09aef95f38d84d81da0eeaf2430868a542d4304"], ["created_at", "2021-08-31 01:35:28.937319"], ["updated_at", "2021-08-31 01:35:28.937319"]]
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[36mcommit transaction[0m
