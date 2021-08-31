@@ -12,16 +12,10 @@ module WorksCited
   require 'works_cited/engine'
   require 'works_cited/localization'
   require 'works_cited/version'
+  require 'works_cited/mixins/has_works_cited'
   require 'works_cited/ruby_version_check'
 
   require 'haml-rails'
 end
 
-# A shim to shut up the warnings
-module JSON
-  module_function
-
-  def parse(source, opts = {})
-    Parser.new(source, **opts).parse
-  end
-end
+ActiveRecord::Base.send(:extend, WorksCited::Mixins::HasWorksCited)
