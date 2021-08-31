@@ -6,6 +6,12 @@ module WorksCited
     isolate_namespace WorksCited
     engine_name 'works_cited'
 
+    initializer 'local_helper.action_controller' do
+      ActiveSupport.on_load :action_controller do
+        helper WorksCited::ApplicationHelper
+      end
+    end
+
     config.generators do |g|
       g.hidden_namespaces << 'test_unit' << 'erb'
       g.orm             :active_record
