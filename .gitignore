@@ -1,3 +1,5 @@
+.idea
+
 # rcov generated
 coverage
 coverage.data
@@ -47,5 +49,4 @@ pkg
 
 # For rubinius:
 #*.rbc
-.idea/
-.idea/*
+spec/dummy/tmp
