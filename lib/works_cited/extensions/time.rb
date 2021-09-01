@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# WorksCited extensions to Time
 class Time
   def mla_date
     month_name = strftime('%B')

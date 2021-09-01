@@ -22,7 +22,8 @@ FactoryBot.define do
     end
 
     after(:build) do |citation, evaluator|
-      citation.works_cited_contributors << build_list(:works_cited_contributor, evaluator.contributors_count, works_cited_citation: citation)
+      citation.works_cited_contributors << build_list(:works_cited_contributor, evaluator.contributors_count,
+                                                      works_cited_citation: citation)
     end
   end
 end

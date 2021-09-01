@@ -17,4 +17,4 @@ module WorksCited
   require 'haml-rails'
 end
 
-ActiveRecord::Base.send(:extend, WorksCited::Mixins::HasWorksCited)
+ActiveRecord::Base.extend WorksCited::Mixins::HasWorksCited

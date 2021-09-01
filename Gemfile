@@ -25,10 +25,10 @@ end
 group :development, :test do
   gem 'capybara', '>= 3.35', '< 4'
   gem 'database_cleaner', '>=1.8', '<2'
+  gem 'faker', '>=0'
+  gem 'rspec-html-matchers', '>= 0'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'shoulda-matchers', '>=4.3', '<5'
-  gem 'sqlite3', '>= 1.4.2', '< 2'
-  gem 'rspec-html-matchers', '>= 0'
-  gem 'faker', '>=0'
   gem 'simplecov', '>= 0'
+  gem 'sqlite3', '>= 1.4.2', '< 2'
 end

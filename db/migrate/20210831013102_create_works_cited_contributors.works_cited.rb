@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Create Contributors
 class CreateWorksCitedContributors < ActiveRecord::Migration[6.1]
   def change
     create_table :works_cited_contributors do |t|

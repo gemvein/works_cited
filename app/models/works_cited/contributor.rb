@@ -1,20 +1,24 @@
+# frozen_string_literal: true
+
 module WorksCited
+  # Contributor
   class Contributor < ApplicationRecord
     # Validations
     validates_presence_of :works_cited_citation, :contributor_role
-    ContributorRoleOptions = %w[author editor compiler translator receiver].freeze
+    CONTRIBUTOR_ROLE_OPTIONS = %w[author editor compiler translator receiver].freeze
     validates(
       :contributor_role,
       inclusion: {
-        in: ContributorRoleOptions,
-        allowed_options: ContributorRoleOptions.to_sentence(
+        in: CONTRIBUTOR_ROLE_OPTIONS,
+        allowed_options: CONTRIBUTOR_ROLE_OPTIONS.to_sentence(
           last_word_connector: ', or '
         )
       }
     )
 
     # Relationships
-    belongs_to :works_cited_citation, inverse_of: :works_cited_contributors, class_name: 'WorksCited::Citation', foreign_key: :works_cited_citation_id
+    belongs_to :works_cited_citation, inverse_of: :works_cited_contributors, class_name: 'WorksCited::Citation',
+                                      foreign_key: :works_cited_citation_id
 
     # Scopes
     default_scope { order(last: :asc) }
@@ -27,70 +31,90 @@ module WorksCited
     # Class Methods
     class << self
       def list_names
-        contributors = all
-        number_of_contributors = contributors.size
-        first_contributor = contributors.first
-        order = if first_contributor.contributor_role == 'author'
-                  :last
-                else
-                  :first
-                end
+        first_contributor_name = first_contributor.full_name(first_contributor.name_order)
 
         case number_of_contributors
         when 1
-          first_contributor.full_name(order)
+          first_contributor_name
         when 2
-          second_contributor = contributors.offset(1).first
-          "#{first_contributor.full_name(order)}, and #{second_contributor.full_name(:first)}"
+          "#{first_contributor_name}, and #{second_contributor.full_name(:first)}"
         else
-          "#{first_contributor.full_name(order)}, et al"
+          "#{first_contributor_name}, et al"
         end
+      end
+
+      private
+
+      def first_contributor
+        all.first
+      end
+
+      def second_contributor
+        all.offset(1).first
+      end
+
+      def number_of_contributors
+        all.size
       end
     end
 
     # Instance Methods
-    def full_name(order = :first)
-      first_name_or_initial = first.length == 1 ? "#{first}." : first
-      middle_initial = middle[0, 1]&.upcase
-      parts = []
-
-      order = :first if handle.present?
-
-      if order == :last
-        if last.present?
-          parts << "#{last},"
-        end
-        if first_name_or_initial.present?
-          parts << first_name_or_initial
-        end
-        if suffix.present? && middle_initial.present?
-          parts << "#{middle_initial}, #{suffix}"
-        elsif suffix.present?
-          parts << suffix
-        elsif middle_initial.present?
-          parts << middle_initial
-        end
+    def name_order
+      if contributor_role == 'author'
+        :last
       else
-        if first_name_or_initial.present?
-          parts << first_name_or_initial
-        end
-        if middle_initial.present?
-          parts << middle_initial
-        end
-        if suffix.present? && last.present?
-          parts << "#{last}, #{suffix}"
-        elsif suffix.present?
-          parts << suffix
-        elsif last.present?
-          parts << last
-        end
+        :first
       end
+    end
 
-      if handle.present?
-        return "#{handle} [#{parts.join(' ')}]"
-      end
+    def full_name(order = :first)
+      order = :first if handle.present?
+      parts = if order == :last
+                name_parts_reversed
+              else
+                name_parts
+              end
+      name_string = parts.compact.join(' ')
 
-      parts.join(' ')
+      return name_string unless handle.present?
+
+      "#{handle} [#{name_string}]"
+    end
+
+    def name_parts
+      parts = []
+      parts << first_name_or_initial
+      parts << middle_initial
+      parts << if suffix.present? && last.present?
+                 "#{last}, #{suffix}"
+               else
+                 suffix.presence || last.presence
+               end
+      parts
+    end
+
+    def name_parts_reversed
+      parts = []
+      parts << "#{last}," if last.present?
+      parts << first_name_or_initial
+      parts << if suffix.present? && middle_initial.present?
+                 "#{middle_initial}, #{suffix}"
+               else
+                 suffix.presence || middle_initial
+               end
+      parts
+    end
+
+    def first_name_or_initial
+      return nil unless first.present?
+
+      first.length == 1 ? "#{first}." : first
+    end
+
+    def middle_initial
+      return nil unless middle.present?
+
+      middle[0, 1]&.upcase
     end
   end
 end

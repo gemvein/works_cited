@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 module WorksCited
+  # Citation
   class Citation < ApplicationRecord
     # Validations
     validates_presence_of :citation_type, :record, :title
-    CitationTypeOptions = %w[book periodical electronic interview email tweet].freeze
+    CITATION_TYPE_OPTIONS = %w[book periodical electronic interview email tweet].freeze
     validates(
       :citation_type,
       inclusion: {
-        in: CitationTypeOptions,
-        allowed_options: CitationTypeOptions.to_sentence(
+        in: CITATION_TYPE_OPTIONS,
+        allowed_options: CITATION_TYPE_OPTIONS.to_sentence(
           last_word_connector: ', or '
         )
       }
@@ -17,7 +18,8 @@ module WorksCited
 
     # Relationships
     belongs_to :record, polymorphic: true
-    has_many :works_cited_contributors, inverse_of: :works_cited_citation, class_name: 'WorksCited::Contributor', foreign_key: :works_cited_citation_id
+    has_many :works_cited_contributors, inverse_of: :works_cited_citation, class_name: 'WorksCited::Contributor',
+                                        foreign_key: :works_cited_citation_id
     accepts_nested_attributes_for :works_cited_contributors
 
     # Instance Methods

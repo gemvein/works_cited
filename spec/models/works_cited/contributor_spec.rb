@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
+# rubocop:disable Metrics/ModuleLength
 module WorksCited
   RSpec.describe Contributor, type: :model do
     let(:doodad) { FactoryBot.create(:doodad) }
@@ -176,3 +179,4 @@ module WorksCited
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength

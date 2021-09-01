@@ -3,6 +3,8 @@ AllCops:
     - works_cited.gemspec
   NewCops: enable
 Metrics/BlockLength:
-  IgnoredMethods: ['describe', 'context']
+  IgnoredMethods: ['describe', 'context', 'before', 'let']
+  Exclude:
+    - 'spec/dummy/db/schema.rb'
 Metrics/MethodLength:
   IgnoredMethods: ['change']
