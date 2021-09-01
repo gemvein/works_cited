@@ -169,4 +169,118 @@
     <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.4.2, RVM: ruby-2.7.2 [works_cited]) [gem]" level="application" />
   </component>
+  <component name="RailsGeneratorsCache">
+    <option name="generators">
+      <list>
+        <option value="active_record:application_record" />
+        <option value="application_record" />
+        <option value="assets" />
+        <option value="benchmark" />
+        <option value="channel" />
+        <option value="controller" />
+        <option value="factory_bot:model" />
+        <option value="generator" />
+        <option value="haml:application_layout" />
+        <option value="helper" />
+        <option value="integration_test" />
+        <option value="job" />
+        <option value="mailbox" />
+        <option value="mailer" />
+        <option value="migration" />
+        <option value="model" />
+        <option value="resource" />
+        <option value="rspec:channel" />
+        <option value="rspec:feature" />
+        <option value="rspec:generator" />
+        <option value="rspec:install" />
+        <option value="rspec:mailbox" />
+        <option value="rspec:request" />
+        <option value="scaffold" />
+        <option value="scaffold_controller" />
+        <option value="system_test" />
+        <option value="task" />
+      </list>
+    </option>
+    <option name="myGenerators">
+      <list>
+        <option value="active_record:application_record" />
+        <option value="application_record" />
+        <option value="assets" />
+        <option value="benchmark" />
+        <option value="channel" />
+        <option value="controller" />
+        <option value="factory_bot:model" />
+        <option value="generator" />
+        <option value="haml:application_layout" />
+        <option value="helper" />
+        <option value="integration_test" />
+        <option value="job" />
+        <option value="mailbox" />
+        <option value="mailer" />
+        <option value="migration" />
+        <option value="model" />
+        <option value="resource" />
+        <option value="rspec:channel" />
+        <option value="rspec:feature" />
+        <option value="rspec:generator" />
+        <option value="rspec:install" />
+        <option value="rspec:mailbox" />
+        <option value="rspec:request" />
+        <option value="scaffold" />
+        <option value="scaffold_controller" />
+        <option value="system_test" />
+        <option value="task" />
+      </list>
+    </option>
+  </component>
+  <component name="RakeTasksCache">
+    <option name="myRootTask">
+      <RakeTaskImpl id="rake">
+        <subtasks>
+          <RakeTaskImpl description="Build gem into pkg/" fullCommand="build" id="build" />
+          <RakeTaskImpl description="Remove any temporary products" fullCommand="clean" id="clean" />
+          <RakeTaskImpl description="Remove any generated files" fullCommand="clobber" id="clobber" />
+          <RakeTaskImpl description="Start IRB with all runtime dependencies loaded" fullCommand="console[script]" id="console[script]" />
+          <RakeTaskImpl id="gemcutter">
+            <subtasks>
+              <RakeTaskImpl description="Release gem to Gemcutter" fullCommand="gemcutter:release" id="release" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Generate and validate gemspec" fullCommand="gemspec" id="gemspec" />
+          <RakeTaskImpl id="gemspec">
+            <subtasks>
+              <RakeTaskImpl description="Display the gemspec for debugging purposes, as juwelier knows it (not from the filesystem)" fullCommand="gemspec:debug" id="debug" />
+              <RakeTaskImpl description="Regenerate the gemspec on the filesystem" fullCommand="gemspec:generate" id="generate" />
+              <RakeTaskImpl description="Regenerate and validate gemspec, and then commits and pushes to git" fullCommand="gemspec:release" id="release" />
+              <RakeTaskImpl description="Validates the gemspec on the filesystem" fullCommand="gemspec:validate" id="validate" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="git">
+            <subtasks>
+              <RakeTaskImpl description="Tag and push release to git" fullCommand="git:release" id="release" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Build and install gem using `gem install`" fullCommand="install" id="install" />
+          <RakeTaskImpl description="Release gem" fullCommand="release" id="release" />
+          <RakeTaskImpl description="Code coverage detail" fullCommand="simplecov" id="simplecov" />
+          <RakeTaskImpl description="Displays the current version" fullCommand="version" id="version" />
+          <RakeTaskImpl id="version">
+            <subtasks>
+              <RakeTaskImpl id="bump">
+                <subtasks>
+                  <RakeTaskImpl description="Bump the major version by 1" fullCommand="version:bump:major" id="major" />
+                  <RakeTaskImpl description="Bump the a minor version by 1" fullCommand="version:bump:minor" id="minor" />
+                  <RakeTaskImpl description="Bump the patch version by 1" fullCommand="version:bump:patch" id="patch" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="Writes out an explicit version" fullCommand="version:write" id="write" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="" fullCommand="console" id="console" />
+          <RakeTaskImpl description="" fullCommand="gemspec_required" id="gemspec_required" />
+          <RakeTaskImpl description="" fullCommand="version_required" id="version_required" />
+        </subtasks>
+      </RakeTaskImpl>
+    </option>
+  </component>
 </module>

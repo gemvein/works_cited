@@ -4,9 +4,7 @@ module WorksCited
   class Citation < ApplicationRecord
     # Validations
     validates_presence_of :citation_type, :record, :title
-    validates_presence_of :container_title, :if => :periodical?
-    validates_presence_of :accessed_at, :url, :if => :electronic?
-    CitationTypeOptions = %w[book periodical electronic interview].freeze
+    CitationTypeOptions = %w[book periodical electronic interview email tweet].freeze
     validates(
       :citation_type,
       inclusion: {
@@ -33,6 +31,14 @@ module WorksCited
 
     def book?
       citation_type == 'book'
+    end
+
+    def interview?
+      citation_type == 'interview'
+    end
+
+    def email?
+      citation_type == 'email'
     end
   end
 end

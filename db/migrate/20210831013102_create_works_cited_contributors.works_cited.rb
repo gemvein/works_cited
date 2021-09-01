@@ -7,6 +7,7 @@ class CreateWorksCitedContributors < ActiveRecord::Migration[6.1]
       t.string :middle
       t.string :last
       t.string :suffix
+      t.string :handle
 
       t.timestamps
     end

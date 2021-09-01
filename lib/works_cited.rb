@@ -10,10 +10,10 @@ module WorksCited
   require 'works_cited/configuration'
   require 'works_cited/railtie'
   require 'works_cited/engine'
-  require 'works_cited/localization'
   require 'works_cited/version'
+
   require 'works_cited/mixins/has_works_cited'
-  require 'works_cited/ruby_version_check'
+  require 'works_cited/extensions/time'
 
   require 'haml-rails'
 end

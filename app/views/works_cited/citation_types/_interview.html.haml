@@ -29,6 +29,6 @@
 - if citation.series.present?
   = "#{citation.series}."
 - if citation.published_at.present?
-  = "#{citation.published_at.strftime("%e %b. %Y")}."
+  = "#{citation.published_at.mla_date}."
 - if citation.pages.present?
-  = "pp. #{citation.pages}"
+  = "#{citation.pages}"
