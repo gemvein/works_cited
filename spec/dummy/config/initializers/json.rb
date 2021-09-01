@@ -12,7 +12,9 @@
 module JSON
   module_function
 
+  # :nocov:
   def parse(source, opts = {})
     Parser.new(source, **opts).parse
   end
+  # :nocov:
 end
