@@ -1,0 +1,40 @@
+= form_for @citation do |f|
+  - if @citation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@citation.errors.count, "error")} prohibited this citation from being saved:"
+      %ul
+        - @citation.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :citation_type
+    = f.text_field :citation_type
+  .field
+    = f.label :media
+    = f.text_field :media
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :publisher
+    = f.text_field :publisher
+  .field
+    = f.label :city
+    = f.text_field :city
+  .field
+    = f.label :edition
+    = f.number_field :edition
+  .field
+    = f.label :volume
+    = f.number_field :volume
+  .field
+    = f.label :series
+    = f.text_field :series
+  .field
+    = f.label :year
+    = f.number_field :year
+  .field
+    = f.label :record
+    = f.text_field :record
+  .actions
+    = f.submit 'Save'

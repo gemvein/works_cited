@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Type:
+  = @citation.citation_type
+%p
+  %b Media:
+  = @citation.media
+%p
+  %b Title:
+  = @citation.title
+%p
+  %b Publisher:
+  = @citation.publisher
+%p
+  %b City:
+  = @citation.city
+%p
+  %b Edition:
+  = @citation.edition
+%p
+  %b Volume:
+  = @citation.volume
+%p
+  %b Series:
+  = @citation.series
+%p
+  %b Year:
+  = @citation.year
+%p
+  %b Record:
+  = @citation.record
+
+= link_to 'Edit', edit_citation_path(@citation)
+\|
+= link_to 'Back', citations_path

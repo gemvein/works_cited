@@ -1,0 +1,11 @@
+%h1 Listing citations
+
+%ul
+  - @citations.each do |citation|
+    %li
+      = works_cited_citation citation
+      = link_to 'Show', citation
+      = link_to 'Edit', edit_citation_path(citation)
+      = link_to 'Destroy', citation, method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'New Citation', new_citation_path

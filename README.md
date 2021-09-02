@@ -1,5 +1,7 @@
-# WorksCited
-Short description and motivation.
+# Works Cited
+Works Cited allows you to add a list of the works cited in ActiveRecord objects, to be formatted by a helper that can be added to relevant pages to format the citations like a bibliography.
+
+Works Cited uses CanCanCan to authorize the editing of citations. This makes it easy for you to control access.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -16,6 +18,32 @@ $ bundle install
 Then generate the migrations
 ```bash
 $ rails g works_cited:install
+```
+
+You will need to add access for the people who should be authorized. Works Cited uses CanCanCan for authorization. Simply add the appropriate permissions to your ability.rb file:
+
+```ruby
+class Ability
+  include CanCan::Ability
+  
+  def initialize(user)
+    user ||= User.new
+    
+    can :read, WorksCited::Citation
+    can :read, WorksCited::Contributor
+    
+    return if user.new_record? # Anonymous Users leave
+    
+    # # We could have other rules in here, like:
+    # can :manage, WorksCited::Citation, record: { user_id: user.id }
+    # can :manage, WorksCited::Contributor, record: { user_id: user.id }
+    
+    return unless user.admin? # Non Admin Users leave
+    
+    can :manage, WorksCited::Citation
+    can :manage, WorksCited::Contributor
+  end
+end
 ```
 
 ## Usage

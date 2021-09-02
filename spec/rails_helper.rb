@@ -9,8 +9,8 @@ SimpleCov.start
 ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
 require File.expand_path('dummy/config/environment', __dir__)
-require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'rspec/rails'
 require 'shoulda/matchers'
 require 'factory_bot_rails'
 require 'capybara/rspec'
@@ -55,7 +55,7 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures
 
-  config.expect_with(:rspec) { |c| c.syntax = :should }
+  config.expect_with(:rspec) { |c| c.syntax = %i[should expect] }
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -77,6 +77,10 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
   config.include RSpecHtmlMatchers
+
+  # This allows us to log in in request specs
+  # https://stackoverflow.com/questions/15211576/rspec-authenticating-devise-user-in-request-specs
+  config.include Devise::Test::IntegrationHelpers, type: :request
 end
 
 Shoulda::Matchers.configure do |config|
