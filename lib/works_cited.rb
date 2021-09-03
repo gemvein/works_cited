@@ -7,8 +7,9 @@ module WorksCited
   require 'action_view/railtie'
   require 'sprockets/railtie'
 
-  require 'works_cited/railtie'
+  require 'works_cited/configuration'
   require 'works_cited/engine'
+  require 'works_cited/railtie'
   require 'works_cited/version'
 
   require 'works_cited/mixins/has_works_cited'

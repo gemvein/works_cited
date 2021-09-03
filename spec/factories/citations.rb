@@ -16,7 +16,7 @@ FactoryBot.define do
     url { Faker::Internet.url }
     published_at { 1.year.ago }
     accessed_at { 1.month.ago }
-    pages { '145-6' }
+    pages { 'pp. 145-6' }
     transient do
       contributors_count { 0 }
     end

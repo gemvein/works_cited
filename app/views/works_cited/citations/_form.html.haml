@@ -1,40 +1,32 @@
-= form_for @citation do |f|
+= stylesheet_link_tag 'works_cited/application'
+= javascript_include_tag 'works_cited/application'
+= simple_form_for @citation, html: { id: 'WorksCitedForm'} do |f|
   - if @citation.errors.any?
     #error_explanation
       %h2= "#{pluralize(@citation.errors.count, "error")} prohibited this citation from being saved:"
       %ul
         - @citation.errors.full_messages.each do |message|
           %li= message
-
-  .field
-    = f.label :citation_type
-    = f.text_field :citation_type
-  .field
-    = f.label :media
-    = f.text_field :media
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :publisher
-    = f.text_field :publisher
-  .field
-    = f.label :city
-    = f.text_field :city
-  .field
-    = f.label :edition
-    = f.number_field :edition
-  .field
-    = f.label :volume
-    = f.number_field :volume
-  .field
-    = f.label :series
-    = f.text_field :series
-  .field
-    = f.label :year
-    = f.number_field :year
-  .field
-    = f.label :record
-    = f.text_field :record
+  .shared-field
+    = f.input :record, collection: @records, as: :grouped_select, group_method: :records, group_label_method: :record_type, label_method: :name, value_method: :id, selected: "#{@citation.record_type}:#{@citation.id}", include_blank: 'Select a Record'
+    = f.input :citation_type, as: :select, collection: WorksCited.configuration.valid_citation_types, :input_html => {:onchange => "showFields(this.options[this.selectedIndex].value);"}
+  - WorksCited.configuration.valid_citation_types.each do |citation_type|
+    .fields{ id: "fields-#{citation_type}", style: 'display: none;' }
+      = works_cited_citation_fields f, citation_type
+  %fieldset#contributors
+    %legend
+      %h2 Contributors
+    .links
+      = link_to_add_nested f, :works_cited_contributors, '#contributors', link_text: 'Add Contributor', link_classes: 'button button-action', partial: 'works_cited/contributors/fields'
+    = f.simple_fields_for :works_cited_contributors do |contributor|
+      = render 'works_cited/contributors/fields', form: contributor
   .actions
-    = f.submit 'Save'
+    .button-wrapper= f.submit 'Save', class: 'button-large button-action'
+:javascript
+  function showFields(citation_type) {
+    for (let element of document.getElementsByClassName('fields')){
+      element.style.display='none'
+    }
+    document.getElementById(`fields-${citation_type}`).style.display = 'block'
+  }
+  showFields('#{@citation.citation_type || 'book'}');

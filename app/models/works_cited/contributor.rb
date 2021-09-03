@@ -5,12 +5,11 @@ module WorksCited
   class Contributor < ApplicationRecord
     # Validations
     validates_presence_of :works_cited_citation, :contributor_role
-    CONTRIBUTOR_ROLE_OPTIONS = %w[author editor compiler translator receiver].freeze
     validates(
       :contributor_role,
       inclusion: {
-        in: CONTRIBUTOR_ROLE_OPTIONS,
-        allowed_options: CONTRIBUTOR_ROLE_OPTIONS.to_sentence(
+        in: WorksCited.configuration.valid_contributor_roles,
+        allowed_options: WorksCited.configuration.valid_contributor_roles.to_sentence(
           last_word_connector: ', or '
         )
       }
@@ -18,22 +17,28 @@ module WorksCited
 
     # Relationships
     belongs_to :works_cited_citation, inverse_of: :works_cited_contributors, class_name: 'WorksCited::Citation',
-                                      foreign_key: :works_cited_citation_id
+               foreign_key: :works_cited_citation_id
 
     # Scopes
     default_scope { order(last: :asc) }
-    scope :authors, -> { where(contributor_role: 'author') }
-    scope :editors, -> { where(contributor_role: 'editor') }
-    scope :compilers, -> { where(contributor_role: 'compiler') }
-    scope :translators, -> { where(contributor_role: 'translator') }
-    scope :receivers, -> { where(contributor_role: 'receiver') }
+
+    # Dynamic stuff (from configuration)
+    # Creates scopes such as .authors and methods such as #author?
+    WorksCited.configuration.valid_contributor_roles.each do |given_role|
+      scope given_role.pluralize.to_sym, -> { where(contributor_role: given_role) }
+      define_method("#{given_role}?".to_sym) do
+        contributor_role == given_role
+      end
+    end
 
     # Class Methods
     class << self
       def list_names
-        first_contributor_name = first_contributor.full_name(first_contributor.name_order)
+        first_contributor_name = first_contributor&.full_name(first_contributor.name_order)
 
         case number_of_contributors
+        when 0
+          nil
         when 1
           first_contributor_name
         when 2
@@ -59,6 +64,7 @@ module WorksCited
     end
 
     # Instance Methods
+
     def name_order
       if contributor_role == 'author'
         :last

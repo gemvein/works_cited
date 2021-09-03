@@ -12,4 +12,5 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require works_cited
 //= require_tree .

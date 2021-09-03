@@ -1,6 +1,7 @@
 module WorksCited
   class CitationsController < ApplicationController
     load_and_authorize_resource
+    before_action :set_records, only: %i[edit update new create]
 
     # GET /citations
     def index
@@ -44,6 +45,17 @@ module WorksCited
 
     private
 
+    def set_records
+      @records = [
+        OpenStruct.new({
+                         record_type: 'Doodad',
+                         records: Doodad.accessible_by(current_ability, :select).map do |doodad|
+                           OpenStruct.new({ id: "Doodad:#{doodad.id}", name: doodad.name })
+                         end
+                       })
+      ]
+    end
+
     # Only allow a list of trusted parameters through.
     def citation_params
       params.require(:citation).permit(
@@ -56,8 +68,10 @@ module WorksCited
         :volume,
         :series,
         :year,
-        :record_id,
-        :record_type
+        :record,
+        :url,
+        :pages,
+        works_cited_contributors_attributes: %i[id contributor_role first middle last suffix handle _destroy]
       )
     end
   end

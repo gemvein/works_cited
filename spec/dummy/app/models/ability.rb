@@ -6,8 +6,8 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    can :read, WorksCited::Citation
-    can :read, WorksCited::Contributor
+    can :show, WorksCited::Citation
+    can :show, WorksCited::Contributor
 
     return if user.new_record? # Anonymous Users leave
 
@@ -17,6 +17,7 @@ class Ability
 
     return unless user.admin? # Non Admin Users leave
 
+    can :select, Doodad
     can :manage, WorksCited::Citation
     can :manage, WorksCited::Contributor
   end

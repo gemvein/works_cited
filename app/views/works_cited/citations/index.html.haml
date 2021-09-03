@@ -1,11 +1,18 @@
 %h1 Listing citations
 
-%ul
+%table.table-data
+  %tr
+    %th Citation Type
+    %th Title
+    %th Authors
+    %th{colspan: 3}
   - @citations.each do |citation|
-    %li
-      = works_cited_citation citation
-      = link_to 'Show', citation
-      = link_to 'Edit', edit_citation_path(citation)
-      = link_to 'Destroy', citation, method: :delete, data: { confirm: 'Are you sure?' }
+    %tr
+      %td= citation.citation_type
+      %td= citation.title
+      %td= citation.works_cited_contributors.authors.list_names
+      %td= link_to 'Show', citation, class: 'button button-link'
+      %td= link_to 'Edit', edit_citation_path(citation), class: 'button button-action'
+      %td= link_to 'Destroy', citation, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button button-danger'
 
 = link_to 'New Citation', new_citation_path

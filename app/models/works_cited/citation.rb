@@ -5,12 +5,11 @@ module WorksCited
   class Citation < ApplicationRecord
     # Validations
     validates_presence_of :citation_type, :record, :title
-    CITATION_TYPE_OPTIONS = %w[book periodical electronic interview email tweet].freeze
     validates(
       :citation_type,
       inclusion: {
-        in: CITATION_TYPE_OPTIONS,
-        allowed_options: CITATION_TYPE_OPTIONS.to_sentence(
+        in: WorksCited.configuration.valid_citation_types,
+        allowed_options: WorksCited.configuration.valid_citation_types.to_sentence(
           last_word_connector: ', or '
         )
       }
@@ -20,9 +19,26 @@ module WorksCited
     belongs_to :record, polymorphic: true
     has_many :works_cited_contributors, inverse_of: :works_cited_citation, class_name: 'WorksCited::Contributor',
                                         foreign_key: :works_cited_citation_id
-    accepts_nested_attributes_for :works_cited_contributors
+    accepts_nested_attributes_for :works_cited_contributors, reject_if: :all_blank, allow_destroy: true
+
+    # Dynamic stuff (from configuration)
+    # Creates scopes such as .books and methods such as #book?
+    WorksCited.configuration.valid_citation_types.each do |given_type|
+      scope given_type.pluralize.to_sym, -> { where(citation_type: given_type) }
+      define_method("#{given_type}?".to_sym) do
+        citation_type == given_type
+      end
+    end
 
     # Instance Methods
+    def record=(string)
+      model_name, id = string.split(':')
+      return unless model_name.present? and id.present?
+
+      model = model_name.constantize
+      super model.find(id)
+    end
+
     def periodical?
       citation_type == 'periodical'
     end

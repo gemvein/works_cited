@@ -20,6 +20,8 @@ Then generate the migrations
 $ rails g works_cited:install
 ```
 
+## Configuration
+
 You will need to add access for the people who should be authorized. Works Cited uses CanCanCan for authorization. Simply add the appropriate permissions to your ability.rb file:
 
 ```ruby
@@ -29,8 +31,8 @@ class Ability
   def initialize(user)
     user ||= User.new
     
-    can :read, WorksCited::Citation
-    can :read, WorksCited::Contributor
+    can [:show, :list], WorksCited::Citation
+    can [:show, :list], WorksCited::Contributor
     
     return if user.new_record? # Anonymous Users leave
     
@@ -43,6 +45,24 @@ class Ability
     can :manage, WorksCited::Citation
     can :manage, WorksCited::Contributor
   end
+end
+```
+
+You may wish to add custom contributor roles or citation types. To do that, add something like the following to `config/initializers/works_cited.rb`:
+
+```ruby
+WorksCited.configure do |config|
+  # This will dynamically generate a scope (.astrologians) and a boolean check (#astrologian?)
+  # on WorksCited::Contributor
+  config.valid_contributor_roles << 'astrologian'
+  
+  # This will dynamically generate a scope (.star_charts) and a boolean check (#star_chart?)
+  # on WorksCited::Citation
+  # 
+  # If you want to override the default view for any new (or existing) types:
+  # List a citation: app/views/works_cited/citation_types/_star_chart.html.[haml/erb]
+  # Add/Edit a citation: app/views/works_cited/citation_types/_star_chart_form.html.[haml/erb]
+  config.valid_citation_types << 'star_chart' 
 end
 ```
 

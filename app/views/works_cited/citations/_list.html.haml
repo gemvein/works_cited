@@ -1,4 +1,5 @@
-- if record.works_cited_citations.any?
+- if citations.any?
+  %h3= title
   %ul.citations
-    - record.works_cited_citations.each do |citation|
+    - citations.each do |citation|
       %li.citation= works_cited_citation citation

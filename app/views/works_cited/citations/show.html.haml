@@ -1,36 +1,23 @@
+%h1
+  = @citation.citation_type.titleize
+  %small
+    - if @citation.container_title.present?
+      = succeed '"' do
+        = succeed @citation.title do
+          =  '"'
+      %em= @citation.container_title
+    - else
+      %em= @citation.title
 %p#notice= notice
 
-%p
-  %b Type:
-  = @citation.citation_type
-%p
-  %b Media:
-  = @citation.media
-%p
-  %b Title:
-  = @citation.title
-%p
-  %b Publisher:
-  = @citation.publisher
-%p
-  %b City:
-  = @citation.city
-%p
-  %b Edition:
-  = @citation.edition
-%p
-  %b Volume:
-  = @citation.volume
-%p
-  %b Series:
-  = @citation.series
-%p
-  %b Year:
-  = @citation.year
-%p
-  %b Record:
-  = @citation.record
+%h2 Preview
+%p= works_cited_citation @citation
 
-= link_to 'Edit', edit_citation_path(@citation)
-\|
-= link_to 'Back', citations_path
+%h2 Details
+%dl.dl-works_cited
+  - WorksCited::Citation.columns.each do |column|
+    :ruby
+      value = @citation.send(column.name.to_sym)
+    - if value.present?
+      %dt= WorksCited::Citation.human_attribute_name(column.name)
+      %dd= value
