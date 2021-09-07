@@ -19,7 +19,7 @@ class Ability
 
     return unless user.admin? # Non Admin Users leave
 
-    can :select, Doodad
+    can :select, :all
     can :manage, WorksCited::Citation
     can :manage, WorksCited::Contributor
   end

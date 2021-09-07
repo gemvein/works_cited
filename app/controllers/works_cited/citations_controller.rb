@@ -77,14 +77,23 @@ module WorksCited
     end
 
     def set_records
-      @records = [
-        OpenStruct.new({
-                         record_type: 'Doodad',
-                         records: Doodad.accessible_by(current_ability, :select).map do |doodad|
-                           OpenStruct.new({ id: "Doodad:#{doodad.id}", name: doodad.name })
-                         end
-                       })
-      ]
+      Rails.application.eager_load!
+      models = ApplicationRecord.descendants.select { |x| x.method_defined?(:works_cited_citations) }
+
+      @records = models.map do |model|
+        items = model.accessible_by(current_ability, :select)
+        next unless items.any?
+
+        model_name = model.model_name
+        OpenStruct.new(
+          {
+            record_type: model_name,
+            records: items.map do |item|
+              OpenStruct.new({ id: "#{model_name}:#{item.id}", name: item.name })
+            end
+          }
+        )
+      end.compact
     end
 
     # Only allow a list of trusted parameters through.
