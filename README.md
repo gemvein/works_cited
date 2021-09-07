@@ -1,7 +1,7 @@
 # Works Cited
 
 [![GitHub version](https://badge.fury.io/gh/gemvein%2Fworks_cited.svg)](http://badge.fury.io/gh/gemvein%2Fworks_cited)
-[![Build Status](https://travis-ci.org/gemvein/works_cited.svg)](https://travis-ci.org/gemvein/works_cited)
+[![Build Status](https://travis-ci.com/gemvein/works_cited.svg)](https://travis-ci.com/gemvein/works_cited)
 [![Coverage Status](https://coveralls.io/repos/gemvein/works_cited/badge.png)](https://coveralls.io/r/gemvein/works_cited)
 
 Works Cited allows you to add a list of the works cited in ActiveRecord objects, to be formatted by a helper that can be added to relevant pages to format the citations like a bibliography.
