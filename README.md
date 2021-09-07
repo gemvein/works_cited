@@ -1,4 +1,9 @@
 # Works Cited
+
+[![GitHub version](https://badge.fury.io/gh/gemvein%2Fworks_cited.svg)](http://badge.fury.io/gh/gemvein%2Fworks_cited)
+[![Build Status](https://travis-ci.org/gemvein/works_cited.svg)](https://travis-ci.org/gemvein/works_cited)
+[![Coverage Status](https://coveralls.io/repos/gemvein/works_cited/badge.png)](https://coveralls.io/r/gemvein/works_cited)
+
 Works Cited allows you to add a list of the works cited in ActiveRecord objects, to be formatted by a helper that can be added to relevant pages to format the citations like a bibliography.
 
 Works Cited uses CanCanCan to authorize the editing of citations. This makes it easy for you to control access.
@@ -27,21 +32,24 @@ You will need to add access for the people who should be authorized. Works Cited
 ```ruby
 class Ability
   include CanCan::Ability
-  
+
   def initialize(user)
     user ||= User.new
-    
-    can [:show, :list], WorksCited::Citation
-    can [:show, :list], WorksCited::Contributor
-    
+
+    can :list, WorksCited::Citation
+    can :list, WorksCited::Contributor
+
     return if user.new_record? # Anonymous Users leave
-    
+
+    can :read, WorksCited::Citation
+    can :read, WorksCited::Contributor
     # # We could have other rules in here, like:
     # can :manage, WorksCited::Citation, record: { user_id: user.id }
     # can :manage, WorksCited::Contributor, record: { user_id: user.id }
-    
+
     return unless user.admin? # Non Admin Users leave
-    
+
+    can :select, :all
     can :manage, WorksCited::Citation
     can :manage, WorksCited::Contributor
   end
@@ -76,7 +84,7 @@ has_works_cited
 Add the helpers to the relevant views
 
 ```haml
-= works_cited @record
+= works_cited_list @record
 ```
 
 ## Contributing
@@ -89,4 +97,4 @@ Add the helpers to the relevant views
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
 ## License
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+Copyright (c) 2021 Loren Lundgren. See LICENSE.txt for further details.
