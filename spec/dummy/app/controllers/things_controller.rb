@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 # Super basic controller for Things
 class ThingsController < ApplicationController
   before_action :set_thing, only: %i[show edit update destroy]
@@ -58,3 +59,4 @@ class ThingsController < ApplicationController
     params.require(:thing).permit(:name, :description)
   end
 end
+# :nocov:

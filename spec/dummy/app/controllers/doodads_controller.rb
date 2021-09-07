@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 # Super basic controller for Doodads
 class DoodadsController < ApplicationController
   before_action :set_doodad, only: %i[show edit update destroy]
@@ -58,3 +59,4 @@ class DoodadsController < ApplicationController
     params.require(:doodad).permit(:name, :description)
   end
 end
+# :nocov:
