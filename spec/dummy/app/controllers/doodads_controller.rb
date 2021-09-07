@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Super basic controller for Doodads
 class DoodadsController < ApplicationController
   before_action :set_doodad, only: %i[show edit update destroy]
 

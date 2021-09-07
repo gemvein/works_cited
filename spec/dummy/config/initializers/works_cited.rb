@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 WorksCited.configure do |config|
   # This will dynamically generate a scope (.astrologians) and a boolean check (#astrologian?)
   # on WorksCited::Contributor

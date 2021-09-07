@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Super basic controller for Things
 class ThingsController < ApplicationController
-  before_action :set_thing, only: [:show, :edit, :update, :destroy]
+  before_action :set_thing, only: %i[show edit update destroy]
 
   # GET /things
   def index
@@ -7,8 +10,7 @@ class ThingsController < ApplicationController
   end
 
   # GET /things/1
-  def show
-  end
+  def show; end
 
   # GET /things/new
   def new
@@ -16,8 +18,7 @@ class ThingsController < ApplicationController
   end
 
   # GET /things/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /things
   def create
@@ -46,13 +47,14 @@ class ThingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_thing
-      @thing = Thing.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def thing_params
-      params.require(:thing).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_thing
+    @thing = Thing.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def thing_params
+    params.require(:thing).permit(:name, :description)
+  end
 end

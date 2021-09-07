@@ -10,6 +10,7 @@ Bundler.require(*Rails.groups)
 require 'works_cited'
 
 module Dummy
+  # Our dummy application
   class Application < Rails::Application
     config.load_defaults Rails::VERSION::STRING.to_f
 

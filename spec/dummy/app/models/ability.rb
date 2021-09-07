@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Ability class for our dummy app. Used by CanCanCan to determine
+# the appropriate permissions for current_ability
 class Ability
   include CanCan::Ability
 
