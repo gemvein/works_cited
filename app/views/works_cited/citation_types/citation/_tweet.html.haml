@@ -1,19 +1,8 @@
 :ruby
   container_parts = []
   container_parts << "Received by #{list_names(contributors.receivers)}" if contributors.receivers.any?
-  container_parts << "Edited by #{list_names(contributors.editors)}" if contributors.editors.any?
-  container_parts << "Compiled by #{list_names(contributors.compilers)}" if contributors.compilers.any?
-  container_parts << "Translated by #{list_names(contributors.translators)}" if contributors.translators.any?
-  container_parts << citation.media if citation.media.present?
-  container_parts << citation.edition if citation.edition.present?
-  container_parts << citation.volume if citation.volume.present?
-  container_parts << citation.number if citation.number.present?
   container_parts << citation.publisher if citation.publisher.present?
-  container_parts << citation.year if citation.year.present?
   container_parts << citation.published_at.mla_datetime if citation.published_at.present?
-  container_parts << citation.pages if citation.pages.present?
-  container_parts << content_tag(:em, citation.online_database) if citation.online_database.present?
-  container_parts << citation.doi if citation.doi.present?
   container_parts << link_to(citation.url.gsub(%r{https?://}, ''), citation.url).html_safe if citation.url.present?
 - if contributors.authors.any?
   = "@#{contributors.authors.first.handle}."
@@ -27,5 +16,3 @@
     = succeed citation.title do
       =  '"'
 = "#{container_parts.join(', ')}.".html_safe
-- if citation.accessed_at.present?
-  = "Accessed #{citation.accessed_at.mla_date}."

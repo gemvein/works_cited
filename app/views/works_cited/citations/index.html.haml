@@ -1,6 +1,7 @@
 = stylesheet_link_tag 'works_cited/application'
 %h1 Listing citations
 
+= link_to 'New Citation', new_citation_path
 %table.table-data
   %tr
     %th Citation Type
@@ -15,5 +16,4 @@
       %td= link_to 'Show', citation, class: 'button button-link'
       %td= link_to 'Edit', edit_citation_path(citation), class: 'button button-action'
       %td= link_to 'Destroy', citation, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button button-danger'
-
-= link_to 'New Citation', new_citation_path
+= paginate @citations

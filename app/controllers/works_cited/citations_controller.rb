@@ -5,6 +5,7 @@ module WorksCited
 
     # GET /citations
     def index
+      @citations = @citations.page(params[:page])
     end
 
     # GET /citations/1
@@ -101,17 +102,23 @@ module WorksCited
       params.require(:citation).permit(
         :id,
         :citation_type,
-        :media,
         :title,
+        :container_title,
         :publisher,
         :city,
         :edition,
         :volume,
+        :number,
         :series,
         :year,
         :record,
+        :media,
         :url,
         :pages,
+        :published_at,
+        :online_database,
+        :doi,
+        :accessed_at,
         works_cited_contributors_attributes: %i[id contributor_role first middle last suffix handle _destroy]
       )
     end

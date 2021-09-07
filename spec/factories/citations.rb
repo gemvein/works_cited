@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :works_cited_citation, class: WorksCited::Citation do
-    citation_type { %w[book periodical electronic interview].sample }
+    citation_type { %w[book periodical electronic interview email tweet].sample }
     media { 'print' }
     record { Doodad.first }
     title { Faker::Book.title }

@@ -1,0 +1,10 @@
+= f.input :title
+= f.input :container_title
+= f.input :edition, hint: 'like "1st ed."'
+= f.input :volume, hint: 'like "vol. 1"'
+= f.input :number, hint: 'like "no. 1"'
+= f.input :publisher
+= f.input :year
+= f.input :published_at, as: :string, hint: 'Will be parsed and formatted', input_html: { value: f.object.published_at&.mla_date }
+= f.input :pages, hint: 'like "pp. 150-53"'
+= f.input :url
