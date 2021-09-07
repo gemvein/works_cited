@@ -21,3 +21,15 @@
     - if value.present?
       %dt= WorksCited::Citation.human_attribute_name(column.name)
       %dd= value
+  - if @citation.works_cited_contributors.any?
+    - WorksCited.configuration.valid_contributor_roles.each do |contributor_role|
+      :ruby
+        plural_role_name = contributor_role.pluralize
+        contributors = @citation.works_cited_contributors.send(plural_role_name.to_sym)
+      - if contributors.any?
+        %dt= plural_role_name.titleize
+        %dd
+          %ul
+            - contributors.each do |contributor|
+              %li= contributor.full_name
+

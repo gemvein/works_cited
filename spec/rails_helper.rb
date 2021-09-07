@@ -81,6 +81,7 @@ RSpec.configure do |config|
   # This allows us to log in in request specs
   # https://stackoverflow.com/questions/15211576/rspec-authenticating-devise-user-in-request-specs
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
 
 Shoulda::Matchers.configure do |config|

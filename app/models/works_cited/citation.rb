@@ -19,7 +19,7 @@ module WorksCited
     belongs_to :record, polymorphic: true
     has_many :works_cited_contributors, inverse_of: :works_cited_citation, class_name: 'WorksCited::Contributor',
                                         foreign_key: :works_cited_citation_id
-    accepts_nested_attributes_for :works_cited_contributors, reject_if: :all_blank, allow_destroy: true
+    accepts_nested_attributes_for :works_cited_contributors, allow_destroy: true
 
     # Dynamic stuff (from configuration)
     # Creates scopes such as .books and methods such as #book?
@@ -31,8 +31,13 @@ module WorksCited
     end
 
     # Instance Methods
-    def record=(string)
-      model_name, id = string.split(':')
+    def record=(value)
+      unless value.is_a? String
+        super(value)
+        return
+      end
+
+      model_name, id = value.split(':')
       return unless model_name.present? and id.present?
 
       model = model_name.constantize

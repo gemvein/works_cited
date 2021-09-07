@@ -8,6 +8,7 @@
         - @citation.errors.full_messages.each do |message|
           %li= message
   .shared-field
+    = f.hidden_field :id
     = f.input :record, collection: @records, as: :grouped_select, group_method: :records, group_label_method: :record_type, label_method: :name, value_method: :id, selected: "#{@citation.record_type}:#{@citation.id}", include_blank: 'Select a Record'
     = f.input :citation_type, as: :select, collection: WorksCited.configuration.valid_citation_types, :input_html => {:onchange => "showFields(this.options[this.selectedIndex].value);"}
   - WorksCited.configuration.valid_citation_types.each do |citation_type|
@@ -20,13 +21,55 @@
       = link_to_add_nested f, :works_cited_contributors, '#contributors', link_text: 'Add Contributor', link_classes: 'button button-action', partial: 'works_cited/contributors/fields'
     = f.simple_fields_for :works_cited_contributors do |contributor|
       = render 'works_cited/contributors/fields', form: contributor
+  %fieldset#preview{ style: 'display: none;' }
+    %legend
+      %h2
+        Preview
+        %small (Real-time)
+    .preview-html#preview-html
   .actions
     .button-wrapper= f.submit 'Save', class: 'button-large button-action'
 :javascript
+  var fields = document.querySelectorAll('input, select');
+  var index = 0;
+
+  for (index = 0; index < fields.length; ++index) {
+    var textField = fields[index];
+    textField.addEventListener('change', loadPreview)
+  }
+
+  function loadPreview() {
+    // Build formData object.
+    var formData = new FormData(document.querySelector('form'))
+    var authenticity_token = document.head.querySelector('meta[name="csrf-token"]').content
+    var preview = document.getElementById('preview')
+    var container = document.getElementById('preview-html')
+
+    fetch('#{preview_citation_url}',
+      {
+        method: 'post',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRF-Token': authenticity_token
+        },
+        body: formData,
+        credentials: 'same-origin'
+      })
+      .then(function(response) {
+        // When the page is loaded convert it to text
+        return response.text()
+      })
+      .then((html) => {
+        preview.style.display = 'block'
+        container.innerHTML = html
+      })
+  }
   function showFields(citation_type) {
     for (let element of document.getElementsByClassName('fields')){
       element.style.display='none'
     }
     document.getElementById(`fields-${citation_type}`).style.display = 'block'
   }
-  showFields('#{@citation.citation_type || 'book'}');
+
+  showFields('#{@citation.citation_type || 'book'}')
+  loadPreview()

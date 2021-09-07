@@ -6,11 +6,13 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    can :show, WorksCited::Citation
-    can :show, WorksCited::Contributor
+    can :list, WorksCited::Citation
+    can :list, WorksCited::Contributor
 
     return if user.new_record? # Anonymous Users leave
 
+    can :read, WorksCited::Citation
+    can :read, WorksCited::Contributor
     # # We could have other rules in here, like:
     # can :manage, WorksCited::Citation, record: { user_id: user.id }
     # can :manage, WorksCited::Contributor, record: { user_id: user.id }

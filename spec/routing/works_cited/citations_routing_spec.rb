@@ -8,6 +8,10 @@ RSpec.describe WorksCited::CitationsController, type: :routing do
       expect(get: '/citations').to route_to('works_cited/citations#index')
     end
 
+    it 'routes to #preview' do
+      expect(patch: '/preview').to route_to('works_cited/citations#preview')
+    end
+
     it 'routes to #new' do
       expect(get: '/citations/new').to route_to('works_cited/citations#new')
     end

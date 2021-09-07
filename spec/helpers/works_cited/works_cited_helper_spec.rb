@@ -4,9 +4,8 @@ require 'rails_helper'
 
 # rubocop:disable Layout/LineLength
 describe WorksCited::ApplicationHelper do
-  let(:doodad) do
-    FactoryBot.create(:doodad)
-  end
+  let(:doodad) { FactoryBot.create(:doodad) }
+  let(:citation) { FactoryBot.create(:works_cited_citation, record: doodad) }
 
   describe '#works_cited' do
     before do
@@ -14,6 +13,9 @@ describe WorksCited::ApplicationHelper do
     end
 
     context 'returns list' do
+      before(:each) do
+        allow(view).to receive(:current_ability).and_return(Ability.new(nil))
+      end
       subject { helper.works_cited_list(doodad) }
       it do
         should have_tag('ul', with: { class: 'citations' }) do
@@ -770,6 +772,84 @@ describe WorksCited::ApplicationHelper do
       it {
         should eq('@tombrokaw. &quot;SC demonstrated why all the debates are the engines of this campaign.&quot; <em>Twitter,</em> 22 Jan. 2012, 3:06 a.m., <a href="https://twitter.com/tombrokaw/status/160996868971704320">twitter.com/tombrokaw/status/160996868971704320</a>.')
       }
+    end
+  end
+
+  describe '#list_names' do
+    describe 'with one name' do
+      before do
+        citation.works_cited_contributors.authors.destroy_all
+        FactoryBot.create(
+          :works_cited_contributor,
+          works_cited_citation: citation,
+          contributor_role: 'author',
+          first: 'Joseph',
+          middle: 'James',
+          last: 'Jackson',
+          suffix: 'Jr.'
+        )
+      end
+      subject { list_names(citation.works_cited_contributors.authors) }
+      it { should eq 'Jackson, Joseph J, Jr.' }
+    end
+    describe 'with two names' do
+      before do
+        citation.works_cited_contributors.authors.destroy_all
+        FactoryBot.create(
+          :works_cited_contributor,
+          works_cited_citation: citation,
+          contributor_role: 'author',
+          first: 'Joseph',
+          middle: 'James',
+          last: 'Jackson',
+          suffix: 'Jr.'
+        )
+        FactoryBot.create(
+          :works_cited_contributor,
+          works_cited_citation: citation,
+          contributor_role: 'author',
+          first: 'Susan',
+          middle: 'Sara',
+          last: 'Sorenson',
+          suffix: 'Sr.'
+        )
+      end
+      subject { list_names(citation.works_cited_contributors.authors) }
+      it { should eq 'Jackson, Joseph J, Jr., and Susan S Sorenson, Sr.' }
+    end
+    describe 'with more names' do
+      before do
+        citation.works_cited_contributors.authors.destroy_all
+        FactoryBot.create(
+          :works_cited_contributor,
+          works_cited_citation: citation,
+          contributor_role: 'author',
+          first: 'Joseph',
+          middle: 'James',
+          last: 'Jackson',
+          suffix: 'Jr.'
+        )
+        FactoryBot.create(
+          :works_cited_contributor,
+          works_cited_citation: citation,
+          contributor_role: 'author',
+          first: 'Susan',
+          middle: 'Sara',
+          last: 'Sorenson',
+          suffix: 'Sr.'
+        )
+        FactoryBot.create(
+          :works_cited_contributor,
+          works_cited_citation: citation,
+          contributor_role: 'author',
+          first: 'Lara',
+          middle: '',
+          last: 'Lovelace',
+          suffix: ''
+        )
+      end
+      subject { list_names(citation.works_cited_contributors.authors) }
+      it { should eq 'Jackson, Joseph J, Jr., et al' }
     end
   end
 end

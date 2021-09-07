@@ -1,6 +1,6 @@
 module WorksCited
   class CitationsController < ApplicationController
-    load_and_authorize_resource
+    load_and_authorize_resource except: %i[preview]
     before_action :set_records, only: %i[edit update new create]
 
     # GET /citations
@@ -9,6 +9,23 @@ module WorksCited
 
     # GET /citations/1
     def show
+    end
+
+    # GET /citations/preview
+    def preview
+      @citation = Citation.new(citation_params)
+      authorize! :preview, @citation
+
+      contributors_array = []
+      raw_contributors = citation_params.dig(:works_cited_contributors_attributes)
+      raw_contributors&.each do |index, contributor|
+        destroy = contributor.delete(:_destroy)
+        next if destroy == '1'
+
+        contributors_array << Contributor.new(contributor)
+      end
+      @contributors = pack_contributors_by_role(contributors_array)
+      render :preview, layout: false
     end
 
     # GET /citations/new
@@ -45,6 +62,20 @@ module WorksCited
 
     private
 
+    def pack_contributors_by_role(raw_contributors)
+      array_of_keys = WorksCited.configuration.valid_contributor_roles
+      packed_array = array_of_keys.map do |contributor_role|
+        [contributor_role.pluralize, select_contributors_by_role(contributor_role, raw_contributors)]
+      end
+      contributors_hash = packed_array.to_h
+      OpenStruct.new contributors_hash
+    end
+
+    def select_contributors_by_role(role, raw_contributors)
+      found = raw_contributors.select { |x| x.contributor_role == role }
+      found || WorksCited::Contributor.none
+    end
+
     def set_records
       @records = [
         OpenStruct.new({
@@ -59,6 +90,7 @@ module WorksCited
     # Only allow a list of trusted parameters through.
     def citation_params
       params.require(:citation).permit(
+        :id,
         :citation_type,
         :media,
         :title,

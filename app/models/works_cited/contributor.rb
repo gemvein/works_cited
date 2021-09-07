@@ -31,38 +31,6 @@ module WorksCited
       end
     end
 
-    # Class Methods
-    class << self
-      def list_names
-        first_contributor_name = first_contributor&.full_name(first_contributor.name_order)
-
-        case number_of_contributors
-        when 0
-          nil
-        when 1
-          first_contributor_name
-        when 2
-          "#{first_contributor_name}, and #{second_contributor.full_name(:first)}"
-        else
-          "#{first_contributor_name}, et al"
-        end
-      end
-
-      private
-
-      def first_contributor
-        all.first
-      end
-
-      def second_contributor
-        all.offset(1).first
-      end
-
-      def number_of_contributors
-        all.size
-      end
-    end
-
     # Instance Methods
 
     def name_order

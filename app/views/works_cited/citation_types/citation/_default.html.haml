@@ -1,0 +1,30 @@
+list_names(- if contributors.authors.any?
+  = "#)(\1)}."
+- if citation.url.present?
+  %em
+    = succeed '.' do
+      = link_to(citation.title, citation.url)
+- else
+  %em= "#{citation.title}."
+- if contributors.editors.any?
+  = "Edited by #{list_names(contributors.editors)}."
+- if contributors.compilers.any?
+  = "Compiled by #{list_names(contributors.compilers)}."
+- if contributors.translators.any?
+  = "Translated by #{list_names(contributors.translators)}."
+- if citation.edition.present?
+  = "#{citation.edition}."
+- if citation.volume.present?
+  = "#{citation.volume}."
+- if citation.city.present?
+  = "#{citation.city}:"
+- if citation.publisher.present?
+  = "#{citation.publisher},"
+- if citation.year.present?
+  = "#{citation.year}."
+- if citation.media.present?
+  = "#{citation.media.titleize}."
+- if citation.series.present?
+  = "#{citation.series}."
+- if citation.pages.present?
+  = "#{citation.pages}."

@@ -11,7 +11,7 @@
     %tr
       %td= citation.citation_type
       %td= citation.title
-      %td= citation.works_cited_contributors.authors.list_names
+      %td= list_names(citation.works_cited_contributors.authors)
       %td= link_to 'Show', citation, class: 'button button-link'
       %td= link_to 'Edit', edit_citation_path(citation), class: 'button button-action'
       %td= link_to 'Destroy', citation, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button button-danger'

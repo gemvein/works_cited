@@ -22,24 +22,34 @@ module WorksCited
     # Citation. As you add validations to Citation, be sure to
     # adjust the attributes here as well.
     let(:valid_attributes) {
-      { citation_type: 'book', title: Faker::Book.title, record_id: doodad.id, record_type: 'Doodad' }
+      { citation_type: 'book', title: Faker::Book.title, record: "#{doodad.class.model_name}:#{doodad.id}" }
     }
 
     let(:invalid_attributes) {
-      { citation_type: 'book', title: nil, record_id: nil, record_type: nil }
+      { citation_type: 'book', title: nil, record: nil }
     }
 
-    describe 'GET /index' do
-      it 'renders a successful response' do
-        Citation.create! valid_attributes
-        get citations_url
+    describe 'GET /show' do
+      it 'disallows when appropriate' do
+        expect { get citation_url(citation) }.to raise_error(CanCan::AccessDenied)
+      end
+      it 'renders a successful response when admin' do
+        sign_in admin
+        get citation_url(citation)
         expect(response).to be_successful
       end
     end
 
-    describe 'GET /show' do
-      it 'renders a successful response' do
-        get citation_url(citation)
+    describe 'GET /index' do
+      before do
+        Citation.create! valid_attributes
+      end
+      it 'disallows when appropriate' do
+        expect { get citations_url }.to raise_error(CanCan::AccessDenied)
+      end
+      it 'renders a successful response when admin' do
+        sign_in admin
+        get citations_url
         expect(response).to be_successful
       end
     end
@@ -66,6 +76,22 @@ module WorksCited
       end
     end
 
+    describe 'PATCH /preview' do
+      it 'disallows when appropriate' do
+        expect { patch preview_citation_url, params: { citation: valid_attributes } }.to raise_error(CanCan::AccessDenied)
+      end
+      describe 'when admin' do
+        before { sign_in admin }
+        context 'with valid parameters' do
+          it 'previews the Citation' do
+            sign_in admin
+            patch preview_citation_url, params: { citation: valid_attributes }
+            expect(response).to be_successful
+          end
+        end
+      end
+    end
+
     describe 'POST /create' do
       it 'disallows when appropriate' do
         expect { post citations_url, params: { citation: valid_attributes } }.to raise_error(CanCan::AccessDenied)
@@ -76,7 +102,6 @@ module WorksCited
           it 'creates a new Citation' do
             expect {
               post citations_url, params: { citation: valid_attributes }
-              puts response.inspect
             }.to change(Citation, :count).by(1)
           end
 
