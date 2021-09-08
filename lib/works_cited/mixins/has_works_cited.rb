@@ -12,6 +12,7 @@ module WorksCited
         include InstanceMethods
 
         has_many :works_cited_citations, as: :record, class_name: 'WorksCited::Citation'
+        accepts_nested_attributes_for :works_cited_citations, allow_destroy: true
       end
       # rubocop:enable Naming/PredicateName
 
