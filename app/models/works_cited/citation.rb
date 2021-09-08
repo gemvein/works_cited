@@ -38,7 +38,7 @@ module WorksCited
       end
 
       model_name, id = value.split(':')
-      return unless model_name.present? and id.present?
+      return unless model_name.present? && id.present?
 
       model = model_name.constantize
       super model.find(id)

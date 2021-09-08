@@ -14,13 +14,11 @@ module WorksCited
   # WorksCited Configuration
   class Configuration
     attr_accessor(
-      :valid_record_types,
       :valid_citation_types,
-      :valid_contributor_roles,
+      :valid_contributor_roles
     )
 
     def initialize
-      self.valid_record_types = []
       self.valid_citation_types = %w[book periodical electronic interview email tweet]
       self.valid_contributor_roles = %w[author editor compiler translator receiver]
     end

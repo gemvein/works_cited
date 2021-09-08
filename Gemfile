@@ -9,8 +9,8 @@ gem 'sass-rails', '>= 6', '< 7'
 
 gem 'cancancan', '>= 3.3', '< 4'
 
-gem 'vanilla_nested', '>= 1.3', '< 2'
 gem 'simple_form', '>= 5.1', '< 6'
+gem 'vanilla_nested', '>= 1.3', '< 2'
 
 gem 'kaminari', '>= 1.2.1', '< 2'
 

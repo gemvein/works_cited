@@ -42,6 +42,7 @@ module WorksCited
       unless WorksCited.configuration.valid_citation_types.include? citation_type
         raise 'Invalid Citation Type sent to partial_path_or_default'
       end
+
       path_to_partial = "works_cited/citation_types/#{purpose}/#{citation_type}"
       partial_exists = lookup_context.find_all(path_to_partial, [], true).any?
 

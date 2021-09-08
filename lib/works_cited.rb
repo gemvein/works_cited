@@ -16,6 +16,11 @@ module WorksCited
   require 'works_cited/extensions/time'
 
   require 'haml-rails'
+  require 'sass-rails'
+  require 'vanilla_nested'
+  require 'cancancan'
+  require 'simple_form'
+  require 'kaminari'
 end
 
 ActiveRecord::Base.extend WorksCited::Mixins::HasWorksCited

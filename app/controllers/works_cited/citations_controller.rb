@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module WorksCited
+  # Citations Controller allows us to manage Citations. Not used for primary display.
   class CitationsController < ApplicationController
     load_and_authorize_resource except: %i[preview]
     before_action :set_records, only: %i[edit update new create]
@@ -9,33 +12,22 @@ module WorksCited
     end
 
     # GET /citations/1
-    def show
-    end
+    def show; end
 
     # GET /citations/preview
     def preview
       @citation = Citation.new(citation_params)
       authorize! :preview, @citation
 
-      contributors_array = []
-      raw_contributors = citation_params.dig(:works_cited_contributors_attributes)
-      raw_contributors&.each do |index, contributor|
-        destroy = contributor.delete(:_destroy)
-        next if destroy == '1'
-
-        contributors_array << Contributor.new(contributor)
-      end
-      @contributors = pack_contributors_by_role(contributors_array)
+      @contributors = contributors_from_params
       render :preview, layout: false
     end
 
     # GET /citations/new
-    def new
-    end
+    def new; end
 
     # GET /citations/1/edit
-    def edit
-    end
+    def edit; end
 
     # POST /citations
     def create
@@ -63,6 +55,18 @@ module WorksCited
 
     private
 
+    def contributors_from_params
+      contributors_array = []
+      raw_contributors = citation_params[:works_cited_contributors_attributes]
+      raw_contributors&.each do |_index, contributor|
+        destroy = contributor.delete(:_destroy)
+        next if destroy == '1'
+
+        contributors_array << Contributor.new(contributor)
+      end
+      pack_contributors_by_role(contributors_array)
+    end
+
     def pack_contributors_by_role(raw_contributors)
       array_of_keys = WorksCited.configuration.valid_contributor_roles
       packed_array = array_of_keys.map do |contributor_role|
@@ -77,47 +81,39 @@ module WorksCited
       found || WorksCited::Contributor.none
     end
 
-    def set_records
+    def models
       Rails.application.eager_load!
-      models = ApplicationRecord.descendants.select { |x| x.method_defined?(:works_cited_citations) }
+      ApplicationRecord.descendants.select { |x| x.method_defined?(:works_cited_citations) }
+    end
 
+    def item_option(item, model_name)
+      OpenStruct.new({ id: "#{model_name}:#{item.id}", name: item.name })
+    end
+
+    def model_option_group(items, model)
+      model_name = model.model_name
+      OpenStruct.new(
+        {
+          record_type: model_name,
+          records: items.map { |item| item_option(item, model_name) }
+        }
+      )
+    end
+
+    def set_records
       @records = models.map do |model|
         items = model.accessible_by(current_ability, :select)
         next unless items.any?
 
-        model_name = model.model_name
-        OpenStruct.new(
-          {
-            record_type: model_name,
-            records: items.map do |item|
-              OpenStruct.new({ id: "#{model_name}:#{item.id}", name: item.name })
-            end
-          }
-        )
+        model_option_group(items, model)
       end.compact
     end
 
     # Only allow a list of trusted parameters through.
     def citation_params
       params.require(:citation).permit(
-        :id,
-        :citation_type,
-        :title,
-        :container_title,
-        :publisher,
-        :city,
-        :edition,
-        :volume,
-        :number,
-        :series,
-        :year,
-        :record,
-        :media,
-        :url,
-        :pages,
-        :published_at,
-        :online_database,
-        :doi,
+        :id, :citation_type, :title, :container_title, :publisher, :city, :edition, :volume,
+        :number, :series, :year, :record, :media, :url, :pages, :published_at, :online_database, :doi,
         :accessed_at,
         works_cited_contributors_attributes: %i[id contributor_role first middle last suffix handle _destroy]
       )
