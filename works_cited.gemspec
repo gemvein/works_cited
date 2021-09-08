@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.metadata = { "source_code_uri" => "http://github.com/gemvein/works_cited" } if s.respond_to? :metadata=
   s.require_paths = ["lib".freeze]
   s.authors = ["Loren Lundgren".freeze]
-  s.date = "2021-09-07"
+  s.date = "2021-09-08"
   s.description = "Works cited allows you to add a list of the works cited in ActiveRecord objects, to be formatted by a helper that can be added to relevant pages to format the citations like a bibliography.".freeze
   s.email = "loren.lundgren@gmail.com".freeze
   s.executables = ["rails".freeze]
@@ -184,7 +184,6 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "https://gemvein.com/museum/cases/works_cited".freeze
   s.licenses = ["MIT".freeze]
-  s.required_ruby_version = Gem::Requirement.new("= 2.7.2".freeze)
   s.rubygems_version = "3.1.4".freeze
   s.summary = "Helper to generate list of Works Cited".freeze
 

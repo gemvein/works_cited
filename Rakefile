@@ -13,7 +13,6 @@ require 'rake'
 require 'juwelier'
 Juwelier::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.required_ruby_version = '2.7.2'
   gem.name = 'works_cited'
   gem.homepage = 'https://gemvein.com/museum/cases/works_cited'
   gem.metadata = { source_code_uri: 'http://github.com/gemvein/works_cited' }
