@@ -11,7 +11,7 @@ module WorksCited
         helper WorksCited::ApplicationHelper
       end
     end
-    initializer "works_cited.assets.precompile" do |app|
+    initializer 'works_cited.assets.precompile' do |app|
       app.config.assets.precompile += %w[works_cited/application.css works_cited/application.js vanilla_nested.js]
     end
 
