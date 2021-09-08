@@ -17,7 +17,7 @@ $ bundle install
 
 Then generate the migrations
 ```bash
-$ rails g works_cited:install
+$ rake works_cited:install:migrations
 $ rake db:migrate
 ```
 
