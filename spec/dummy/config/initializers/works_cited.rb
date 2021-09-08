@@ -9,7 +9,7 @@ WorksCited.configure do |config|
   # on WorksCited::Citation
   #
   # If you want to override the default view for any new (or existing) types:
-  # List a citation: app/views/works_cited/citation_types/_star_chart.html.[haml/erb]
-  # Add/Edit a citation: app/views/works_cited/citation_types/_star_chart_form.html.[haml/erb]
+  # List a citation: app/views/works_cited/citation_types/citation/_star_chart.html.[haml/erb]
+  # Add/Edit a citation: app/views/works_cited/citation_types/fields/_star_chart.html.[haml/erb]
   config.valid_citation_types << 'star_chart'
 end
