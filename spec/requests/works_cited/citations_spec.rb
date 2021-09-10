@@ -128,42 +128,38 @@ module WorksCited
       end
 
       describe 'PATCH /preview' do
-        describe 'when admin' do
-          context 'with valid parameters' do
-            it 'previews the Citation' do
-              patch preview_citation_url, params: { citation: valid_attributes }
-              expect(response).to be_successful
-            end
+        context 'with valid parameters' do
+          it 'previews the Citation' do
+            patch preview_citation_url, params: { citation: valid_attributes }
+            expect(response).to be_successful
           end
         end
       end
 
       describe 'POST /create' do
-        describe 'when admin' do
-          context 'with valid parameters' do
-            it 'creates a new Citation' do
-              expect do
-                post citations_url, params: { citation: valid_attributes }
-              end.to change(Citation, :count).by(1)
-            end
-
-            it 'redirects to the created citation' do
+        context 'with valid parameters' do
+          it 'creates a new Citation' do
+            expect do
               post citations_url, params: { citation: valid_attributes }
-              expect(response).to redirect_to(citation_url(Citation.last))
-            end
+            end.to change(Citation, :count).by(1)
           end
 
-          context 'with invalid parameters' do
-            it 'does not create a new Citation' do
-              expect do
-                post citations_url, params: { citation: invalid_attributes }
-              end.to change(Citation, :count).by(0)
-            end
+          it 'redirects to the created citation' do
+            post citations_url, params: { citation: valid_attributes }
+            expect(response).to redirect_to(citation_url(Citation.last))
+          end
+        end
 
-            it "renders a successful response (i.e. to display the 'new' template)" do
+        context 'with invalid parameters' do
+          it 'does not create a new Citation' do
+            expect do
               post citations_url, params: { citation: invalid_attributes }
-              expect(response).to be_successful
-            end
+            end.to change(Citation, :count).by(0)
+          end
+
+          it "renders a successful response (i.e. to display the 'new' template)" do
+            post citations_url, params: { citation: invalid_attributes }
+            expect(response).to be_successful
           end
         end
       end
@@ -172,46 +168,42 @@ module WorksCited
         let(:new_attributes) do
           { citation_type: 'book', title: 'New Title', record_id: doodad.id, record_type: 'Doodad' }
         end
-        describe 'when admin' do
-          context 'with valid parameters' do
-            it 'updates the requested citation' do
-              patch citation_url(citation), params: { citation: new_attributes }
-              citation.reload
-              expect(citation.title).to eq('New Title')
-            end
-
-            it 'redirects to the citation' do
-              patch citation_url(citation), params: { citation: new_attributes }
-              citation.reload
-              expect(response).to redirect_to(citation_url(citation))
-            end
+        context 'with valid parameters' do
+          it 'updates the requested citation' do
+            patch citation_url(citation), params: { citation: new_attributes }
+            citation.reload
+            expect(citation.title).to eq('New Title')
           end
 
-          context 'with invalid parameters' do
-            it "renders a successful response (i.e. to display the 'edit' template)" do
-              patch citation_url(citation), params: { citation: invalid_attributes }
-              expect(response).to be_successful
-            end
+          it 'redirects to the citation' do
+            patch citation_url(citation), params: { citation: new_attributes }
+            citation.reload
+            expect(response).to redirect_to(citation_url(citation))
+          end
+        end
+
+        context 'with invalid parameters' do
+          it "renders a successful response (i.e. to display the 'edit' template)" do
+            patch citation_url(citation), params: { citation: invalid_attributes }
+            expect(response).to be_successful
           end
         end
       end
 
       describe 'DELETE /destroy' do
-        describe 'when admin' do
-          before do
-            citation # Call it up so it exists ahead of time
-          end
+        before do
+          citation # Call it up so it exists ahead of time
+        end
 
-          it 'destroys the requested citation' do
-            expect do
-              delete citation_url(citation)
-            end.to change(Citation, :count).by(-1)
-          end
-
-          it 'redirects to the citations list' do
+        it 'destroys the requested citation' do
+          expect do
             delete citation_url(citation)
-            expect(response).to redirect_to(citations_url)
-          end
+          end.to change(Citation, :count).by(-1)
+        end
+
+        it 'redirects to the citations list' do
+          delete citation_url(citation)
+          expect(response).to redirect_to(citations_url)
         end
       end
     end
