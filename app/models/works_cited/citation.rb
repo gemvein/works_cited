@@ -68,14 +68,16 @@ module WorksCited
       rails_admin do
         visible false
         edit do
-          include_all_fields
-          field :record do # Can't remove this using :inverse_of because it's polymorphic
-            visible false
-          end
           field :citation_type, :enum do
             enum do
               WorksCited.configuration.valid_citation_types
             end
+          end
+          field :contributors
+          include_all_fields
+          field :media
+          field :record do # Can't remove this using :inverse_of because it's polymorphic
+            visible false
           end
         end
       end
