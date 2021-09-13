@@ -5,7 +5,10 @@
   container_parts << citation.published_at.mla_datetime if citation.published_at.present?
   container_parts << link_to(citation.url.gsub(%r{https?://}, ''), citation.url).html_safe if citation.url.present?
 - if contributors.authors.any?
-  = "@#{contributors.authors.first.handle}."
+  - if contributors.authors.first.handle.present?
+    = "@#{contributors.authors.first.handle}."
+  - else
+    = contributors.authors.first.full_name
 - if citation.container_title.present?
   = succeed '"' do
     = succeed citation.title do
