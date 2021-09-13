@@ -73,7 +73,9 @@ module WorksCited
               WorksCited.configuration.valid_citation_types
             end
           end
-          field :contributors
+          field :works_cited_contributors do
+            label 'Contributors'
+          end
           include_all_fields
           field :media
           field :record do # Can't remove this using :inverse_of because it's polymorphic
