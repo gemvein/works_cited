@@ -69,7 +69,7 @@ module WorksCited
         visible false
         edit do
           include_all_fields
-          field :record do
+          field :record do # Can't remove this using :inverse_of because it's polymorphic
             visible false
           end
         end
