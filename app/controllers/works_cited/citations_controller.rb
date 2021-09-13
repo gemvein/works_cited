@@ -8,7 +8,7 @@ module WorksCited
 
     # GET /citations
     def index
-      @citations = @citations.page(params[:page])
+      @citations = @citations.ordered_by_author.page(params[:page])
     end
 
     # GET /citations/1

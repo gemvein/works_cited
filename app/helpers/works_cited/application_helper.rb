@@ -4,7 +4,7 @@ module WorksCited
   # Application Helper
   module ApplicationHelper
     def works_cited_list(record, title = 'Works Cited')
-      citations = record.works_cited_citations.accessible_by(current_ability, :list)
+      citations = record.works_cited_citations.ordered_by_author.accessible_by(current_ability, :list)
       render 'works_cited/citations/list', citations: citations, title: title
     end
 

@@ -17,9 +17,18 @@ module WorksCited
 
     # Relationships
     belongs_to :record, polymorphic: true
-    has_many :works_cited_contributors, inverse_of: :works_cited_citation, class_name: 'WorksCited::Contributor',
-                                        foreign_key: :works_cited_citation_id
+    has_many :works_cited_contributors, -> { order(:last, :first, :middle, :suffix, :handle) }, inverse_of: :works_cited_citation, class_name: 'WorksCited::Contributor',
+             foreign_key: :works_cited_citation_id
+    has_many :works_cited_authors, -> { authors.order(:last, :first, :middle, :suffix, :handle) }, inverse_of: :works_cited_citation, class_name: 'WorksCited::Contributor',
+             foreign_key: :works_cited_citation_id
     accepts_nested_attributes_for :works_cited_contributors, allow_destroy: true
+
+    # Scopes
+    scope :ordered_by_author, (lambda do
+      joins(:works_cited_authors)
+        .order('MIN(works_cited_contributors.last) ASC')
+        .group(:id)
+    end)
 
     # Dynamic stuff (from configuration)
     # Creates scopes such as .books and methods such as #book?
@@ -78,7 +87,8 @@ module WorksCited
           end
           include_all_fields
           field :media
-          field :record do # Can't remove this using :inverse_of because it's polymorphic
+          field :record do
+            # Can't remove this using :inverse_of because it's polymorphic
             visible false
           end
         end
