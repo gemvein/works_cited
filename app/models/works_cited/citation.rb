@@ -67,12 +67,12 @@ module WorksCited
     if defined?(RailsAdmin)
       rails_admin do
         visible false
-        edit do
-          include_all_fields
-          field :record do # Can't remove this using :inverse_of because it's polymorphic
-            visible false
-          end
-        end
+        # edit do
+        #   include_all_fields
+        #   field :record do # Can't remove this using :inverse_of because it's polymorphic
+        #     visible false
+        #   end
+        # end
       end
     end
   end

@@ -13,6 +13,18 @@ module WorksCited
 
         has_many :works_cited_citations, as: :record, class_name: 'WorksCited::Citation'
         accepts_nested_attributes_for :works_cited_citations, allow_destroy: true
+
+        if defined?(RailsAdmin)
+          rails_admin do
+            visible false
+            edit do
+              include_all_fields
+              field :citations do # Can't remove this using :inverse_of because it's polymorphic
+                inverse_of :record
+              end
+            end
+          end
+        end
       end
       # rubocop:enable Naming/PredicateName
 
