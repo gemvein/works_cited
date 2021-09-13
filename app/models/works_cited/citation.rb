@@ -72,6 +72,11 @@ module WorksCited
           field :record do # Can't remove this using :inverse_of because it's polymorphic
             visible false
           end
+          field :citation_type, :enum do
+            enum do
+              WorksCited.configuration.valid_citation_types
+            end
+          end
         end
       end
     end
