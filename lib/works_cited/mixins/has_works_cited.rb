@@ -11,7 +11,7 @@ module WorksCited
         extend ClassMethods
         include InstanceMethods
 
-        has_many :works_cited_citations, as: :record, class_name: 'WorksCited::Citation'
+        has_many :works_cited_citations, as: :record, class_name: 'WorksCited::Citation', inverse_of: :record
         accepts_nested_attributes_for :works_cited_citations, allow_destroy: true
       end
       # rubocop:enable Naming/PredicateName
