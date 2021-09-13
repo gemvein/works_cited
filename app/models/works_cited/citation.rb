@@ -63,5 +63,17 @@ module WorksCited
     def email?
       citation_type == 'email'
     end
+
+    if defined?(RailsAdmin)
+      rails_admin do
+        visible false
+        edit do
+          include_all_fields
+          field :record do
+            visible false
+          end
+        end
+      end
+    end
   end
 end

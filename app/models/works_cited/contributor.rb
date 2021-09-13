@@ -90,5 +90,11 @@ module WorksCited
 
       middle[0, 1]&.upcase
     end
+
+    if defined?(RailsAdmin)
+      rails_admin do
+        visible false
+      end
+    end
   end
 end
