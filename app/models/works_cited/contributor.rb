@@ -94,6 +94,14 @@ module WorksCited
     if defined?(RailsAdmin)
       rails_admin do
         visible false
+        edit do
+          field :contributor_role, :enum do
+            enum do
+              WorksCited.configuration.valid_contributor_roles
+            end
+          end
+          include_all_fields
+        end
       end
     end
   end
