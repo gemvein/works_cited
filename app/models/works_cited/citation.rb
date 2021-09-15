@@ -26,7 +26,11 @@ module WorksCited
     # Scopes
     scope :ordered_by_author, (lambda do
       joins(:works_cited_authors)
-        .order('MIN(works_cited_contributors.last) ASC')
+        .order('MIN(works_cited_contributors.last) ASC, '\
+          'MIN(works_cited_contributors.first) ASC, '\
+          'MIN(works_cited_contributors.middle) ASC, '\
+          'MIN(works_cited_contributors.suffix) ASC, '\
+          'MIN(works_cited_contributors.handle) ASC')
         .group(:id)
     end)
 
