@@ -352,7 +352,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
-  sass-rails (>= 6, < 7)
+  sass-rails (>= 5, < 7)
   shoulda
   shoulda-matchers (>= 4.3, < 5)
   simple_form (>= 5.1, < 6)
