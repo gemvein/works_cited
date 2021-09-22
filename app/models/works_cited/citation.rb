@@ -50,11 +50,11 @@ module WorksCited
         return
       end
 
-      model_name, id = value.split(':')
-      return unless model_name.present? && id.present?
+      model_name, my_id = value.split(':')
+      return unless model_name.present? && my_id.present?
 
       model = model_name.constantize
-      super model.find(id)
+      super model.find(my_id)
     end
 
     def periodical?
