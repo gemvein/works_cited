@@ -57,25 +57,20 @@ module WorksCited
 
     def name_parts
       parts = []
-      parts << first_name_or_initial
-      parts << middle_initial
-      parts << if suffix.present? && last.present?
-                 "#{last}, #{suffix}"
-               else
-                 suffix.presence || last.presence
-               end
+      parts << first_name_or_initial.presence
+      parts << middle_initial.presence
+      parts << [last.presence, suffix.presence].compact.join(', ').presence
       parts
     end
 
     def name_parts_reversed
+      other_parts = []
+      other_parts << first_name_or_initial.presence
+      other_parts << [middle_initial.presence, suffix.presence].compact.join(', ').presence
+      other = other_parts.compact.join(' ').presence
+
       parts = []
-      parts << "#{last}," if last.present?
-      parts << first_name_or_initial
-      parts << if suffix.present? && middle_initial.present?
-                 "#{middle_initial}, #{suffix}"
-               else
-                 suffix.presence || middle_initial
-               end
+      parts << [last.presence, other.presence].compact.join(', ').presence
       parts
     end
 
@@ -91,18 +86,5 @@ module WorksCited
       middle[0, 1]&.upcase
     end
 
-    if defined?(RailsAdmin)
-      rails_admin do
-        visible false
-        edit do
-          field :contributor_role, :enum do
-            enum do
-              WorksCited.configuration.valid_contributor_roles
-            end
-          end
-          include_all_fields
-        end
-      end
-    end
   end
 end

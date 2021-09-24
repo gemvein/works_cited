@@ -41,7 +41,7 @@ module WorksCited
 
       describe 'GET /index' do
         before do
-          Citation.create! valid_attributes
+          citation
         end
         it 'disallows' do
           expect { get citations_url }.to raise_error(CanCan::AccessDenied)
@@ -60,10 +60,11 @@ module WorksCited
         end
       end
 
-      describe 'PATCH /preview' do
+      describe 'POST /preview' do
         it 'disallows' do
           expect do
-            patch preview_citation_url, params: { citation: valid_attributes }
+            params = { citation: valid_attributes }
+            post preview_citations_url, params: JSON.parse(params.to_json), as: :json
           end.to raise_error(CanCan::AccessDenied)
         end
       end
@@ -76,7 +77,7 @@ module WorksCited
 
       describe 'PATCH /update' do
         let(:new_attributes) do
-          { citation_type: 'book', title: 'New Title', record_id: doodad.id, record_type: 'Doodad' }
+          { citation_type: 'book', title: 'New Title', record: "Doodad:#{doodad.id}" }
         end
         it 'disallows' do
           expect do
@@ -105,7 +106,7 @@ module WorksCited
 
       describe 'GET /index' do
         before do
-          Citation.create! valid_attributes
+          citation
         end
         it 'renders a successful response when admin' do
           get citations_url
@@ -127,10 +128,11 @@ module WorksCited
         end
       end
 
-      describe 'PATCH /preview' do
+      describe 'POST /preview' do
         context 'with valid parameters' do
           it 'previews the Citation' do
-            patch preview_citation_url, params: { citation: valid_attributes }
+            params = { citation: valid_attributes }
+            post preview_citations_url, params: JSON.parse(params.to_json), as: :json
             expect(response).to be_successful
           end
         end
@@ -166,7 +168,7 @@ module WorksCited
 
       describe 'PATCH /update' do
         let(:new_attributes) do
-          { citation_type: 'book', title: 'New Title', record_id: doodad.id, record_type: 'Doodad' }
+          { citation_type: 'book', title: 'New Title', record: "Doodad:#{doodad.id}" }
         end
         context 'with valid parameters' do
           it 'updates the requested citation' do

@@ -1,0 +1,28 @@
+:ruby
+  preview_path = f.object.new_record? ? works_cited.preview_citation_url : works_cited.preview_citation_url(f.object.id)
+%fieldset.nested-fields{id: "citation-#{f.index}"}
+  %legend
+    %h4 Citation
+  = f.hidden_field :_destroy
+  = f.hidden_field :record, value: "#{f.object.record_type}:#{f.object.record_id}"
+  = f.input :citation_type, as: :select, collection: WorksCited.configuration.valid_citation_types, :input_html => {:onchange => "showFields('#{citation_id}', this.options[this.selectedIndex].value);"}
+  - WorksCited.configuration.valid_citation_types.each do |citation_type|
+    .fields{ class: "fields-#{citation_type}", style: 'display: none;' }
+      = works_cited_type_fields f, citation_type
+  %fieldset.works_cited_contributors
+    %legend
+      %h3 Contributors
+    %div#works_cited_contributors
+      = f.simple_fields_for :works_cited_contributors do |g|
+        = render 'works_cited/contributors/contributor_fields', f: g
+    = works_cited_link_to_add_fields 'Add Contributor', f, :works_cited_contributors, 'works_cited/contributors/contributor_fields'
+  %fieldset#preview{ style: 'display: none;' }
+    %legend
+      %h2
+        Preview
+        %small (Real-time)
+    .preview-html#preview-html
+  = link_to "Remove", '#', class: 'remove_fields button button-danger'
+:javascript
+  showFields('#{f.index}', '#{f.object.citation_type || 'book'}')
+  startPreview('#{preview_path}', 'citation-#{f.index}',  '#{record.class.table_name.singularize}[works_cited_citations_attributes][#{f.index}]')

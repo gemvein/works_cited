@@ -1,6 +1,9 @@
+:ruby
+  preview_path = @citation.new_record? ? works_cited.preview_citations_url : works_cited.preview_citation_url(@citation.id)
+  citation_id = @citation.new_record? ? 'new' : @citation.id
 = stylesheet_link_tag 'works_cited/application'
 = javascript_include_tag 'works_cited/application'
-= simple_form_for @citation, html: { id: 'WorksCitedForm'} do |f|
+= simple_form_for @citation, html: { id: "citation-#{citation_id}"} do |f|
   - if @citation.errors.any?
     #error_explanation
       %h2= "#{pluralize(@citation.errors.count, "error")} prohibited this citation from being saved:"
@@ -10,17 +13,17 @@
   .shared-field
     = f.hidden_field :id
     = f.input :record, collection: @records, as: :grouped_select, group_method: :records, group_label_method: :record_type, label_method: :name, value_method: :id, selected: "#{@citation.record_type}:#{@citation.record_id}", include_blank: 'Select a Record'
-    = f.input :citation_type, as: :select, collection: WorksCited.configuration.valid_citation_types, :input_html => {:onchange => "showFields(this.options[this.selectedIndex].value);"}
+    = f.input :citation_type, as: :select, collection: WorksCited.configuration.valid_citation_types, :input_html => {:onchange => "showFields('#{citation_id}', this.options[this.selectedIndex].value);"}
   - WorksCited.configuration.valid_citation_types.each do |citation_type|
-    .fields{ id: "fields-#{citation_type}", style: 'display: none;' }
-      = works_cited_citation_fields f, citation_type
-  %fieldset#contributors
+    .fields{ class: "fields-#{citation_type}", style: 'display: none;' }
+      = works_cited_type_fields f, citation_type
+  %fieldset.works_cited_contributors
     %legend
-      %h2 Contributors
-    .links
-      = link_to_add_nested f, :works_cited_contributors, '#contributors', link_text: 'Add Contributor', link_classes: 'button button-action', partial: 'works_cited/contributors/fields'
-    = f.simple_fields_for :works_cited_contributors do |contributor|
-      = render 'works_cited/contributors/fields', form: contributor
+      %h3 Contributors
+    %div#works_cited_contributors
+      = f.simple_fields_for :works_cited_contributors do |g|
+        = render 'works_cited/contributors/contributor_fields', f: g
+    = works_cited_link_to_add_fields 'Add Contributor', f, :works_cited_contributors, 'works_cited/contributors/contributor_fields'
   %fieldset#preview{ style: 'display: none;' }
     %legend
       %h2
@@ -30,46 +33,6 @@
   .actions
     .button-wrapper= f.submit 'Save', class: 'button-large button-action'
 :javascript
-  var fields = document.querySelectorAll('input, select');
-  var index = 0;
-
-  for (index = 0; index < fields.length; ++index) {
-    var textField = fields[index];
-    textField.addEventListener('change', loadPreview)
-  }
-
-  function loadPreview() {
-    // Build formData object.
-    var formData = new FormData(document.querySelector('form'))
-    var authenticity_token = document.head.querySelector('meta[name="csrf-token"]').content
-    var preview = document.getElementById('preview')
-    var container = document.getElementById('preview-html')
-
-    fetch('#{preview_citation_url}',
-      {
-        method: 'post',
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-          'X-CSRF-Token': authenticity_token
-        },
-        body: formData,
-        credentials: 'same-origin'
-      })
-      .then(function(response) {
-        // When the page is loaded convert it to text
-        return response.text()
-      })
-      .then((html) => {
-        preview.style.display = 'block'
-        container.innerHTML = html
-      })
-  }
-  function showFields(citation_type) {
-    for (let element of document.getElementsByClassName('fields')){
-      element.style.display='none'
-    }
-    document.getElementById(`fields-${citation_type}`).style.display = 'block'
-  }
-
-  showFields('#{@citation.citation_type || 'book'}')
-  loadPreview()
+  showFields('#{citation_id}', '#{@citation.citation_type || 'book'}')
+  startPreview('#{preview_path}', 'citation-#{citation_id}', 'citation')
+  addFilterToSubmit()

@@ -11,7 +11,11 @@ RSpec.describe WorksCited::CitationsController, type: :routing do
     end
 
     it 'routes to #preview' do
-      expect(patch: '/preview').to route_to('works_cited/citations#preview')
+      expect(post: '/citations/preview').to route_to('works_cited/citations#preview', format: :json)
+    end
+
+    it 'routes to #preview' do
+      expect(post: '/citations/1/preview').to route_to('works_cited/citations#preview', id: '1', format: :json)
     end
 
     it 'routes to #new' do

@@ -1,0 +1,14 @@
+- if cannot?(:manage, WorksCited::Citation)
+  Not authorized for citations.
+- else
+  = stylesheet_link_tag 'works_cited/application'
+  = javascript_include_tag 'works_cited/application'
+  %fieldset.citations
+    %legend
+      %h3 Works Cited
+    %div#citations
+      = form.simple_fields_for :works_cited_citations do |g|
+        = render 'works_cited/citations/citation_fields', f: g, record: form.object
+    = works_cited_link_to_add_fields "Add Citation", form, :works_cited_citations, 'works_cited/citations/citation_fields'
+:javascript
+  addFilterToSubmit()

@@ -16,11 +16,19 @@ module WorksCited
 
     # GET /citations/preview
     def preview
-      @citation = Citation.new(citation_params)
-      authorize! :preview, @citation
+      if (params[:id])
+        citation = Citation.find(params[:id])
+        citation.assign_attributes(preview_params)
+      else
+        citation = Citation.new(preview_params)
+      end
+      # Note that we never save
+      authorize! :preview, citation
 
-      @contributors = contributors_from_params
-      render :preview, layout: false
+      contributors = contributors_from_params
+
+      html = render_to_string('preview', formats: [:html], layout: false, locals: { citation: citation, contributors: contributors })
+      render json: { html: html }
     end
 
     # GET /citations/new
@@ -57,7 +65,7 @@ module WorksCited
 
     def contributors_from_params
       contributors_array = []
-      raw_contributors = citation_params[:works_cited_contributors_attributes]
+      raw_contributors = preview_params[:works_cited_contributors_attributes]
       raw_contributors&.each do |_index, contributor|
         destroy = contributor.delete(:_destroy)
         next if destroy == '1'
@@ -107,6 +115,18 @@ module WorksCited
 
         model_option_group(items, model)
       end.compact
+    end
+
+    # Only allow a list of trusted parameters through.
+    def preview_params
+      json = JSON.parse(request.raw_post)
+      json_params = ActionController::Parameters.new(json)
+      json_params.require(:citation).permit(
+        :id, :citation_type, :title, :container_title, :publisher, :city, :edition, :volume,
+        :number, :series, :year, :record, :media, :url, :pages, :published_at, :online_database, :doi,
+        :accessed_at,
+        works_cited_contributors_attributes: %i[id contributor_role first middle last suffix handle _destroy]
+      )
     end
 
     # Only allow a list of trusted parameters through.

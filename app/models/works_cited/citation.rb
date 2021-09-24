@@ -18,10 +18,10 @@ module WorksCited
     # Relationships
     belongs_to :record, polymorphic: true
     has_many :works_cited_contributors, -> { order(:last, :first, :middle, :suffix, :handle) }, inverse_of: :works_cited_citation, class_name: 'WorksCited::Contributor',
-             foreign_key: :works_cited_citation_id
+             foreign_key: :works_cited_citation_id, dependent: :destroy
     has_many :works_cited_authors, -> { authors.order(:last, :first, :middle, :suffix, :handle) }, inverse_of: :works_cited_citation, class_name: 'WorksCited::Contributor',
              foreign_key: :works_cited_citation_id
-    accepts_nested_attributes_for :works_cited_contributors, allow_destroy: true
+    accepts_nested_attributes_for :works_cited_contributors, reject_if: :all_blank, allow_destroy: true
 
     # Scopes
     scope :ordered_by_author, (lambda do
@@ -44,6 +44,23 @@ module WorksCited
     end
 
     # Instance Methods
+    def works_cited_contributors_attributes=(raw_contributors)
+      array = []
+      raw_contributors&.each do |_index, contributor|
+        destroy = contributor.delete(:_destroy)
+        if destroy == '1'
+          if contributor[:id]
+            old = Contributor.find(contributor[:id])
+            old.destroy
+          end
+          next
+        end
+
+        array << contributor
+      end
+      super array
+    end
+
     def record=(value)
       unless value.is_a? String
         super(value)
@@ -75,28 +92,6 @@ module WorksCited
 
     def email?
       citation_type == 'email'
-    end
-
-    if defined?(RailsAdmin)
-      rails_admin do
-        visible false
-        edit do
-          field :citation_type, :enum do
-            enum do
-              WorksCited.configuration.valid_citation_types
-            end
-          end
-          field :works_cited_contributors do
-            label 'Contributors'
-          end
-          include_all_fields
-          field :media
-          field :record do
-            # Can't remove this using :inverse_of because it's polymorphic
-            visible false
-          end
-        end
-      end
     end
   end
 end

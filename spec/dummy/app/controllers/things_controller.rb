@@ -56,7 +56,7 @@ class ThingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def thing_params
-    params.require(:thing).permit(:name, :description)
+    params.require(:thing).permit(:name, :description, works_cited_params)
   end
 end
 # :nocov:

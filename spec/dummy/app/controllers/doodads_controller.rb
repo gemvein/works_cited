@@ -3,6 +3,7 @@
 # :nocov:
 # Super basic controller for Doodads
 class DoodadsController < ApplicationController
+  include WorksCited::Params
   before_action :set_doodad, only: %i[show edit update destroy]
 
   # GET /doodads
@@ -56,7 +57,7 @@ class DoodadsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def doodad_params
-    params.require(:doodad).permit(:name, :description)
+    params.require(:doodad).permit(:name, :description, works_cited_params)
   end
 end
 # :nocov:

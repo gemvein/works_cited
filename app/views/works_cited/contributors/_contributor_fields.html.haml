@@ -1,0 +1,11 @@
+%fieldset.nested-fields
+  %legend
+    %h4 Contributor
+  = f.hidden_field :_destroy
+  = f.input :contributor_role, collection: WorksCited.configuration.valid_contributor_roles.map { |x| [x, x] }
+  = f.input :first
+  = f.input :middle, hint: 'Only the initial is used'
+  = f.input :last
+  = f.input :suffix
+  = f.input :handle
+  = link_to "Remove", '#', class: 'remove_fields button button-danger'

@@ -3,8 +3,6 @@ Works Cited allows you to add a list of the works cited in ActiveRecord objects,
 
 Works Cited uses CanCanCan to authorize the editing of citations. This makes it easy for you to control access.
 
-Works Cited is compatible with, but does not require, Rails Admin.
-
 ## Installation
 Add this line to your application's Gemfile:
 
@@ -83,6 +81,33 @@ Add the helpers to the relevant views
 
 ```haml
 = works_cited_list @record
+```
+
+To add routes so that you can edit citations on their own pages:
+
+```ruby
+  mount WorksCited::Engine => '/works_cited'
+```
+
+To add the fields, nested inside your forms
+
+```haml
+= form_for(@doodad) do |f|
+  = works_cited_citations_fields f
+```
+
+Don't forget to add the controller concern to enable nested attributes with strong parameters
+
+```ruby
+class RecipesController < ApplicationController
+  include Cookbook::Params
+
+  #...
+    
+  def recipe_params
+    params.require(:doodad).permit(:name, :description, works_cited_params)
+  end
+end
 ```
 
 ## Contributing
