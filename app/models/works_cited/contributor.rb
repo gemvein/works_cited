@@ -64,14 +64,16 @@ module WorksCited
     end
 
     def name_parts_reversed
+      parts = []
+      parts << [last.presence, name_other_parts.presence].compact.join(', ').presence
+      parts
+    end
+
+    def name_other_parts
       other_parts = []
       other_parts << first_name_or_initial.presence
       other_parts << [middle_initial.presence, suffix.presence].compact.join(', ').presence
-      other = other_parts.compact.join(' ').presence
-
-      parts = []
-      parts << [last.presence, other.presence].compact.join(', ').presence
-      parts
+      other_parts.compact.join(' ').presence
     end
 
     def first_name_or_initial
@@ -85,6 +87,5 @@ module WorksCited
 
       middle[0, 1]&.upcase
     end
-
   end
 end

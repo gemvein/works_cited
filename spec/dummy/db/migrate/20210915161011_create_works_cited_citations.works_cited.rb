@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from works_cited (originally 20210830165845)
 
 # This migration creates the citations table for works_cited

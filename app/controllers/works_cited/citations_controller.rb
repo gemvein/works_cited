@@ -16,18 +16,9 @@ module WorksCited
 
     # GET /citations/preview
     def preview
-      if (params[:id])
-        citation = Citation.find(params[:id])
-        citation.assign_attributes(preview_params)
-      else
-        citation = Citation.new(preview_params)
-      end
-      # Note that we never save
-      authorize! :preview, citation
-
-      contributors = contributors_from_params
-
-      html = render_to_string('preview', formats: [:html], layout: false, locals: { citation: citation, contributors: contributors })
+      authorize! :preview, Citation
+      locals = { citation: citation_for_preview, contributors: contributors_for_preview }
+      html = render_to_string('preview', formats: [:html], layout: false, locals: locals)
       render json: { html: html }
     end
 
@@ -63,7 +54,13 @@ module WorksCited
 
     private
 
-    def contributors_from_params
+    def citation_for_preview
+      return Citation.new(preview_params) unless params[:id].present?
+
+      Citation.find(params[:id]).assign_attributes(preview_params)
+    end
+
+    def contributors_for_preview
       contributors_array = []
       raw_contributors = preview_params[:works_cited_contributors_attributes]
       raw_contributors&.each do |_index, contributor|
@@ -100,12 +97,8 @@ module WorksCited
 
     def model_option_group(items, model)
       model_name = model.model_name
-      OpenStruct.new(
-        {
-          record_type: model_name,
-          records: items.map { |item| item_option(item, model_name) }
-        }
-      )
+      records = items.map { |item| item_option(item, model_name) }
+      OpenStruct.new({ record_type: model_name, records: records })
     end
 
     def set_records

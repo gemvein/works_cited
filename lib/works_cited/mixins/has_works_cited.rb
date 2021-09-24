@@ -27,10 +27,7 @@ module WorksCited
           raw_citations&.each do |_index, citation|
             destroy = citation.delete(:_destroy)
             if destroy == '1'
-              if citation[:id]
-                old = Citation.find(citation[:id])
-                old.destroy
-              end
+              Citation.find(citation[:id]).destroy if citation[:id]
               next
             end
 
