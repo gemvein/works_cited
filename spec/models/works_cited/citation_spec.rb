@@ -19,6 +19,18 @@ RSpec.describe WorksCited::Citation, type: :model do
     let(:electronic) { FactoryBot.create(:works_cited_citation, record: doodad, citation_type: 'electronic') }
     let(:interview) { FactoryBot.create(:works_cited_citation, record: doodad, citation_type: 'interview') }
     let(:email) { FactoryBot.create(:works_cited_citation, record: doodad, citation_type: 'email') }
+    describe '#works_cited_contributors_attributes=' do
+      before do
+        book.works_cited_contributors.destroy_all
+      end
+      it 'saves the contributors' do
+        expect do
+          contributor_attributes = FactoryBot.build(:works_cited_contributor).attributes
+          book.works_cited_contributors_attributes = { "0" => contributor_attributes }
+          book.save
+        end.to change { book.works_cited_contributors.count }.by(1)
+      end
+    end
     describe '#book?' do
       describe 'when true' do
         subject { book.book? }
