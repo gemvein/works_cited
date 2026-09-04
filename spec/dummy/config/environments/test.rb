@@ -28,14 +28,15 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
   config.cache_store = :null_store
 
-  # Raise exceptions instead of rendering exception templates.
-  config.action_dispatch.show_exceptions = false
+  # Raise exceptions instead of rendering exception templates. `false` is
+  # deprecated in favor of the :none/:rescuable/:all enum - as of Rails 8.1
+  # it's mapped to the "show" branch (the opposite of what it used to mean),
+  # so exceptions like CanCan::AccessDenied were silently rendered as 500s
+  # instead of propagating to `raise_error` matchers in request specs.
+  config.action_dispatch.show_exceptions = :none
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
-
-  # Store uploaded files on the local file system in a temporary directory.
-  config.active_storage.service = :test
 
   config.action_mailer.perform_caching = false
 

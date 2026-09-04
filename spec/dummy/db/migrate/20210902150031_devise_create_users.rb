@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Migration for devise to create users
-class DeviseCreateUsers < ActiveRecord::Migration[6.1]
+class DeviseCreateUsers < ActiveRecord::Migration[7.1]
   def change
     create_table :users do |t|
       t.boolean :admin, default: false

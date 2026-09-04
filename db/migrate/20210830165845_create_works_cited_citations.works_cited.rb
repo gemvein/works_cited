@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This migration creates the citations table for works_cited
-class CreateWorksCitedCitations < ActiveRecord::Migration[6.1]
+class CreateWorksCitedCitations < ActiveRecord::Migration[7.1]
   # rubocop:disable Metrics/AbcSize
   def change
     create_table :works_cited_citations do |t|

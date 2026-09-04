@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Create Contributors
-class CreateWorksCitedContributors < ActiveRecord::Migration[6.1]
+class CreateWorksCitedContributors < ActiveRecord::Migration[7.1]
   def change
     create_table :works_cited_contributors do |t|
       t.references :works_cited_citation, null: false, foreign_key: true

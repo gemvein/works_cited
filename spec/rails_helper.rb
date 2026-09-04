@@ -13,8 +13,7 @@ require File.expand_path('dummy/config/environment', __dir__)
 require 'rspec/rails'
 require 'shoulda/matchers'
 require 'factory_bot_rails'
-require 'capybara/rspec'
-require 'database_cleaner'
+require 'database_cleaner/active_record'
 require 'rake'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

@@ -2,7 +2,15 @@
 
 require_relative 'boot'
 
-require 'rails/all'
+# This dummy app renders real views/controllers and uses Devise's
+# mailer-dependent modules (recoverable), but has no need for
+# ActiveStorage/ActionCable/ActionMailbox/ActionText - trimmed to the
+# railties actually exercised instead of the full `rails/all`.
+require 'active_record/railtie'
+require 'action_controller/railtie'
+require 'action_view/railtie'
+require 'action_mailer/railtie'
+require 'sprockets/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -12,7 +20,7 @@ require 'works_cited'
 module Dummy
   # Our dummy application
   class Application < Rails::Application
-    config.load_defaults Rails::VERSION::STRING.to_f
+    config.load_defaults 8.0
 
     # Configuration for the application, engines, and railties goes here.
     #

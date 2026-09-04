@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'ostruct'
+
 module WorksCited
   # Citations Controller allows us to manage Citations. Not used for primary display.
   class CitationsController < ApplicationController
