@@ -9,28 +9,22 @@ rescue Bundler::BundlerError => e
   warn 'Run `bundle install` to install missing gems'
   exit e.status_code
 end
+require 'bundler/gem_tasks'
 require 'rake'
-require 'juwelier'
-Juwelier::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = 'works_cited'
-  gem.homepage = 'https://gemvein.com/museum/cases/works_cited'
-  gem.metadata = { source_code_uri: 'http://github.com/gemvein/works_cited' }
-  gem.license = 'MIT'
-  gem.summary = %(Helper to generate list of Works Cited)
-  gem.description = 'Works cited allows you to add a list of the works cited in ActiveRecord objects, '\
-                    'to be formatted by a helper that can be added to relevant pages to format the '\
-                    'citations like a bibliography.'
-  gem.email = 'loren.lundgren@gmail.com'
-  gem.authors = ['Loren Lundgren']
 
-  # dependencies defined in Gemfile
+require 'rspec/core'
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = FileList['spec/**/*_spec.rb']
 end
-
-Juwelier::RubygemsDotOrgTasks.new
 
 desc 'Code coverage detail'
 task :simplecov do
   ENV['COVERAGE'] = 'true'
-  Rake::Task['test'].execute
+  Rake::Task['spec'].execute
 end
+
+task default: :spec
+
+APP_RAKEFILE = File.expand_path('spec/dummy/Rakefile', __dir__)
+load 'rails/tasks/engine.rake'
