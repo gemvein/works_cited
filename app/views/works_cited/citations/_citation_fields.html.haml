@@ -9,7 +9,7 @@
   - WorksCited.configuration.valid_citation_types.each do |citation_type|
     .fields{ class: "fields-#{citation_type}", style: 'display: none;' }
       = works_cited_type_fields f, citation_type
-  %fieldset.works_cited_contributors
+  %fieldset.works_cited_contributors{data: {controller: 'works-cited--nested-form'}}
     %legend
       %h3 Contributors
     %div#works_cited_contributors
@@ -22,7 +22,7 @@
         Preview
         %small (Real-time)
     .preview-html#preview-html
-  = link_to "Remove", '#', class: 'remove_fields button button-danger'
+  = link_to "Remove", '#', class: 'remove_fields button button-danger', data: {action: 'click->works-cited--nested-form#remove'}
 :javascript
   showFields('#{f.index}', '#{f.object.citation_type || 'book'}')
   startPreview('#{preview_path}', 'citation-#{f.index}',  '#{record.class.table_name.singularize}[works_cited_citations_attributes][#{f.index}]')

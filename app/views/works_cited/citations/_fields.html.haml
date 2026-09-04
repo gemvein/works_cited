@@ -3,7 +3,7 @@
 - else
   = stylesheet_link_tag 'works_cited/application'
   = javascript_include_tag 'works_cited/application'
-  %fieldset.citations
+  %fieldset.citations{data: {controller: 'works-cited--nested-form'}}
     %legend
       %h3 Works Cited
     %div#citations

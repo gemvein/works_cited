@@ -12,3 +12,12 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+# importmap-rails pins resolve through Sprockets here (this app stays on
+# Sprockets rather than Propshaft) - every pinned module path needs an
+# explicit precompile declaration, unlike Propshaft which just serves
+# whatever's on disk. application.js is declared via manifest.js's own
+# `//= link` directive; declare the Stimulus bootstrap files here. The
+# engine declares its own controllers/works_cited/*.js separately, in
+# lib/works_cited/engine.rb.
+Rails.application.config.assets.precompile += %w[controllers/application.js controllers/index.js]

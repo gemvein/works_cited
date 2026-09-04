@@ -10,7 +10,10 @@ gem 'sass-rails', '>= 5'
 gem 'cancancan', '>= 3.3'
 
 gem 'simple_form', '>= 5.1'
-gem 'vanilla_nested', '>= 1.3'
+
+gem 'importmap-rails', '~> 2.0'
+gem 'stimulus-rails', '~> 1.3'
+gem 'turbo-rails', '~> 2.0'
 
 gem 'kaminari', '>= 1.2.1'
 
@@ -26,9 +29,10 @@ end
 
 group :development do
   gem 'factory_bot_rails', '~> 6.4'
-  gem 'rubocop', '>= 1.2.0', '<2'
-  gem 'rubocop-rails', '>=2.11.3', '<3'
-  gem 'rubocop-rspec', '>=2.4.0', '<3'
+  gem 'puma'
+  gem 'rubocop', '>= 1.2.0', '<2', require: false
+  gem 'rubocop-rails', '>=2.11.3', '<3', require: false
+  gem 'rubocop-rspec', '>=2.4.0', '<3', require: false
 end
 
 group :test do
