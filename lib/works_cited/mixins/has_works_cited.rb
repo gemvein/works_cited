@@ -13,6 +13,8 @@ module WorksCited
 
         has_many :works_cited_citations, as: :record, class_name: 'WorksCited::Citation'
         accepts_nested_attributes_for :works_cited_citations, reject_if: :all_blank, allow_destroy: true
+
+        WorksCited.citable_classes << name unless WorksCited.citable_classes.include?(name)
       end
       # rubocop:enable Naming/PredicateName
 

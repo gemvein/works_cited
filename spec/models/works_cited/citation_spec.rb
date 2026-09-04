@@ -28,6 +28,27 @@ RSpec.describe WorksCited::Citation, type: :model do
   describe 'Instance Methods' do
     let(:doodad) { FactoryBot.create(:doodad) }
     let(:book) { FactoryBot.create(:works_cited_citation, record: doodad, citation_type: 'book') }
+
+    describe '#record=' do
+      subject(:citation) { WorksCited::Citation.new }
+
+      it 'sets the record when given a citable class in "Model:id" form' do
+        citation.record = "#{doodad.class.name}:#{doodad.id}"
+        expect(citation.record).to eq(doodad)
+      end
+
+      it 'leaves record unset for a class that never called has_works_cited' do
+        user = FactoryBot.create(:user)
+        citation.record = "User:#{user.id}"
+        expect(citation.record).to be_nil
+      end
+
+      it 'leaves record unset for a garbage class name' do
+        citation.record = 'DefinitelyNotARealConstant:1'
+        expect(citation.record).to be_nil
+      end
+    end
+
     let(:periodical) { FactoryBot.create(:works_cited_citation, record: doodad, citation_type: 'periodical') }
     let(:electronic) { FactoryBot.create(:works_cited_citation, record: doodad, citation_type: 'electronic') }
     let(:interview) { FactoryBot.create(:works_cited_citation, record: doodad, citation_type: 'interview') }

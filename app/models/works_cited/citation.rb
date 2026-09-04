@@ -71,8 +71,21 @@ module WorksCited
       model_name, my_id = value.split(':')
       return unless model_name.present? && my_id.present?
 
-      model = model_name.constantize
+      model = model_name.safe_constantize
+      return unless citable?(model)
+
       super model.find(my_id)
+    end
+
+    private
+
+    # Only classes that actually called `has_works_cited` define this
+    # association - guards `record=` against constantizing/finding an
+    # arbitrary attacker-controlled class name (it's reachable through
+    # mass-assignment via citation_params/preview_params).
+    def citable?(model)
+      model.respond_to?(:reflect_on_association) &&
+        model.reflect_on_association(:works_cited_citations)&.options&.[](:class_name) == 'WorksCited::Citation'
     end
   end
 end

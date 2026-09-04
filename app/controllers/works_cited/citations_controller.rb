@@ -89,8 +89,7 @@ module WorksCited
     end
 
     def models
-      Rails.application.eager_load!
-      ApplicationRecord.descendants.select { |x| x.method_defined?(:works_cited_citations) }
+      WorksCited.citable_classes.filter_map(&:safe_constantize)
     end
 
     def item_option(item, model_name)

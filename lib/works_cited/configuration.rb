@@ -11,6 +11,13 @@ module WorksCited
     @configuration ||= WorksCited::Configuration.new
   end
 
+  # Names of classes that have called `has_works_cited`, populated by the
+  # mixin itself. Lets the citations controller build its record picker
+  # without a blanket `Rails.application.eager_load!` on every request.
+  def self.citable_classes
+    @citable_classes ||= []
+  end
+
   # WorksCited Configuration
   class Configuration
     attr_accessor(
