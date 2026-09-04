@@ -30,9 +30,9 @@ end
 group :development do
   gem 'factory_bot_rails', '~> 6.4'
   gem 'puma'
-  gem 'rubocop', '>= 1.2.0', '<2', require: false
-  gem 'rubocop-rails', '>=2.11.3', '<3', require: false
-  gem 'rubocop-rspec', '>=2.4.0', '<3', require: false
+  gem 'rubocop', '~> 1.6', require: false
+  gem 'rubocop-rails', '~> 2.25', require: false
+  gem 'rubocop-rspec', '~> 3.0', require: false
 end
 
 group :test do

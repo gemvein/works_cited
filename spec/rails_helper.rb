@@ -29,8 +29,8 @@ require 'rake'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
-Dir['./spec/support/**/**/*.rb'].sort.each { |f| require f }
+Dir['./spec/support/**/*.rb'].each { |f| require f }
+Dir['./spec/support/**/**/*.rb'].each { |f| require f }
 
 ActiveRecord::Migrator.migrations_paths = 'spec/dummy/db/migrate'
 
@@ -45,7 +45,7 @@ RSpec.configure do |config|
     Dummy::Application.load_tasks
     Rake::Task['db:seed'].invoke # loading seeds
   end
-  config.around(:each) do |example|
+  config.around do |example|
     DatabaseCleaner.cleaning do
       example.run
     end

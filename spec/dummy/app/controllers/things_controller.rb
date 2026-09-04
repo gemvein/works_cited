@@ -51,12 +51,12 @@ class ThingsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_thing
-    @thing = Thing.find(params[:id])
+    @thing = Thing.find(params.expect(:id))
   end
 
   # Only allow a list of trusted parameters through.
   def thing_params
-    params.require(:thing).permit(:name, :description, works_cited_params)
+    params.expect(thing: [:name, :description, works_cited_params])
   end
 end
 # :nocov:

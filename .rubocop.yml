@@ -1,10 +1,28 @@
+inherit_from: .rubocop_todo.yml
+
+plugins:
+  - rubocop-rails
+  - rubocop-rspec
+
 AllCops:
+  TargetRubyVersion: 3.2
+  DisplayCopNames: true
+  NewCops: enable
+  SuggestExtensions: false
   Exclude:
     - works_cited.gemspec
-  NewCops: enable
+    - spec/dummy/db/schema.rb
+    - spec/dummy/db/migrate/*
+
 Metrics/BlockLength:
-  IgnoredMethods: ['describe', 'context', 'before', 'let']
+  AllowedMethods: ['describe', 'context', 'before', 'let']
   Exclude:
-    - 'spec/dummy/db/schema.rb'
+    - spec/*
+    - spec/*/*
+
 Metrics/MethodLength:
-  IgnoredMethods: ['change']
+  AllowedMethods: ['change']
+
+Metrics/ModuleLength:
+  Exclude:
+    - spec/**/*

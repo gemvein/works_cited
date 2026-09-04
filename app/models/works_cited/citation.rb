@@ -4,7 +4,10 @@ module WorksCited
   # Citation
   class Citation < ApplicationRecord
     # Validations
-    validates_presence_of :citation_type, :record, :title
+    validates :citation_type, :title, presence: true
+    # %{value} is ActiveModel/I18n's own interpolation placeholder, not a
+    # Kernel#sprintf token - %<value>s would not be substituted here.
+    # rubocop:disable-next Style/FormatStringToken
     validates(
       :citation_type,
       inclusion: {
@@ -21,6 +24,10 @@ module WorksCited
                                           order(:last, :first, :middle, :suffix, :handle)
                                         }, inverse_of: :works_cited_citation, class_name: 'WorksCited::Contributor',
                                            foreign_key: :works_cited_citation_id, dependent: :destroy
+    # A filtered view of works_cited_contributors (same rows, same foreign
+    # key) - dependent: :destroy already lives on that association, so
+    # this one doesn't own any rows of its own to clean up.
+    # rubocop:disable-next Rails/HasManyOrHasOneDependent
     has_many :works_cited_authors, lambda {
                                      authors.order(:last, :first, :middle, :suffix, :handle)
                                    }, inverse_of: :works_cited_citation, class_name: 'WorksCited::Contributor',
@@ -30,10 +37,10 @@ module WorksCited
     # Scopes
     scope :ordered_by_author, (lambda do
       joins(:works_cited_authors)
-        .order('MIN(works_cited_contributors.last) ASC, '\
-               'MIN(works_cited_contributors.first) ASC, '\
-               'MIN(works_cited_contributors.middle) ASC, '\
-               'MIN(works_cited_contributors.suffix) ASC, '\
+        .order('MIN(works_cited_contributors.last) ASC, ' \
+               'MIN(works_cited_contributors.first) ASC, ' \
+               'MIN(works_cited_contributors.middle) ASC, ' \
+               'MIN(works_cited_contributors.suffix) ASC, ' \
                'MIN(works_cited_contributors.handle) ASC')
         .group(:id)
     end)
@@ -42,7 +49,7 @@ module WorksCited
     # Creates scopes such as .books and methods such as #book?
     WorksCited.configuration.valid_citation_types.each do |given_type|
       scope given_type.pluralize.to_sym, -> { where(citation_type: given_type) }
-      define_method("#{given_type}?".to_sym) do
+      define_method(:"#{given_type}?") do
         citation_type == given_type
       end
     end
@@ -50,7 +57,7 @@ module WorksCited
     # Instance Methods
     def works_cited_contributors_attributes=(raw_contributors)
       array = []
-      raw_contributors&.each do |_index, contributor|
+      raw_contributors&.each_value do |contributor|
         destroy = contributor.delete(:_destroy)
         if destroy == '1'
           Contributor.find(contributor[:id]).destroy if contributor[:id]
@@ -59,12 +66,12 @@ module WorksCited
 
         array << contributor
       end
-      super array
+      super(array)
     end
 
     def record=(value)
       unless value.is_a? String
-        super(value)
+        super
         return
       end
 
@@ -74,7 +81,7 @@ module WorksCited
       model = model_name.safe_constantize
       return unless citable?(model)
 
-      super model.find(my_id)
+      super(model.find(my_id))
     end
 
     private

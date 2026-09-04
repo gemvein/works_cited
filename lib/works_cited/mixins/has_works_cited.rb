@@ -6,7 +6,7 @@ module WorksCited
     module HasWorksCited
       extend ActiveSupport::Concern
 
-      # rubocop:disable Naming/PredicateName
+      # rubocop:disable-next Naming/PredicatePrefix
       def has_works_cited(_options = {})
         extend ClassMethods
         include InstanceMethods
@@ -16,7 +16,6 @@ module WorksCited
 
         WorksCited.citable_classes << name unless WorksCited.citable_classes.include?(name)
       end
-      # rubocop:enable Naming/PredicateName
 
       # Extended by has_works_cited mixin
       module ClassMethods
@@ -26,7 +25,7 @@ module WorksCited
       module InstanceMethods
         def works_cited_citations_attributes=(raw_citations)
           array = []
-          raw_citations&.each do |_index, citation|
+          raw_citations&.each_value do |citation|
             destroy = citation.delete(:_destroy)
             if destroy == '1'
               Citation.find(citation[:id]).destroy if citation[:id]
@@ -35,7 +34,7 @@ module WorksCited
 
             array << citation
           end
-          super array
+          super(array)
         end
       end
     end

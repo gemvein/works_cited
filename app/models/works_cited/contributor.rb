@@ -4,7 +4,10 @@ module WorksCited
   # Contributor
   class Contributor < ApplicationRecord
     # Validations
-    validates_presence_of :works_cited_citation, :contributor_role
+    validates :contributor_role, presence: true
+    # %{value} is ActiveModel/I18n's own interpolation placeholder, not a
+    # Kernel#sprintf token - %<value>s would not be substituted here.
+    # rubocop:disable-next Style/FormatStringToken
     validates(
       :contributor_role,
       inclusion: {
@@ -16,8 +19,7 @@ module WorksCited
     )
 
     # Relationships
-    belongs_to :works_cited_citation, inverse_of: :works_cited_contributors, class_name: 'WorksCited::Citation',
-                                      foreign_key: :works_cited_citation_id
+    belongs_to :works_cited_citation, inverse_of: :works_cited_contributors, class_name: 'WorksCited::Citation'
 
     # Scopes
     default_scope { order(last: :asc) }
@@ -26,7 +28,7 @@ module WorksCited
     # Creates scopes such as .authors and methods such as #author?
     WorksCited.configuration.valid_contributor_roles.each do |given_role|
       scope given_role.pluralize.to_sym, -> { where(contributor_role: given_role) }
-      define_method("#{given_role}?".to_sym) do
+      define_method(:"#{given_role}?") do
         contributor_role == given_role
       end
     end
@@ -50,7 +52,7 @@ module WorksCited
               end
       name_string = parts.compact.join(' ')
 
-      return name_string unless handle.present?
+      return name_string if handle.blank?
 
       "#{handle} [#{name_string}]"
     end
@@ -77,13 +79,13 @@ module WorksCited
     end
 
     def first_name_or_initial
-      return nil unless first.present?
+      return nil if first.blank?
 
       first.length == 1 ? "#{first}." : first
     end
 
     def middle_initial
-      return nil unless middle.present?
+      return nil if middle.blank?
 
       middle[0, 1]&.upcase
     end

@@ -8,7 +8,6 @@ module WorksCited
     let(:citation) { FactoryBot.create(:works_cited_citation, record: doodad) }
 
     describe 'Validations' do
-      it { is_expected.to validate_presence_of(:works_cited_citation) }
       it { is_expected.to validate_presence_of(:contributor_role) }
 
       describe 'contributor_role inclusion' do
@@ -59,29 +58,33 @@ module WorksCited
           contributor_role: 'translator'
         )
       end
+
       describe '.authors' do
-        subject { WorksCited::Contributor.authors }
+        subject { described_class.authors }
         it { is_expected.to include(author) }
         it { is_expected.not_to include(editor) }
         it { is_expected.not_to include(compiler) }
         it { is_expected.not_to include(translator) }
       end
+
       describe '.editors' do
-        subject { WorksCited::Contributor.editors }
+        subject { described_class.editors }
         it { is_expected.not_to include(author) }
         it { is_expected.to include(editor) }
         it { is_expected.not_to include(compiler) }
         it { is_expected.not_to include(translator) }
       end
+
       describe '.compilers' do
-        subject { WorksCited::Contributor.compilers }
+        subject { described_class.compilers }
         it { is_expected.not_to include(author) }
         it { is_expected.not_to include(editor) }
         it { is_expected.to include(compiler) }
         it { is_expected.not_to include(translator) }
       end
+
       describe '.translators' do
-        subject { WorksCited::Contributor.translators }
+        subject { described_class.translators }
         it { is_expected.not_to include(author) }
         it { is_expected.not_to include(editor) }
         it { is_expected.not_to include(compiler) }
@@ -101,10 +104,12 @@ module WorksCited
             suffix: 'Jr.'
           )
         end
+
         describe 'with first' do
           subject { contributor.full_name(:first) }
           it { is_expected.to eq 'Joseph J Jackson, Jr.' }
         end
+
         describe 'with last' do
           subject { contributor.full_name(:last) }
           it { is_expected.to eq 'Jackson, Joseph J, Jr.' }

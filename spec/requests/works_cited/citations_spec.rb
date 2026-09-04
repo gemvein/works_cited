@@ -14,10 +14,10 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-# rubocop:disable Metrics/ModuleLength
 module WorksCited
   RSpec.describe '/citations', type: :request do
     include Engine.routes.url_helpers
+
     let(:doodad) { FactoryBot.create(:doodad) }
     let(:admin) { FactoryBot.create(:user, admin: true) }
     let(:citation) { FactoryBot.create(:works_cited_citation, record: doodad) }
@@ -43,6 +43,7 @@ module WorksCited
         before do
           citation
         end
+
         it 'disallows' do
           expect { get citations_url }.to raise_error(CanCan::AccessDenied)
         end
@@ -79,6 +80,7 @@ module WorksCited
         let(:new_attributes) do
           { citation_type: 'book', title: 'New Title', record: "Doodad:#{doodad.id}" }
         end
+
         it 'disallows' do
           expect do
             patch citation_url(citation), params: { citation: new_attributes }
@@ -97,6 +99,7 @@ module WorksCited
       before do
         sign_in admin
       end
+
       describe 'GET /show' do
         it 'renders a successful response when admin' do
           get citation_url(citation)
@@ -108,6 +111,7 @@ module WorksCited
         before do
           citation
         end
+
         it 'renders a successful response when admin' do
           get citations_url
           expect(response).to be_successful
@@ -156,7 +160,7 @@ module WorksCited
           it 'does not create a new Citation' do
             expect do
               post citations_url, params: { citation: invalid_attributes }
-            end.to change(Citation, :count).by(0)
+            end.not_to change(Citation, :count)
           end
 
           it "renders a successful response (i.e. to display the 'new' template)" do
@@ -170,6 +174,7 @@ module WorksCited
         let(:new_attributes) do
           { citation_type: 'book', title: 'New Title', record: "Doodad:#{doodad.id}" }
         end
+
         context 'with valid parameters' do
           it 'updates the requested citation' do
             patch citation_url(citation), params: { citation: new_attributes }
@@ -211,4 +216,3 @@ module WorksCited
     end
   end
 end
-# rubocop:enable Metrics/ModuleLength

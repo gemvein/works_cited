@@ -57,15 +57,15 @@ module WorksCited
     private
 
     def citation_for_preview
-      return Citation.new(preview_params) unless params[:id].present?
+      return Citation.new(preview_params) if params[:id].blank?
 
-      Citation.find(params[:id]).assign_attributes(preview_params)
+      Citation.find(params.expect(:id)).assign_attributes(preview_params)
     end
 
     def contributors_for_preview
       contributors_array = []
       raw_contributors = preview_params[:works_cited_contributors_attributes]
-      raw_contributors&.each do |_index, contributor|
+      raw_contributors&.each_value do |contributor|
         destroy = contributor.delete(:_destroy)
         next if destroy == '1'
 
@@ -125,11 +125,12 @@ module WorksCited
 
     # Only allow a list of trusted parameters through.
     def citation_params
-      params.require(:citation).permit(
-        :id, :citation_type, :title, :container_title, :publisher, :city, :edition, :volume,
-        :number, :series, :year, :record, :media, :url, :pages, :published_at, :online_database, :doi,
-        :accessed_at,
-        works_cited_contributors_attributes: %i[id contributor_role first middle last suffix handle _destroy]
+      params.expect(
+        citation: [:id, :citation_type, :title, :container_title, :publisher, :city, :edition, :volume,
+                   :number, :series, :year, :record, :media, :url, :pages, :published_at, :online_database, :doi,
+                   :accessed_at,
+                   { works_cited_contributors_attributes: %i[id contributor_role first middle last suffix handle
+                                                             _destroy] }]
       )
     end
   end

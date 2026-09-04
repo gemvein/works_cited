@@ -2,7 +2,7 @@
 
 # This migration creates the citations table for works_cited
 class CreateWorksCitedCitations < ActiveRecord::Migration[7.1]
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def change
     create_table :works_cited_citations do |t|
       t.string :citation_type
@@ -27,5 +27,4 @@ class CreateWorksCitedCitations < ActiveRecord::Migration[7.1]
       t.timestamps
     end
   end
-  # rubocop:enable Metrics/AbcSize
 end

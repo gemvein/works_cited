@@ -19,7 +19,7 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
 end
 
 desc 'Code coverage detail'
-task :simplecov do
+task simplecov: :environment do
   ENV['COVERAGE'] = 'true'
   Rake::Task['spec'].execute
 end
