@@ -1,0 +1,57 @@
+name: CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+      - run: bundle exec rubocop
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ['3.4', '4.0']
+    env:
+      RAILS_ENV: test
+      TZ: America/Denver
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Set up test database
+        run: bundle exec rails db:create db:schema:load
+        working-directory: spec/dummy
+      - run: bundle exec rspec
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-ruby-${{ matrix.ruby }}
+          path: coverage/
+      # Publishes a self-hosted coverage badge (badges/coverage.json, read by
+      # a shields.io endpoint badge in the README) instead of depending on a
+      # third-party coverage service like Coveralls/Codecov.
+      - name: Update coverage badge
+        if: matrix.ruby == '4.0' && github.ref_name == github.event.repository.default_branch && github.event_name == 'push'
+        run: |
+          pct=$(ruby -rjson -e "r = JSON.parse(File.read('coverage/.last_run.json'))['result']; puts (r['covered_percent'] || r['line']).round(1)")
+          color=$(ruby -e "pct = $pct; puts(pct >= 90 ? 'brightgreen' : pct >= 75 ? 'yellow' : 'red')")
+          mkdir -p badges
+          printf '{"schemaVersion":1,"label":"coverage","message":"%s%%","color":"%s"}\n' "$pct" "$color" > badges/coverage.json
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add badges/coverage.json
+          git diff --staged --quiet || git commit -m "Update coverage badge [skip ci]"
+          git push
