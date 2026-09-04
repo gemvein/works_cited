@@ -13,6 +13,7 @@ AllCops:
     - works_cited.gemspec
     - spec/dummy/db/schema.rb
     - spec/dummy/db/migrate/*
+    - vendor/**/*
 
 Metrics/BlockLength:
   AllowedMethods: ['describe', 'context', 'before', 'let']
