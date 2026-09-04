@@ -6,6 +6,19 @@ RSpec.describe WorksCited::Citation, type: :model do
   describe 'Validations' do
     it { should validate_presence_of(:citation_type) }
     it { should validate_presence_of(:record) }
+
+    describe 'citation_type inclusion' do
+      let(:doodad) { FactoryBot.create(:doodad) }
+      let(:citation) { FactoryBot.build(:works_cited_citation, record: doodad, citation_type: 'not_a_real_type') }
+
+      it 'names the invalid value and the allowed types in the error message' do
+        citation.valid?
+        expect(citation.errors[:citation_type]).to include(
+          'not_a_real_type is not a valid citation type. Must be one of: ' \
+          "#{WorksCited.configuration.valid_citation_types.to_sentence(last_word_connector: ', or ')}"
+        )
+      end
+    end
   end
 
   describe 'Relationships' do

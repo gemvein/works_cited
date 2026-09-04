@@ -9,9 +9,9 @@ module WorksCited
       :contributor_role,
       inclusion: {
         in: WorksCited.configuration.valid_contributor_roles,
-        allowed_options: WorksCited.configuration.valid_contributor_roles.to_sentence(
-          last_word_connector: ', or '
-        )
+        message: "%{value} is not a valid contributor role. Must be one of: #{
+          WorksCited.configuration.valid_contributor_roles.to_sentence(last_word_connector: ', or ')
+        }"
       }
     )
 

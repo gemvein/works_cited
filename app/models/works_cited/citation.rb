@@ -9,9 +9,9 @@ module WorksCited
       :citation_type,
       inclusion: {
         in: WorksCited.configuration.valid_citation_types,
-        allowed_options: WorksCited.configuration.valid_citation_types.to_sentence(
-          last_word_connector: ', or '
-        )
+        message: "%{value} is not a valid citation type. Must be one of: #{
+          WorksCited.configuration.valid_citation_types.to_sentence(last_word_connector: ', or ')
+        }"
       }
     )
 

@@ -10,6 +10,20 @@ module WorksCited
     describe 'Validations' do
       it { should validate_presence_of(:works_cited_citation) }
       it { should validate_presence_of(:contributor_role) }
+
+      describe 'contributor_role inclusion' do
+        let(:contributor) do
+          FactoryBot.build(:works_cited_contributor, works_cited_citation: citation, contributor_role: 'not_a_role')
+        end
+
+        it 'names the invalid value and the allowed roles in the error message' do
+          contributor.valid?
+          expect(contributor.errors[:contributor_role]).to include(
+            'not_a_role is not a valid contributor role. Must be one of: ' \
+            "#{WorksCited.configuration.valid_contributor_roles.to_sentence(last_word_connector: ', or ')}"
+          )
+        end
+      end
     end
 
     describe 'Relationships' do
