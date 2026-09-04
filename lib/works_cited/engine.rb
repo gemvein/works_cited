@@ -11,6 +11,11 @@ module WorksCited
         helper WorksCited::ApplicationHelper
       end
     end
+    initializer 'works_cited.extend_active_record' do
+      ActiveSupport.on_load :active_record do
+        extend WorksCited::Mixins::HasWorksCited
+      end
+    end
     initializer 'works_cited.assets.precompile' do |app|
       app.config.assets.precompile += %w[works_cited/application.css works_cited/application.js vanilla_nested.js]
     end

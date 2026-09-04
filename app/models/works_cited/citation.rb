@@ -74,25 +74,5 @@ module WorksCited
       model = model_name.constantize
       super model.find(my_id)
     end
-
-    def periodical?
-      citation_type == 'periodical'
-    end
-
-    def electronic?
-      citation_type == 'electronic'
-    end
-
-    def book?
-      citation_type == 'book'
-    end
-
-    def interview?
-      citation_type == 'interview'
-    end
-
-    def email?
-      citation_type == 'email'
-    end
   end
 end
