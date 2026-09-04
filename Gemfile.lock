@@ -392,7 +392,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.4)
   faker (~> 3)
   haml-rails (>= 2.0)
-  importmap-rails (~> 2.0)
+  importmap-rails (>= 1.2)
   kaminari (>= 1.2.1)
   ostruct
   puma

@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'cancancan', '>= 3.3'
   s.add_runtime_dependency 'haml-rails', '>= 2.0'
-  s.add_runtime_dependency 'importmap-rails', '~> 2.0'
+  s.add_runtime_dependency 'importmap-rails', '>= 1.2'
   s.add_runtime_dependency 'kaminari', '>= 1.2.1'
   s.add_runtime_dependency 'ostruct'
   s.add_runtime_dependency 'rails', '>= 7.1', '< 9'
