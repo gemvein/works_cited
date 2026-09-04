@@ -8,8 +8,8 @@ module WorksCited
     let(:citation) { FactoryBot.create(:works_cited_citation, record: doodad) }
 
     describe 'Validations' do
-      it { should validate_presence_of(:works_cited_citation) }
-      it { should validate_presence_of(:contributor_role) }
+      it { is_expected.to validate_presence_of(:works_cited_citation) }
+      it { is_expected.to validate_presence_of(:contributor_role) }
 
       describe 'contributor_role inclusion' do
         let(:contributor) do
@@ -27,7 +27,7 @@ module WorksCited
     end
 
     describe 'Relationships' do
-      it { should belong_to(:works_cited_citation) }
+      it { is_expected.to belong_to(:works_cited_citation) }
     end
 
     describe 'Scopes' do
@@ -61,31 +61,31 @@ module WorksCited
       end
       describe '.authors' do
         subject { WorksCited::Contributor.authors }
-        it { should include(author) }
-        it { should_not include(editor) }
-        it { should_not include(compiler) }
-        it { should_not include(translator) }
+        it { is_expected.to include(author) }
+        it { is_expected.not_to include(editor) }
+        it { is_expected.not_to include(compiler) }
+        it { is_expected.not_to include(translator) }
       end
       describe '.editors' do
         subject { WorksCited::Contributor.editors }
-        it { should_not include(author) }
-        it { should include(editor) }
-        it { should_not include(compiler) }
-        it { should_not include(translator) }
+        it { is_expected.not_to include(author) }
+        it { is_expected.to include(editor) }
+        it { is_expected.not_to include(compiler) }
+        it { is_expected.not_to include(translator) }
       end
       describe '.compilers' do
         subject { WorksCited::Contributor.compilers }
-        it { should_not include(author) }
-        it { should_not include(editor) }
-        it { should include(compiler) }
-        it { should_not include(translator) }
+        it { is_expected.not_to include(author) }
+        it { is_expected.not_to include(editor) }
+        it { is_expected.to include(compiler) }
+        it { is_expected.not_to include(translator) }
       end
       describe '.translators' do
         subject { WorksCited::Contributor.translators }
-        it { should_not include(author) }
-        it { should_not include(editor) }
-        it { should_not include(compiler) }
-        it { should include(translator) }
+        it { is_expected.not_to include(author) }
+        it { is_expected.not_to include(editor) }
+        it { is_expected.not_to include(compiler) }
+        it { is_expected.to include(translator) }
       end
     end
 
@@ -103,11 +103,11 @@ module WorksCited
         end
         describe 'with first' do
           subject { contributor.full_name(:first) }
-          it { should eq 'Joseph J Jackson, Jr.' }
+          it { is_expected.to eq 'Joseph J Jackson, Jr.' }
         end
         describe 'with last' do
           subject { contributor.full_name(:last) }
-          it { should eq 'Jackson, Joseph J, Jr.' }
+          it { is_expected.to eq 'Jackson, Joseph J, Jr.' }
         end
       end
     end

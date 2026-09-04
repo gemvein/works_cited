@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Thing, type: :model do
   describe 'Mixin functioning' do
-    it { should have_many(:works_cited_citations) }
+    it { is_expected.to have_many(:works_cited_citations) }
   end
   describe 'WorksCited Methods' do
     describe '#works_cited_citations_attributes=' do

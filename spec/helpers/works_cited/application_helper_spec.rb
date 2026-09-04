@@ -18,7 +18,7 @@ describe WorksCited::ApplicationHelper do
       end
       subject { helper.works_cited_list(doodad) }
       it do
-        should have_tag('ul', with: { class: 'citations' }) do
+        is_expected.to have_tag('ul', with: { class: 'citations' }) do
           with_tag(
             'li',
             with: { class: 'citation' }
@@ -56,7 +56,7 @@ describe WorksCited::ApplicationHelper do
           )
         end
         subject { helper.works_cited_citation(book).gsub(/\s+/, ' ').squish }
-        it { should eq('Gleick, James. <em>Chaos: Making a New Science.</em> Penguin, 1987.') }
+        it { is_expected.to eq('Gleick, James. <em>Chaos: Making a New Science.</em> Penguin, 1987.') }
       end
       describe 'with two authors' do
         let(:book) do
@@ -93,7 +93,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(book).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Gillespie, Paula, and Neal Lerner. <em>The Allyn and Bacon Guide to Peer Tutoring.</em> Allyn and Bacon, 2000.')
+          is_expected.to eq('Gillespie, Paula, and Neal Lerner. <em>The Allyn and Bacon Guide to Peer Tutoring.</em> Allyn and Bacon, 2000.')
         }
       end
       describe 'with multiple authors' do
@@ -139,7 +139,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(book).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Wysocki, Anne Frances, et al. <em>Writing New Media: Theory and Applications for Expanding the Teaching of Composition.</em> Utah State UP, 2004.')
+          is_expected.to eq('Wysocki, Anne Frances, et al. <em>Writing New Media: Theory and Applications for Expanding the Teaching of Composition.</em> Utah State UP, 2004.')
         }
       end
       describe 'with no author' do
@@ -159,7 +159,7 @@ describe WorksCited::ApplicationHelper do
           )
         end
         subject { helper.works_cited_citation(book).gsub(/\s+/, ' ').squish }
-        it { should eq('<em>Encyclopedia of Indiana.</em> Somerset, 1993.') }
+        it { is_expected.to eq('<em>Encyclopedia of Indiana.</em> Somerset, 1993.') }
       end
       describe 'with a translator' do
         let(:book) do
@@ -196,7 +196,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(book).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Foucault, Michel. <em>Madness and Civilization: A History of Insanity in the Age of Reason.</em> Translated by Richard Howard. Vintage-Random House, 1988.')
+          is_expected.to eq('Foucault, Michel. <em>Madness and Civilization: A History of Insanity in the Age of Reason.</em> Translated by Richard Howard. Vintage-Random House, 1988.')
         }
       end
     end
@@ -230,7 +230,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(periodical).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Poniewozik, James. &quot;TV Makes a Too-Close Call.&quot; <em>Time</em>, 20 Nov. 2000, pp. 70-71.')
+          is_expected.to eq('Poniewozik, James. &quot;TV Makes a Too-Close Call.&quot; <em>Time</em>, 20 Nov. 2000, pp. 70-71.')
         }
       end
       describe 'in a newspaper' do
@@ -262,7 +262,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(periodical).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Brubaker, Bill. &quot;New Health Center Targets County&#39;s Uninsured Patients.&quot; <em>Washington Post</em>, 24 May 2007, p. LZ01.')
+          is_expected.to eq('Brubaker, Bill. &quot;New Health Center Targets County&#39;s Uninsured Patients.&quot; <em>Washington Post</em>, 24 May 2007, p. LZ01.')
         }
       end
       describe 'in a journal' do
@@ -296,7 +296,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(periodical).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Bagchi, Alaknanda. &quot;Conflicting Nationalisms: The Voice of the Subaltern in Mahasweta Devi&#39;s Bashai Tudu.&quot; <em>Tulsa Studies in Women&#39;s Literature</em>, vol. 15, no. 1, 1996, pp. 41-50.')
+          is_expected.to eq('Bagchi, Alaknanda. &quot;Conflicting Nationalisms: The Voice of the Subaltern in Mahasweta Devi&#39;s Bashai Tudu.&quot; <em>Tulsa Studies in Women&#39;s Literature</em>, vol. 15, no. 1, 1996, pp. 41-50.')
         }
       end
     end
@@ -324,7 +324,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(electronic).gsub(/\s+/, ' ').squish }
         it {
-          should eq('<em>The Purdue OWL Family of Sites.</em> The Writing Lab and OWL at Purdue and Purdue U, 2008, <a href="https://owl.english.purdue.edu/owl">owl.english.purdue.edu/owl</a>. Accessed 23 Apr. 2008.')
+          is_expected.to eq('<em>The Purdue OWL Family of Sites.</em> The Writing Lab and OWL at Purdue and Purdue U, 2008, <a href="https://owl.english.purdue.edu/owl">owl.english.purdue.edu/owl</a>. Accessed 23 Apr. 2008.')
         }
       end
       describe 'on a website with a name' do
@@ -359,7 +359,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(electronic).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Felluga, Dino. <em>Guide to Literary and Critical Theory.</em> Purdue U, 28 Nov. 2003, <a href="http://www.cla.purdue.edu/english/theory/">www.cla.purdue.edu/english/theory/</a>. Accessed 10 May 2006.')
+          is_expected.to eq('Felluga, Dino. <em>Guide to Literary and Critical Theory.</em> Purdue U, 28 Nov. 2003, <a href="http://www.cla.purdue.edu/english/theory/">www.cla.purdue.edu/english/theory/</a>. Accessed 10 May 2006.')
         }
       end
       describe 'on an inner page without a name' do
@@ -385,7 +385,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(electronic).gsub(/\s+/, ' ').squish }
         it {
-          should eq('&quot;Athlete&#39;s Foot - Topic Overview.&quot; <em>WebMD,</em> 25 Sep. 2014, <a href="https://www.webmd.com/skin-problems-and-treatments/tc/athletes-foot-topic-overview">www.webmd.com/skin-problems-and-treatments/tc/athletes-foot-topic-overview</a>.')
+          is_expected.to eq('&quot;Athlete&#39;s Foot - Topic Overview.&quot; <em>WebMD,</em> 25 Sep. 2014, <a href="https://www.webmd.com/skin-problems-and-treatments/tc/athletes-foot-topic-overview">www.webmd.com/skin-problems-and-treatments/tc/athletes-foot-topic-overview</a>.')
         }
       end
       describe 'on an inner page with a name' do
@@ -420,7 +420,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(electronic).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Lundman, Susan. &quot;How to Make Vegetarian Chili.&quot; <em>eHow,</em> <a href="https://www.ehow.com/how_10727_make-vegetarian-chili.html">www.ehow.com/how_10727_make-vegetarian-chili.html</a>. Accessed 6 July 2015.')
+          is_expected.to eq('Lundman, Susan. &quot;How to Make Vegetarian Chili.&quot; <em>eHow,</em> <a href="https://www.ehow.com/how_10727_make-vegetarian-chili.html">www.ehow.com/how_10727_make-vegetarian-chili.html</a>. Accessed 6 July 2015.')
         }
       end
       describe 'in an ebook' do
@@ -455,7 +455,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(electronic).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Silva, Paul J. <em>How to Write a Lot: A Practical Guide to Productive Academic Writing.</em> E-book, American Psychological Association, 2007.')
+          is_expected.to eq('Silva, Paul J. <em>How to Write a Lot: A Practical Guide to Productive Academic Writing.</em> E-book, American Psychological Association, 2007.')
         }
       end
       describe 'in an ebook specific to a platform, with a translator' do
@@ -498,7 +498,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(electronic).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Machiavelli, Niccolo. <em>The Prince.</em> Translated by W. K. Marriott, Kindle ed., Library of Alexandria, 2018.')
+          is_expected.to eq('Machiavelli, Niccolo. <em>The Prince.</em> Translated by W. K. Marriott, Kindle ed., Library of Alexandria, 2018.')
         }
       end
       describe 'in an article in a web magazine' do
@@ -533,7 +533,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(electronic).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Bernstein, Mark. &quot;10 Tips on Writing the Living Web.&quot; <em>A List Apart: For People Who Make Websites,</em> 16 Aug. 2002, <a href="http://alistapart.com/article/writeliving">alistapart.com/article/writeliving</a>. Accessed 4 May 2009.')
+          is_expected.to eq('Bernstein, Mark. &quot;10 Tips on Writing the Living Web.&quot; <em>A List Apart: For People Who Make Websites,</em> 16 Aug. 2002, <a href="http://alistapart.com/article/writeliving">alistapart.com/article/writeliving</a>. Accessed 4 May 2009.')
         }
       end
       describe 'in an article in an online only scholarly journal' do
@@ -568,7 +568,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(electronic).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Dolby, Nadine. &quot;Research in Youth Culture and Policy: Current Conditions and Future Directions.&quot; <em>Social Work and Society: The International Online-Only Journal,</em> vol. 6, no. 2, 2008, <a href="http://www.socwork.net/sws/article/view/60/362">www.socwork.net/sws/article/view/60/362</a>. Accessed 20 May 2009.')
+          is_expected.to eq('Dolby, Nadine. &quot;Research in Youth Culture and Policy: Current Conditions and Future Directions.&quot; <em>Social Work and Society: The International Online-Only Journal,</em> vol. 6, no. 2, 2008, <a href="http://www.socwork.net/sws/article/view/60/362">www.socwork.net/sws/article/view/60/362</a>. Accessed 20 May 2009.')
         }
       end
       describe 'in an article in a scholarly journal, also in print' do
@@ -603,7 +603,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(electronic).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Wheelis, Mark. &quot;Investigating Disease Outbreaks Under a Protocol to the Biological and Toxin Weapons Convention.&quot; <em>Emerging Infectious Diseases,</em> vol. 6, no. 6, 2000, pp. 595-600, <a href="http://wwwnc.cdc.gov/eid/article/6/6/00-0607_article">wwwnc.cdc.gov/eid/article/6/6/00-0607_article</a>. Accessed 8 Feb. 2009.')
+          is_expected.to eq('Wheelis, Mark. &quot;Investigating Disease Outbreaks Under a Protocol to the Biological and Toxin Weapons Convention.&quot; <em>Emerging Infectious Diseases,</em> vol. 6, no. 6, 2000, pp. 595-600, <a href="http://wwwnc.cdc.gov/eid/article/6/6/00-0607_article">wwwnc.cdc.gov/eid/article/6/6/00-0607_article</a>. Accessed 8 Feb. 2009.')
         }
       end
       describe 'in an article from an online database' do
@@ -648,7 +648,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(electronic).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Alonso, Alvaro, and Julio A Camargo. &quot;Toxicity of Nitrite to Three Species of Freshwater Invertebrates.&quot; <em>Environmental Toxicology,</em> vol. 21, no. 1, 3 Feb. 2006, pp. 90-94, <em>Wiley Online Library</em>, doi:10.1002/tox.20155. Accessed 26 May 2009.')
+          is_expected.to eq('Alonso, Alvaro, and Julio A Camargo. &quot;Toxicity of Nitrite to Three Species of Freshwater Invertebrates.&quot; <em>Environmental Toxicology,</em> vol. 21, no. 1, 3 Feb. 2006, pp. 90-94, <em>Wiley Online Library</em>, doi:10.1002/tox.20155. Accessed 26 May 2009.')
         }
       end
     end
@@ -694,7 +694,7 @@ describe WorksCited::ApplicationHelper do
           )
         end
         subject { helper.works_cited_citation(email).gsub(/\s+/, ' ').squish }
-        it { should eq('Kunka, Andrew. &quot;Re: Modernist Literature.&quot; Received by John Watts, 15 Nov. 2000.') }
+        it { is_expected.to eq('Kunka, Andrew. &quot;Re: Modernist Literature.&quot; Received by John Watts, 15 Nov. 2000.') }
       end
       describe 'on a listserv' do
         let(:email) do
@@ -731,7 +731,7 @@ describe WorksCited::ApplicationHelper do
         end
         subject { helper.works_cited_citation(email).gsub(/\s+/, ' ').squish }
         it {
-          should eq('Salmar1515 [Sal Hernandez]. &quot;Re: Best Strategy: Fenced Pastures vs. Max Number of Rooms?.&quot; <em>BoardGameGeek,</em> 29 Sep. 2008, <a href="https://boardgamegeek.com/thread/343929/best-strategy-fenced-pastures-vs-max-number-rooms">boardgamegeek.com/thread/343929/best-strategy-fenced-pastures-vs-max-number-rooms</a>. Accessed 5 Apr. 2009.')
+          is_expected.to eq('Salmar1515 [Sal Hernandez]. &quot;Re: Best Strategy: Fenced Pastures vs. Max Number of Rooms?.&quot; <em>BoardGameGeek,</em> 29 Sep. 2008, <a href="https://boardgamegeek.com/thread/343929/best-strategy-fenced-pastures-vs-max-number-rooms">boardgamegeek.com/thread/343929/best-strategy-fenced-pastures-vs-max-number-rooms</a>. Accessed 5 Apr. 2009.')
         }
       end
     end
@@ -770,7 +770,7 @@ describe WorksCited::ApplicationHelper do
       end
       subject { helper.works_cited_citation(tweet).gsub(/\s+/, ' ').squish }
       it {
-        should eq('@tombrokaw. &quot;SC demonstrated why all the debates are the engines of this campaign.&quot; <em>Twitter,</em> 22 Jan. 2012, 3:06 a.m., <a href="https://twitter.com/tombrokaw/status/160996868971704320">twitter.com/tombrokaw/status/160996868971704320</a>.')
+        is_expected.to eq('@tombrokaw. &quot;SC demonstrated why all the debates are the engines of this campaign.&quot; <em>Twitter,</em> 22 Jan. 2012, 3:06 a.m., <a href="https://twitter.com/tombrokaw/status/160996868971704320">twitter.com/tombrokaw/status/160996868971704320</a>.')
       }
     end
   end
@@ -790,7 +790,7 @@ describe WorksCited::ApplicationHelper do
         )
       end
       subject { list_names(citation.works_cited_contributors.authors) }
-      it { should eq 'Jackson, Joseph J, Jr.' }
+      it { is_expected.to eq 'Jackson, Joseph J, Jr.' }
     end
     describe 'with two names' do
       before do
@@ -815,7 +815,7 @@ describe WorksCited::ApplicationHelper do
         )
       end
       subject { list_names(citation.works_cited_contributors.authors) }
-      it { should eq 'Jackson, Joseph J, Jr., and Susan S Sorenson, Sr.' }
+      it { is_expected.to eq 'Jackson, Joseph J, Jr., and Susan S Sorenson, Sr.' }
     end
     describe 'with more names' do
       before do
@@ -849,7 +849,7 @@ describe WorksCited::ApplicationHelper do
         )
       end
       subject { list_names(citation.works_cited_contributors.authors) }
-      it { should eq 'Jackson, Joseph J, Jr., et al' }
+      it { is_expected.to eq 'Jackson, Joseph J, Jr., et al' }
     end
   end
 end

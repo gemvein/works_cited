@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'WorksCited' do
-  it 'should return correct version string' do
-    WorksCited.version_string.should == "WorksCited version #{WorksCited::VERSION}"
+  it 'returns the correct version string' do
+    expect(WorksCited.version_string).to eq("WorksCited version #{WorksCited::VERSION}")
   end
 end
