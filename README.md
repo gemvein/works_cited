@@ -1,4 +1,10 @@
 # Works Cited
+
+[![CI](https://github.com/gemvein/works_cited/actions/workflows/ci.yml/badge.svg)](https://github.com/gemvein/works_cited/actions/workflows/ci.yml)
+[![Gem Version](https://img.shields.io/gem/v/works_cited)](https://rubygems.org/gems/works_cited)
+[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/gemvein/works_cited/HEAD/badges/coverage.json)](https://github.com/gemvein/works_cited/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](http://opensource.org/licenses/MIT)
+
 Works Cited allows you to add a list of the works cited in ActiveRecord objects, to be formatted by a helper that can be added to relevant pages to format the citations like a bibliography.
 
 Works Cited uses CanCanCan to authorize the editing of citations. This makes it easy for you to control access.
@@ -99,25 +105,25 @@ To add the fields, nested inside your forms
 Don't forget to add the controller concern to enable nested attributes with strong parameters
 
 ```ruby
-class RecipesController < ApplicationController
-  include Cookbook::Params
+class DoodadsController < ApplicationController
+  include WorksCited::Params
 
   #...
-    
-  def recipe_params
+
+  def doodad_params
     params.require(:doodad).permit(:name, :description, works_cited_params)
   end
 end
 ```
 
 ## Contributing
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
+* Check out the latest main to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
+* Check out the issue tracker to make sure someone hasn't already requested it and/or contributed it.
 * Fork the project.
 * Start a feature/bugfix branch.
 * Commit and push until you are happy with your contribution.
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+* Make sure to add tests for it, so it doesn't break in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want your own version, or it's otherwise necessary, that's fine, but please isolate it to its own commit so it can be cherry-picked around.
 
-## License
-Copyright (c) 2021 Loren Lundgren. See LICENSE.txt for further details.
+## Copyright
+Copyright (c) 2021-2026 Loren Lundgren. See LICENSE.txt for further details.

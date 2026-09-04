@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module WorksCited
-  # Concern to allow strong parameters when using accepts_nested_attributes_for to edit Cookbook Uses
+  # Concern to allow strong parameters when using accepts_nested_attributes_for to edit citations
   module Params
     extend ActiveSupport::Concern
 
