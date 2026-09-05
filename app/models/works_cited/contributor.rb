@@ -53,6 +53,7 @@ module WorksCited
       name_string = parts.compact.join(' ')
 
       return name_string if handle.blank?
+      return handle if name_string.blank?
 
       "#{handle} [#{name_string}]"
     end

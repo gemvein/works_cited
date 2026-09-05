@@ -1,5 +1,5 @@
-list_names(- if contributors.authors.any?
-  = "#)(\1)}."
+- if contributors.authors.any?
+  = "#{list_names(contributors.authors)}."
 - if citation.url.present?
   %em
     = succeed '.' do

@@ -114,6 +114,40 @@ module WorksCited
           subject { contributor.full_name(:last) }
           it { is_expected.to eq 'Jackson, Joseph J, Jr.' }
         end
+
+        describe 'with a handle and a name' do
+          let(:contributor) do
+            FactoryBot.create(
+              :works_cited_contributor,
+              works_cited_citation: citation,
+              first: 'Joseph',
+              middle: '',
+              last: 'Jackson',
+              suffix: '',
+              handle: 'jjackson'
+            )
+          end
+
+          subject { contributor.full_name }
+          it { is_expected.to eq 'jjackson [Joseph Jackson]' }
+        end
+
+        describe 'with a handle and no name' do
+          let(:contributor) do
+            FactoryBot.create(
+              :works_cited_contributor,
+              works_cited_citation: citation,
+              first: '',
+              middle: '',
+              last: '',
+              suffix: '',
+              handle: 'Carl'
+            )
+          end
+
+          subject { contributor.full_name }
+          it { is_expected.to eq 'Carl' }
+        end
       end
     end
   end
