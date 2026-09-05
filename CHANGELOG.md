@@ -66,6 +66,28 @@ behavior changes to check against before upgrading.
   mechanism for anyone who'd customized `valid_citation_types`.
 - `OpenStruct` is explicitly required and depended on - no longer a
   Ruby default gem as of Ruby 4.0.
+- **`importmap-rails` loosened from `~> 2.0` to `>= 1.2`** - the 2.0
+  floor wasn't a real requirement, just copied from a sibling gem's
+  pin. Verified against 1.2.3 directly (full suite + a live browser
+  check of the Stimulus controller registration).
+- **The add/remove-contributor-fields JS could run before its
+  dependencies loaded.** Turbo Drive re-executes `<script>` tags on
+  every render, including the first page load, and its dynamically
+  cloned external scripts don't preserve native parser-blocking
+  execution order - so an inline script calling a function defined by
+  a separately-loaded classic script could run first. Fixed by opting
+  the affected script tags out of Turbo's re-execution via
+  `data-turbo-eval="false"`.
+- **`citation_types/citation/_default.html.haml` (the fallback partial
+  used when a citation type has no dedicated template) had corrupted
+  Haml** on its opening lines - a `SyntaxError` if it were ever
+  rendered. Currently dead code (all six built-in types have their own
+  partial) but fixed to match the working partials' pattern regardless.
+- **`Contributor#full_name` produced `"Carl []"` for a handle-only
+  contributor** (handle present, no first/middle/last) instead of just
+  `"Carl"` - the common case for web-only sources credited by handle
+  alone. Fixed to return the bare handle when there's no name to
+  bracket.
 
 ### Tooling
 

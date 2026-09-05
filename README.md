@@ -58,6 +58,29 @@ class Ability
 end
 ```
 
+These four abilities gate different things, and `:list`/`:read` are **not**
+redundant with each other despite sounding similar - each guards a
+different feature:
+
+- `:list` gates `works_cited_list`, the helper you call from your own
+  views to embed a record's public bibliography (e.g. on a Page or
+  Post). Grant this to whoever should be able to *see* citations exist -
+  typically everyone, including anonymous visitors, since a bibliography
+  is usually public-facing content.
+- `:read` gates the standalone citation-editing UI this engine mounts
+  (viewing/showing a citation there). Grant this to whoever should be
+  able to *open* that UI - a narrower group than `:list`, e.g. only
+  signed-in users.
+- `:select` gates which of your own models show up in the "Select a
+  Record" dropdown when creating a new citation - i.e. which records
+  are citable targets at all.
+- `:manage` (CanCanCan's built-in alias for full CRUD) gates
+  creating/editing/destroying citations and contributors.
+
+**If you only grant `:read` and citations mysteriously don't render**
+via `works_cited_list`, this is why - `:list` needs granting
+separately, it isn't implied by `:read`.
+
 You may wish to add custom contributor roles or citation types. To do that, add something like the following to `config/initializers/works_cited.rb`:
 
 ```ruby
