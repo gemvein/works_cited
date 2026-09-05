@@ -23,6 +23,5 @@
         %small (Real-time)
     .preview-html#preview-html
   = link_to "Remove", '#', class: 'remove_fields button button-danger', data: {action: 'click->works-cited--nested-form#remove'}
-:javascript
-  showFields('#{f.index}', '#{f.object.citation_type || 'book'}')
-  startPreview('#{preview_path}', 'citation-#{f.index}',  '#{record.class.table_name.singularize}[works_cited_citations_attributes][#{f.index}]')
+- js = ["showFields('#{f.index}', '#{f.object.citation_type || 'book'}');", "startPreview('#{preview_path}', 'citation-#{f.index}', '#{record.class.table_name.singularize}[works_cited_citations_attributes][#{f.index}]');"].join
+= content_tag :script, raw(js), data: { turbo_eval: false }

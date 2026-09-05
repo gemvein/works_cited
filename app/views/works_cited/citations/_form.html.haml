@@ -2,7 +2,7 @@
   preview_path = @citation.new_record? ? works_cited.preview_citations_url : works_cited.preview_citation_url(@citation.id)
   citation_id = @citation.new_record? ? 'new' : @citation.id
 = stylesheet_link_tag 'works_cited/application'
-= javascript_include_tag 'works_cited/application'
+= javascript_include_tag 'works_cited/application', data: { turbo_eval: false }
 = simple_form_for @citation, html: { id: "citation-#{citation_id}"} do |f|
   - if @citation.errors.any?
     #error_explanation
@@ -32,7 +32,5 @@
     .preview-html#preview-html
   .actions
     .button-wrapper= f.submit 'Save', class: 'button-large button-action'
-:javascript
-  showFields('#{citation_id}', '#{@citation.citation_type || 'book'}')
-  startPreview('#{preview_path}', 'citation-#{citation_id}', 'citation')
-  addFilterToSubmit()
+- js = ["showFields('#{citation_id}', '#{@citation.citation_type || 'book'}');", "startPreview('#{preview_path}', 'citation-#{citation_id}', 'citation');", "addFilterToSubmit();"].join
+= content_tag :script, raw(js), data: { turbo_eval: false }

@@ -2,7 +2,7 @@
   Not authorized for citations.
 - else
   = stylesheet_link_tag 'works_cited/application'
-  = javascript_include_tag 'works_cited/application'
+  = javascript_include_tag 'works_cited/application', data: { turbo_eval: false }
   %fieldset.citations{data: {controller: 'works-cited--nested-form'}}
     %legend
       %h3 Works Cited
@@ -10,5 +10,4 @@
       = form.simple_fields_for :works_cited_citations do |g|
         = render 'works_cited/citations/citation_fields', f: g, record: form.object
     = works_cited_link_to_add_fields "Add Citation", form, :works_cited_citations, 'works_cited/citations/citation_fields'
-:javascript
-  addFilterToSubmit()
+  = content_tag :script, raw('addFilterToSubmit();'), data: { turbo_eval: false }
